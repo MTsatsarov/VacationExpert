@@ -1,0 +1,13 @@
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\bin\Debug\netstandard2.1\VacationExpert.Data.Models.deps.json
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\bin\Debug\netstandard2.1\VacationExpert.Data.Models.dll
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\bin\Debug\netstandard2.1\VacationExpert.Data.Models.pdb
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\bin\Debug\netstandard2.1\VacationExpert.Data.Common.dll
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\bin\Debug\netstandard2.1\VacationExpert.Data.Common.pdb
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.csproj.AssemblyReference.cache
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.AssemblyInfoInputs.cache
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.AssemblyInfo.cs
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.csproj.CopyComplete
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.dll
+D:\MyGithubRepos\VacationExpert\src\Data\VacationExpert.Data.Models\obj\Debug\netstandard2.1\VacationExpert.Data.Models.pdb

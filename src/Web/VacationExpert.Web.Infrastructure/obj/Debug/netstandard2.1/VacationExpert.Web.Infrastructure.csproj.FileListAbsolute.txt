@@ -1,0 +1,10 @@
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\bin\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.deps.json
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\bin\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.dll
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\bin\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.pdb
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.csproj.AssemblyReference.cache
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.AssemblyInfoInputs.cache
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.AssemblyInfo.cs
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.dll
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web.Infrastructure\obj\Debug\netstandard2.1\VacationExpert.Web.Infrastructure.pdb

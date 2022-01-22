@@ -2,8 +2,65 @@
 @{
     this.ViewData["Title"] = "Home Page";
 }
+<link rel="stylesheet" href="~/css/home/home.css" />
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
+<section class="search-container">
+    <article class="search-wrapper">
+        <div class="search-box">
+            <form>
+                <div class="field-box">
+                    <label>Where are you going</label>
+                    <i class="fas fa-city"></i>
+                    <input name="location-input" />
+                </div>
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+                <div class="field-box">
+                    <label>Check-in  -  Check-out</label>
+                    <i class="far fa-calendar-alt"></i>
+                    <input name="dates" />
+                </div>
+
+                <div class="field-box">
+                    <label>Number of people</label>
+                    <i class="fas fa-users"></i>
+                    <input name="dates" />
+                </div>
+                <button>Find</button>
+            </form>
+        </div>
+    </article>
+</section>
+<section class="random-places-container">
+
+    <div class="random-horizontal">
+        <article>
+            <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
+            </image>
+        </article>
+
+        <article>
+            <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
+            </image>
+        </article>
+    </div>
+
+    <div class="random-vertical">
+        <article>
+            <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
+            </image>
+        </article>
+
+        <article>
+            <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
+            </image>
+        </article>
+        <article>
+            <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
+            </image>
+        </article>
+    </div>
+</section>
+
+<script src=~/js/home/home.js></script>

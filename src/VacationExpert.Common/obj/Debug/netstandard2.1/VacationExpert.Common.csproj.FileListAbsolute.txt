@@ -1,0 +1,10 @@
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\bin\Debug\netstandard2.1\VacationExpert.Common.deps.json
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\bin\Debug\netstandard2.1\VacationExpert.Common.dll
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\bin\Debug\netstandard2.1\VacationExpert.Common.pdb
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.csproj.AssemblyReference.cache
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.AssemblyInfoInputs.cache
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.AssemblyInfo.cs
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.dll
+D:\MyGithubRepos\VacationExpert\src\VacationExpert.Common\obj\Debug\netstandard2.1\VacationExpert.Common.pdb

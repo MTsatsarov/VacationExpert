@@ -1,0 +1,10 @@
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\bin\Debug\netstandard2.1\VacationExpert.Services.Messaging.deps.json
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\bin\Debug\netstandard2.1\VacationExpert.Services.Messaging.dll
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\bin\Debug\netstandard2.1\VacationExpert.Services.Messaging.pdb
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.csproj.AssemblyReference.cache
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.GeneratedMSBuildEditorConfig.editorconfig
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.AssemblyInfoInputs.cache
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.AssemblyInfo.cs
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.csproj.CoreCompileInputs.cache
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.dll
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services.Messaging\obj\Debug\netstandard2.1\VacationExpert.Services.Messaging.pdb

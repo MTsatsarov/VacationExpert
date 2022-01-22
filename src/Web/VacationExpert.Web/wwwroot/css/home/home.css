@@ -1,0 +1,25 @@
+
+main {
+  margin: 50px auto;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  padding: 15px;
+}
+
+.random-horizontal {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-between;
+  margin: 10px;
+}
+.random-vertical {
+  display: flex;
+  flex-wrap: nowrap;
+}
+.random-vertical img {
+  width: 250px;
+  margin: 10px;
+}
