@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "5zZhRdVMCiAs4XhyXlFQsViBoqBrFnZS+2ACjRn2XDNxZ8d5lv2FYLSgLHShuynh61ZARgV2/WrIrMzBa6h2Uw==",
+  "success": true,
+  "projectFilePath": "D:\\MyGithubRepos\\VacationExpert\\src\\VacationExpert.Common\\VacationExpert.Common.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\User\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512"
+  ],
+  "logs": []
+}
