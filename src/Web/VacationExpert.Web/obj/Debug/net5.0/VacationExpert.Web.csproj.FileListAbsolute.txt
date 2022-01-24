@@ -464,3 +464,4 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Vaca
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\ref\VacationExpert.Web.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.pdb
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.genruntimeconfig.cache
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Razor\Views\Create\Index.cshtml.g.cs
