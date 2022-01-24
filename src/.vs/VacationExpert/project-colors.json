@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "7a7a7986-1f5b-4ebd-9b17-8b41f8faba58": {
+      "ProjectGuid": "7a7a7986-1f5b-4ebd-9b17-8b41f8faba58",
+      "DisplayName": "VacationExpert.Web.Infrastructure",
+      "ColorIndex": 0
+    },
+    "b90d1067-fe4c-400e-ba78-5413e30ab9ed": {
+      "ProjectGuid": "b90d1067-fe4c-400e-ba78-5413e30ab9ed",
+      "DisplayName": "VacationExpert.Web",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
