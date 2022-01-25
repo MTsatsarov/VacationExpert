@@ -11,9 +11,12 @@
   list-style: none;
   border-bottom: 5px solid black;
 }
-
+.clicked-article {
+  /* border: 5px solid rgb(19, 4, 221); */
+  animation: addborder 300ms ease-in forwards 200ms;
+}
 .clicked-part {
-  border-bottom: 5px solid rgb(19, 4, 221) !important;
+  border-bottom: 5px solid rgb(19, 4, 221)  !important;
 }
 
 .create p {
@@ -26,13 +29,13 @@
   flex-direction: column;
 }
 .create article {
-  border: 2px solid black;
   align-self: flex-start;
-  padding: 20px;
+  padding: 40px;
   margin-bottom: 22px;
   border-radius: 14px;
   display: flex;
   flex-direction: column;
+  flex-basis: 60%;
 }
 .create h3 {
   font-weight: bold;
@@ -157,4 +160,23 @@ padding: 20px;
 }
 .guests-number-room input {
     width: 40px;
+}
+
+@keyframes addborder {
+  0% {
+    border:none;
+  }
+  25% {
+    border-left:5px solid rgb(19, 4, 221)  ;
+  }
+  50% {
+    border-top:5px solid rgb(19, 4, 221)  ;
+  }
+  75% {
+    border-right:5px solid rgb(19, 4, 221)  ;
+  }
+  100% {
+    border: 5px solid rgb(19, 4, 221) ;
+
+  }
 }

@@ -4,17 +4,17 @@
 <section class="create">
     <nav class="create-nav">
         <ul>
-            <li class="clicked-part">
+            <li data-section = "basic-info">
                 Basic info
             </li>
 
-            <li>
+            <li data-section = "layout-pricing" >
                 Layout & Pricing
             </li>
-            <li>
+            <li data-section = "facilities-services" >
                 Facilities & Services
             </li>
-            <li>
+            <li data-section = "photos-box" >
                 Photos
             </li>
         </ul>
@@ -94,15 +94,15 @@
             <article class="bed-options-wrapper">
                 <h5>Bed options</h5>
                 <div>
-                <select>
-                    <option>Twin bed(s) / 90 -130 cm wide</option>
-                    <option>Full bed(s) / 131-150 cm wide</option>
-                </select>
-                <select>
-                    <option>1</option>
-                    <option>2</option>
-                    <option>3</option>
-                </select>
+                    <select>
+                        <option>Twin bed(s) / 90 -130 cm wide</option>
+                        <option>Full bed(s) / 131-150 cm wide</option>
+                    </select>
+                    <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
                 </div>
                 <button>Add another bed</button>
 
@@ -120,7 +120,6 @@
             </div>
         </section>
 
-
         <section class="facilities-services">
             <h3>Facilities & Services</h3>
             <p>We need to know some of the main facilities available in your property, so the guest can have better idea about your property.</p>
@@ -131,27 +130,28 @@
                     <option>Yes, paid</option>
                     <option>Yes, free</option>
                 </select>
+                <div>
+                    <h5>Breakfast</h5>
+                    <select class="parking-menu">
+                        <option>No</option>
+                        <option>Yes, included in the price</option>
+                        <option>Yes, it is optional</option>
+                    </select>
+                </div>
+                <div>
+                    <h5>Languages</h5>
+                    <select class="parking-menu">
+                        <option>Engish</option>
+                        <option>Bulgarian</option>
+                        <option>Russian</option>
+                    </select>
+                </div>
             </article>
-            <article>
-                <h5>Breakfast</h5>
-                <select class="parking-menu">
-                    <option>No</option>
-                    <option>Yes, included in the price</option>
-                    <option>Yes, it is optional</option>
-                </select>
-            </article>
-            <article>
-                <h5>Languages</h5>
-                <select class="parking-menu">
-                    <option>Engish</option>
-                    <option>Bulgarian</option>
-                    <option>Russian</option>
-                </select>
-            </article>
+
 
             <article id="checkBox-wraper" class="secondary-facilities">
                 <h5>Here are the facilities which the guests commonly look for.</h5>
-                <section id="section-container">
+                <div id="section-container">
                     <div class='single-facility'>
                         <input type="checkbox" />
                         <label> Free WiFi</label>
@@ -184,7 +184,7 @@
                         <input type="checkbox" />
                         <label> Garden</label>
                     </div>
-                </section>
+                </div>
             </article>
         </section>
 
@@ -200,21 +200,23 @@
             </div>
         </section>
     </form>
-    <nav class="create-nav">
+   <nav class="create-nav">
         <ul>
-            <li class="clicked-part">
+            <li data-section = "basic-info">
                 Basic info
             </li>
 
-            <li>
+            <li data-section = "layout-pricing" >
                 Layout & Pricing
             </li>
-            <li>
+            <li data-section = "facilities-services" >
                 Facilities & Services
             </li>
-            <li>
+            <li data-section = "photos-box" >
                 Photos
             </li>
         </ul>
     </nav>
 </section>
+
+<script type="module" defer src=~/js/create/create.js></script>
