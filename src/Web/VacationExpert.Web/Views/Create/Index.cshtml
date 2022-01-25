@@ -1,7 +1,7 @@
 ﻿
 
 <link rel="stylesheet" href="~/css/create/index.css" />
-<section class="Create">
+<section class="create">
     <nav class="create-nav">
         <ul>
             <li class="clicked-part">
@@ -21,7 +21,10 @@
     </nav>
     <form>
         <section class="basic-info">
+            <h3>Basic info</h3>
             <article class="main-property-details">
+                <h4>Name and rating</h4>
+
                 <input placeholder='Enter the name of your property' />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <div>
@@ -69,17 +72,135 @@
                 <input type="text" />
             </article>
         </section>
+        <section class="layout-pricing">
+            <h3>Layout & Pricing</h3>
+            <article class="type-smoking">
+                <label>Room type</label>
+                <select>
+                    <option>Single</option>
+                    <option>Double</option>
+                    <option>Twin</option>
+                </select>
+                <label>Smoking policy</label>
+                <select>
+                    <option>Non-smoking</option>
+                    <option>Smoking</option>
+                    <option>Both, smoking and non-smoking</option>
+                </select>
+                <label>Number of rooms (this type)</label>
+                <input type="number" />
+            </article>
+
+            <article class="bed-options-wrapper">
+                <h5>Bed options</h5>
+                <div>
+                <select>
+                    <option>Twin bed(s) / 90 -130 cm wide</option>
+                    <option>Full bed(s) / 131-150 cm wide</option>
+                </select>
+                <select>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                </select>
+                </div>
+                <button>Add another bed</button>
+
+                <div class="guests-number-room">
+                    <label>How many guests can stay in the room ?</label>
+                    <input type="number" />
+                </div>
+            </article>
+
+            <div>
+                <label>
+                    Room Size (optional, quare meteres)
+                </label>
+                <input type="number" />
+            </div>
+        </section>
+
+
+        <section class="facilities-services">
+            <h3>Facilities & Services</h3>
+            <p>We need to know some of the main facilities available in your property, so the guest can have better idea about your property.</p>
+            <article class="main-facilities">
+                <h5>Parking</h5>
+                <select class="parking-menu">
+                    <option>No</option>
+                    <option>Yes, paid</option>
+                    <option>Yes, free</option>
+                </select>
+            </article>
+            <article>
+                <h5>Breakfast</h5>
+                <select class="parking-menu">
+                    <option>No</option>
+                    <option>Yes, included in the price</option>
+                    <option>Yes, it is optional</option>
+                </select>
+            </article>
+            <article>
+                <h5>Languages</h5>
+                <select class="parking-menu">
+                    <option>Engish</option>
+                    <option>Bulgarian</option>
+                    <option>Russian</option>
+                </select>
+            </article>
+
+            <article id="checkBox-wraper" class="secondary-facilities">
+                <h5>Here are the facilities which the guests commonly look for.</h5>
+                <section id="section-container">
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Free WiFi</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Terrace</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Non-smoking rooms</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Restaurant</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Spa</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Bar</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Fittnes center</label>
+                    </div>
+                    <div class='single-facility'>
+                        <input type="checkbox" />
+                        <label> Garden</label>
+                    </div>
+                </section>
+            </article>
+        </section>
 
         <section class="photos-box">
-            <div class=photo-wrapper>
-                <label>
-                    Import your photos
-                </label>
-                <input type="file" multiple />
+            <h3>Photos</h3>
+            <p>Usually guests choose property according to the provided photos. These photos gives your guests full experience. Upload some photos and we will display them .</p>
+
+            <h5>Photo Gallery</h5>
+
+            <div id="photo-box">
+                <h6>Upload at least 1 photo</h6>
+                <input name="photo-uploader" type="file" multiple />
             </div>
         </section>
     </form>
-        <nav class="create-nav">
+    <nav class="create-nav">
         <ul>
             <li class="clicked-part">
                 Basic info
