@@ -1,2 +1,5 @@
-bin
-obj
+
+#Files build by visual Studio
+
+.obj
+*.iobj
