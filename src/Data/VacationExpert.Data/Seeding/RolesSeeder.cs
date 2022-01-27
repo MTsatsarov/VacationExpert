@@ -4,11 +4,10 @@
     using System.Linq;
     using System.Threading.Tasks;
 
-    using VacationExpert.Common;
-    using VacationExpert.Data.Models;
-
     using Microsoft.AspNetCore.Identity;
     using Microsoft.Extensions.DependencyInjection;
+    using VacationExpert.Common;
+    using VacationExpert.Data.Models;
 
     internal class RolesSeeder : ISeeder
     {

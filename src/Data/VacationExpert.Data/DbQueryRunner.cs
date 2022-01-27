@@ -3,9 +3,8 @@
     using System;
     using System.Threading.Tasks;
 
-    using VacationExpert.Data.Common;
-
     using Microsoft.EntityFrameworkCore;
+    using VacationExpert.Data.Common;
 
     public class DbQueryRunner : IDbQueryRunner
     {

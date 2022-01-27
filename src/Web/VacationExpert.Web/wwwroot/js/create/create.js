@@ -1,5 +1,10 @@
 ﻿document.getElementsByClassName('create')[0].addEventListener('click', markArticle)
-var nav = Array.from(document.getElementsByClassName('create-nav')).forEach(x=>x.addEventListener('click', changeSection))
+var nav = document.getElementsByClassName('create-nav')[0];
+document.getElementById('addBed').addEventListener('click',addBed)
+
+Array.from(document.getElementsByClassName('create-nav')).forEach(x => x.addEventListener('click', changeSection))
+var sections = Array.from(document.querySelectorAll("form>section"));
+var navLiItemsArray = Array.from(document.querySelectorAll('li[data-section]'));
 
 function markArticle(e) {
     var articles = document.getElementsByTagName('article');
@@ -19,18 +24,28 @@ function markArticle(e) {
         }
     }
 }
+init();
+function init() {
+    Array.from(document.querySelectorAll("li[data-section = basic-info]")).forEach(x => x.classList.add('clicked-part'))
+    sections.forEach(x => x.style.display = "none")
+    document.querySelector(".basic-info").style.display = "flex";
 
+}
+function addBed () {
+
+}
 
 function changeSection(e) {
     if (e.target.tagName == 'LI') {
         var data = e.target.getAttribute('data-section')
-        Array.from(document.querySelectorAll('li[data-section]')).forEach(x => x.classList.remove('clicked-part'))
-        Array.from(document.querySelectorAll('li[data-section]')).filter(x=>x.getAttribute('data-section') == data).forEach(x=>x.classList.add('clicked-part'))
+        navLiItemsArray.forEach(x => x.classList.remove('clicked-part'))
 
-        var sections = Array.from(document.querySelectorAll("form>section"));
+        navLiItemsArray.filter(x => x.getAttribute('data-section') == data).forEach(x => x.classList.add('clicked-part'))
+
         sections.forEach(x => x.style.display = "none")
-       var currentSelected = sections.find(x=>x.classList.contains(data));
-       currentSelected.style.display= 'flex';
+        var currentSelected = sections.find(x => x.classList.contains(data)).style.display = 'flex';
     }
 
 }
+
+

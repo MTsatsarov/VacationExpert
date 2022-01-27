@@ -12,11 +12,10 @@
   border-bottom: 5px solid black;
 }
 .clicked-article {
-  /* border: 5px solid rgb(19, 4, 221); */
-  animation: addborder 300ms ease-in forwards 200ms;
+  animation: addborder 1100ms ease-in forwards;
 }
 .clicked-part {
-  border-bottom: 5px solid rgb(19, 4, 221)  !important;
+  border-bottom: 5px solid rgb(19, 4, 221) !important;
 }
 
 .create p {
@@ -36,16 +35,18 @@
   display: flex;
   flex-direction: column;
   flex-basis: 60%;
+  border: 3px solid rgba(255, 255, 255,0);
 }
 .create h3 {
   font-weight: bold;
   padding: 10px;
   margin-bottom: 15px;
+  margin-left: 30px;
   text-decoration-line: underline;
 }
- label {
+label {
   font-size: 14px;
-  margin-top:15px;
+  margin-top: 15px;
   margin-bottom: 0px;
 }
 
@@ -153,30 +154,28 @@ input[name="photo-uploader"] {
   border: none;
 }
 .guests-number-room {
-display: flex;
-flex-direction: column;
-padding: 20px;
-
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
 .guests-number-room input {
-    width: 40px;
+  width: 40px;
 }
 
 @keyframes addborder {
   0% {
-    border:none;
+    border: 3px solid rgba(255, 255, 255,0);
   }
   25% {
-    border-left:5px solid rgb(19, 4, 221)  ;
+    border-left: 3px solid rgba(12, 94, 246,1);
   }
   50% {
-    border-top:5px solid rgb(19, 4, 221)  ;
+    border-top: 3px solid rgba(12, 94, 246,1);
   }
   75% {
-    border-right:5px solid rgb(19, 4, 221)  ;
+    border-right: 3px solid rgba(12, 94, 246,1);
   }
   100% {
-    border: 5px solid rgb(19, 4, 221) ;
-
+    border: 3px solid rgba(12, 94, 246,1);
   }
 }

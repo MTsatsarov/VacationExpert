@@ -1,9 +1,8 @@
 ﻿namespace VacationExpert.Web.Areas.Administration.Controllers
 {
+    using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Services.Data;
     using VacationExpert.Web.ViewModels.Administration.Dashboard;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class DashboardController : AdministrationController
     {

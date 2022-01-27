@@ -4,9 +4,8 @@ namespace VacationExpert.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using VacationExpert.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using VacationExpert.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {

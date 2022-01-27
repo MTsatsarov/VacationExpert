@@ -1,8 +1,8 @@
 ﻿namespace VacationExpert.Data.Configurations
 {
-    using VacationExpert.Data.Models;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore.Metadata.Builders;
+    using VacationExpert.Data.Models;
 
     public class ApplicationUserConfiguration : IEntityTypeConfiguration<ApplicationUser>
     {

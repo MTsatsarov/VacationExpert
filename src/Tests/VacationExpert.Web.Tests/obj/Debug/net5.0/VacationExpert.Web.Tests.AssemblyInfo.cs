@@ -12,8 +12,8 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap4")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("VacationExpert.Data", "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data", "VacationExpert.Data.csproj", "0")]
-[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("VacationExpert.Web", "D:\\MyGithubRepos\\VacationExpert\\src\\Web\\VacationExpert.Web", "VacationExpert.Web.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("VacationExpert.Data, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data", "VacationExpert.Data.csproj", "0")]
+[assembly: Microsoft.AspNetCore.Mvc.Testing.WebApplicationFactoryContentRootAttribute("VacationExpert.Web, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null", "D:\\MyGithubRepos\\VacationExpert\\src\\Web\\VacationExpert.Web", "VacationExpert.Web.csproj", "0")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("VacationExpert.Web.Tests")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]

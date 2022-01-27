@@ -2,9 +2,8 @@
 {
     using System.Diagnostics;
 
-    using VacationExpert.Web.ViewModels;
-
     using Microsoft.AspNetCore.Mvc;
+    using VacationExpert.Web.ViewModels;
 
     public class HomeController : BaseController
     {
