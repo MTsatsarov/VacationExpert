@@ -2,5 +2,9 @@
 {
     public enum Country
     {
+        Bulgaria,
+        Germany,
+        Greece,
+        Romania,
     }
 }

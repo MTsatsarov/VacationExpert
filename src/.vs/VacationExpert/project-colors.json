@@ -10,7 +10,27 @@
       "ProjectGuid": "b90d1067-fe4c-400e-ba78-5413e30ab9ed",
       "DisplayName": "VacationExpert.Web",
       "ColorIndex": 1
+    },
+    "e9fdb52f-52dc-48b2-86e1-0176377bb53f": {
+      "ProjectGuid": "e9fdb52f-52dc-48b2-86e1-0176377bb53f",
+      "DisplayName": "VacationExpert.Data.Models",
+      "ColorIndex": 2
+    },
+    "4b844ecb-e845-49a6-8b31-85e577933598": {
+      "ProjectGuid": "4b844ecb-e845-49a6-8b31-85e577933598",
+      "DisplayName": "VacationExpert.Data",
+      "ColorIndex": 3
+    },
+    "8522212f-f01e-4e20-9975-fcf5e10d71db": {
+      "ProjectGuid": "8522212f-f01e-4e20-9975-fcf5e10d71db",
+      "DisplayName": "VacationExpert.Services",
+      "ColorIndex": 4
+    },
+    "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3": {
+      "ProjectGuid": "a2fe74e1-b743-11d0-ae1a-00a0c90fffc3",
+      "DisplayName": "Miscellaneous Files",
+      "ColorIndex": -1
     }
   },
-  "NextColorIndex": 2
+  "NextColorIndex": 5
 }

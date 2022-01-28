@@ -2,5 +2,9 @@
 {
     public enum City
     {
+        Sofia,
+        Varna,
+        Burgas,
+        Plovdiv,
     }
 }

@@ -74,3 +74,6 @@ D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\obj\Debug\net5.0\Sandbox.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\obj\Debug\net5.0\ref\Sandbox.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\obj\Debug\net5.0\Sandbox.pdb
 D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\obj\Debug\net5.0\Sandbox.genruntimeconfig.cache
+D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\System.IO.Pipelines.dll

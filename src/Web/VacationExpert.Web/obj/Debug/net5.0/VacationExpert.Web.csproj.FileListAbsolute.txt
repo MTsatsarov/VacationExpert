@@ -43,7 +43,6 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Connections.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Extensions.dll
-D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Http.Features.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.HttpOverrides.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.HttpsPolicy.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.AspNetCore.Identity.dll
@@ -123,7 +122,6 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.ConfigurationExtensions.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.DataAnnotations.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Options.dll
-D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.Primitives.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.Extensions.WebEncoders.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.JSInterop.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\Microsoft.Net.Http.Headers.dll
@@ -181,7 +179,6 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.IO.FileSystem.Watcher.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.IO.IsolatedStorage.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.IO.MemoryMappedFiles.dll
-D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.IO.Pipelines.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.IO.Pipes.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.IO.UnmanagedMemoryStream.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\refs\System.Linq.dll
@@ -465,3 +462,6 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\ref\
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.pdb
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.genruntimeconfig.cache
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Razor\Views\Create\Index.cshtml.g.cs
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\System.IO.Pipelines.dll

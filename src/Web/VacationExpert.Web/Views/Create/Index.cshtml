@@ -1,42 +1,37 @@
-﻿
-
+﻿@using VacationExpert.Data.Models.Enums
+@using VacationExpert.Services.Models
+@model CreatePropertyInputModel
 <link rel="stylesheet" href="~/css/create/index.css" />
 <section class="create">
     <nav class="create-nav">
-     <ul>
-            <li data-section = "basic-info">
+        <ul>
+            <li data-section="basic-info">
                 Basic info
             </li>
 
-            <li data-section = "layout-pricing" >
+            <li data-section="layout-pricing">
                 Layout & Pricing
             </li>
-            <li data-section = "facilities-services" >
+            <li data-section="facilities-services">
                 Facilities & Services
             </li>
-            <li data-section = "photos-box" >
+            <li data-section="photos-box">
                 Photos
             </li>
         </ul>
     </nav>
-    <form>
+    <form method="post" asp-controller="create" asp-action="index" enctype="multipart/form-data">
+        <div asp-validation-summary="All" class="text-danger"></div>
         <section class="basic-info">
             <h3>Basic info</h3>
             <article class="main-property-details">
                 <h4>Name and rating</h4>
 
-                <input placeholder='Enter the name of your property' />
+                <input placeholder='Enter the name of your property' asp-for=Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <div>
                     <label>Your star rating</label>
-                    <select>
-                        <option>N/A</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                    </select>
+                    <select class="form-control" asp-for="Rating"></select>
                 </div>
             </article>
 
@@ -45,48 +40,42 @@
 
                 <div class="contact-name">
                     <label>Contract name</label>
-                    <input type="text" />
+                    <input type="text" asp-for=Contact.Name />
                 </div>
 
                 <div class="phone-info">
                     <div>
                         <label>Phone Number</label>
-                        <input type="tel" />
+                        <input type="tel" asp-for=Contact.Phone />
                     </div>
                     <div>
                         <label>Alternative phone number (otional)</label>
-                        <input type="tel" />
+                        <input type="tel" asp-for=Contact.AdditionalPhone />
                     </div>
                 </div>
             </article>
 
             <article class="secondary-basic-details">
                 <h4>Property Address</h4>
-                <textarea placeholder="Street address"></textarea>
-                <label>Country</label>
-                <input type="text" />
-                <label>City</label>
-                <input type="text" />
+                <textarea placeholder="Street address" asp-for=Address.StreetAddress></textarea>
+                <label asp-for="Address.Country"></label>
+                <select class="form-control" asp-for="Address.Country" asp-items="@Html.GetEnumSelectList<Country>()"></select>
 
-                <label>Zip code</label>
-                <input type="text" />
+                <label asp-for="Address.City">City</label>
+               <select class="form-control" asp-for="Address.City" asp-items="@Html.GetEnumSelectList<City>()"></select>
+
+                <label asp-for="Address.ZipCode">Zip code</label>
+                <input type="text" asp-for="Address.ZipCode" />
             </article>
         </section>
+
         <section class="layout-pricing">
             <h3>Layout & Pricing</h3>
-            <article class="type-smoking">
+            <article class="type-smoking"  asp-for="Rooms">
                 <label>Room type</label>
-                <select>
-                    <option>Single</option>
-                    <option>Double</option>
-                    <option>Twin</option>
-                </select>
+                <select class="form-control" asp-for="Rooms" asp-items="@Html.GetEnumSelectList<RoomType>()"></select>
                 <label>Smoking policy</label>
-                <select>
-                    <option>Non-smoking</option>
-                    <option>Smoking</option>
-                    <option>Both, smoking and non-smoking</option>
-                </select>
+                <select class="form-control" asp-for="Rooms" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
                 <label>Number of rooms (this type)</label>
                 <input type="number" />
             </article>
@@ -104,7 +93,7 @@
                         <option>3</option>
                     </select>
                 </div>
-                <button type='button' id = 'addBed'>Add another bed</button>
+                <button type='button' id='addBed'>Add another bed</button>
 
                 <div class="guests-number-room">
                     <label>How many guests can stay in the room ?</label>
@@ -125,26 +114,14 @@
             <p>We need to know some of the main facilities available in your property, so the guest can have better idea about your property.</p>
             <article class="main-facilities">
                 <h5>Parking</h5>
-                <select class="parking-menu">
-                    <option>No</option>
-                    <option>Yes, paid</option>
-                    <option>Yes, free</option>
-                </select>
+                <select class="form-control" asp-for="Facilities.Parking" asp-items="@Html.GetEnumSelectList<Parking>()"></select>
                 <div>
                     <h5>Breakfast</h5>
-                    <select class="parking-menu">
-                        <option>No</option>
-                        <option>Yes, included in the price</option>
-                        <option>Yes, it is optional</option>
-                    </select>
+                         <select class="form-control" asp-for="Facilities.Breakfast" asp-items="@Html.GetEnumSelectList<Breakfast>()"></select>
                 </div>
                 <div>
                     <h5>Languages</h5>
-                    <select class="parking-menu">
-                        <option>Engish</option>
-                        <option>Bulgarian</option>
-                        <option>Russian</option>
-                    </select>
+                         <select class="form-control" asp-for="Facilities.Language" asp-items="@Html.GetEnumSelectList<Language>()"></select>
                 </div>
             </article>
 
@@ -199,21 +176,21 @@
                 <input name="photo-uploader" type="file" multiple />
             </div>
         </section>
+        <button>SUBMIT</button>
     </form>
-
-   <nav class="create-nav">
+    <nav class="create-nav">
         <ul>
-            <li data-section = "basic-info">
+            <li data-section="basic-info">
                 Basic info
             </li>
 
-            <li data-section = "layout-pricing" >
+            <li data-section="layout-pricing">
                 Layout & Pricing
             </li>
-            <li data-section = "facilities-services" >
+            <li data-section="facilities-services">
                 Facilities & Services
             </li>
-            <li data-section = "photos-box" >
+            <li data-section="photos-box">
                 Photos
             </li>
         </ul>

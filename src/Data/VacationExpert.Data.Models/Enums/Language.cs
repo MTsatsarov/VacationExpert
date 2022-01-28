@@ -2,5 +2,10 @@
 {
     public enum Language
     {
+        Bulgarian,
+        English,
+        Italian,
+        Japanese,
+        Korean,
     }
 }
