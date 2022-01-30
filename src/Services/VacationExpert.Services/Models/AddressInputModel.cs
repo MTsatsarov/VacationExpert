@@ -5,6 +5,7 @@
     public class AddressInputModel
     {
         [Required]
+        [Display(Name = "Street Address")]
         public string StreetAddress { get; set; }
 
         [Required]

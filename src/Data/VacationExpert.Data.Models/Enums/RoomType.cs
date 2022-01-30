@@ -1,13 +1,14 @@
 ﻿namespace VacationExpert.Data.Models.Enums
 {
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public enum RoomType
     {
         Single = 1,
         Double = 2,
         Twin = 3,
-        [Description("Twin/Double")]
+        [Display(Name = "Twin/Double")]
         TwinDouble = 4,
         Triple = 5,
         Quad = 6,

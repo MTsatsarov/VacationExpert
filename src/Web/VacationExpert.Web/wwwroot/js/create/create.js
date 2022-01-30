@@ -1,6 +1,9 @@
-﻿document.getElementsByClassName('create')[0].addEventListener('click', markArticle)
+﻿import { render, html } from "../../lib/node_modules/lit-html/lit-html.js"
+document.getElementsByClassName('create')[0].addEventListener('click', markArticle)
 var nav = document.getElementsByClassName('create-nav')[0];
-document.getElementById('addBed').addEventListener('click',addBed)
+document.getElementById('addBed').addEventListener('click', addBed)
+var input = document.querySelector("input[name=photo-uploader]")
+input.addEventListener("change", readURL)
 
 Array.from(document.getElementsByClassName('create-nav')).forEach(x => x.addEventListener('click', changeSection))
 var sections = Array.from(document.querySelectorAll("form>section"));
@@ -31,10 +34,6 @@ function init() {
     document.querySelector(".basic-info").style.display = "flex";
 
 }
-function addBed () {
-
-}
-
 function changeSection(e) {
     if (e.target.tagName == 'LI') {
         var data = e.target.getAttribute('data-section')
@@ -48,4 +47,23 @@ function changeSection(e) {
 
 }
 
+function readURL() {
+    if (input.files && input.files[0]) {
+        Array.from(input.files).forEach(x => () => {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                attr('src', e.target.result).width(150).height(150);
+            };
 
+            reader.readAsDataURL(input.files[x]);
+        }
+        )
+    }
+}
+
+
+const listTemplate = (images) => html`
+    <article id="uploaded-photo-gallery">
+    
+    </article>
+    `

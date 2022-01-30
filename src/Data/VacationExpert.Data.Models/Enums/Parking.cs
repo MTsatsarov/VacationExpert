@@ -1,13 +1,14 @@
 ﻿namespace VacationExpert.Data.Models.Enums
 {
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public enum Parking
     {
         No = 1,
-        [Description("Yes,Paid")]
+        [Display(Name = "Yes,Paid")]
         YesPaid = 2,
-        [Description("Yes,free")]
+        [Display(Name = "Yes,free")]
         Yesfree = 3,
     }
 }

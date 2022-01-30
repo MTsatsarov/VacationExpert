@@ -9,16 +9,20 @@
         public string Type { get; set; }
 
         [Required]
+        [Display(Name = "Smoking Policy")]
         public string SmokingPolicy { get; set; }
 
         [Required]
         [Range(1, 1000)]
-        public int Count { get; set; }
+        [Display(Name ="Room Count")]
+        public int RoomCount { get; set; }
 
-        public ICollection<BedInputModel> Beds { get; set; }
+        public List<BedInputModel> Beds { get; set; }
 
+        [Display(Name = "Total Guests")]
         public int GuestsCount { get; set; }
 
+        [Display(Name = "Room Size")]
         public int? RoomSize { get; set; }
     }
 }

@@ -7,7 +7,7 @@
     {
         public FacilityInputModel()
         {
-            this.Services = new HashSet<string>();
+            this.Services = new List<ServicesInputModel>();
         }
 
         [Required]
@@ -19,6 +19,6 @@
         [Required]
         public string Language { get; set; }
 
-        public ICollection<string> Services { get; set; }
+        public List<ServicesInputModel> Services { get; set; }
     }
 }

@@ -465,3 +465,4 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Razo
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\System.IO.Pipelines.dll
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Razor\Views\Shared\_CreateNav.cshtml.g.cs

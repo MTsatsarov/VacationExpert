@@ -18,7 +18,7 @@
 
         public AddressInputModel Address { get; set; }
 
-        public ICollection<RoomInputModel> Rooms { get; set; }
+        public List<RoomInputModel> Rooms { get; set; }
 
         public FacilityInputModel Facilities { get; set; }
 
