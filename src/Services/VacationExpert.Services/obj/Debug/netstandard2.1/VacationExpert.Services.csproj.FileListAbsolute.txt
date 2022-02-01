@@ -8,3 +8,8 @@ D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\obj\Debug\n
 D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\obj\Debug\netstandard2.1\VacationExpert.Services.csproj.CoreCompileInputs.cache
 D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\obj\Debug\netstandard2.1\VacationExpert.Services.dll
 D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\obj\Debug\netstandard2.1\VacationExpert.Services.pdb
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\bin\Debug\netstandard2.1\VacationExpert.Data.Common.dll
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\bin\Debug\netstandard2.1\VacationExpert.Data.Models.dll
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\bin\Debug\netstandard2.1\VacationExpert.Data.Models.pdb
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\bin\Debug\netstandard2.1\VacationExpert.Data.Common.pdb
+D:\MyGithubRepos\VacationExpert\src\Services\VacationExpert.Services\obj\Debug\netstandard2.1\VacationExpert.Services.csproj.CopyComplete

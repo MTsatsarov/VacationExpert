@@ -5,7 +5,7 @@
 
     public enum Service
     {
-        [Display(Name="Free Wifi")]
+        [Display(Name = "Free Wifi")]
         FreeWifi = 1,
         [Display(Name = "Non-smoking rooms")]
         NonSmokingRooms = 2,

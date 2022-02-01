@@ -14,7 +14,7 @@
 
         [Required]
         [Range(1, 1000)]
-        [Display(Name ="Room Count")]
+        [Display(Name = "Room Count")]
         public int RoomCount { get; set; }
 
         public List<BedInputModel> Beds { get; set; }

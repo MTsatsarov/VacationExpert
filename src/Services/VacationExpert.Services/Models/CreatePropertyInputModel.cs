@@ -4,6 +4,7 @@
     using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Http;
+    using VacationExpert.Data.Models.Enums;
 
     public class CreatePropertyInputModel
     {
@@ -11,8 +12,7 @@
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }
 
-        [Range(1, 5)]
-        public int Rating { get; set; }
+        public Rating Rating { get; set; }
 
         public ContactInputModel Contact { get; set; }
 
@@ -22,6 +22,6 @@
 
         public FacilityInputModel Facilities { get; set; }
 
-        public ICollection<IFormFile> Images { get; set; }
+        public IFormFileCollection Images { get; set; }
     }
 }

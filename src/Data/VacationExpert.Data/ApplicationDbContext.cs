@@ -23,6 +23,20 @@
         {
         }
 
+        public DbSet<Property> Properties{ get; set; }
+
+        public DbSet<Room> Rooms{ get; set; }
+
+        public DbSet<Bed> Beds { get; set; }
+
+        public DbSet<Address> Addresses { get; set; }
+
+        public DbSet<Photo> Photos { get; set; }
+
+        public DbSet<Facility> Facilities { get; set; }
+
+        public DbSet<Contact> Contacts { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

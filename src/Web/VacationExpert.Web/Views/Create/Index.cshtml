@@ -62,29 +62,31 @@
 
             @for (int i = 0; i < @roomsCount; i++)
             {
-                  <article class="type-smoking" asp-for="Rooms">
-                <label>Room type</label>
-                <select asp-for="Rooms[i]" asp-items="@Html.GetEnumSelectList<RoomType>()"></select>
-                <label>Smoking policy</label>
-                <select asp-for="Rooms[i]" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
-                <label>Number of rooms (this type)</label>
-                <input type="number" />
-            </article>
+                <article class="type-smoking" asp-for="Rooms">
+                    <label asp-for="Rooms[i].Type">Room type</label>
+                    <select asp-for="Rooms[i].Type" asp-items="@Html.GetEnumSelectList<RoomType>()"></select>
+
+                    <label asp-for="Rooms[i].SmokingPolicy">Smoking policy</label>
+                    <select asp-for="Rooms[i].SmokingPolicy" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
+
+                    <label asp-for="Rooms[i].RoomCount">Number of rooms (this type)</label>
+                    <input asp-for="Rooms[i].RoomCount" type="number" />
+                </article>
                 @for (int j = 0; j < @bedsCount; j++)
                 {
                     <article class="bed-options-wrapper">
-                <h5>Bed options</h5>
-                <div>
-                    <select asp-for="Rooms[i].Beds[j].Type" asp-items="@Html.GetEnumSelectList<BedType>();"></select>
-                    <select asp-for="Rooms[i].Beds[j].Count" asp-items="@Html.GetEnumSelectList<BedCount>()"></select>
-                </div>
-                <button type='button' id='addBed'>Add another bed</button>
+                        <h5>Bed options</h5>
+                        <div>
+                            <select asp-for="Rooms[i].Beds[j].Type" asp-items="@Html.GetEnumSelectList<BedType>();"></select>
+                            <select asp-for="Rooms[i].Beds[j].Count" asp-items="@Html.GetEnumSelectList<BedCount>()"></select>
+                        </div>
+                        <button type='button' id='addBed'>Add another bed</button>
 
-                <div class="guests-number-room">
-                    <label>How many guests can stay in the room ?</label>
-                    <input type="number" />
-                </div>
-            </article>
+                        <div class="guests-number-room">
+                            <label asp-for="Rooms[i].GuestsCount">How many guests can stay in the room ?</label>
+                            <input asp-for="Rooms[i].GuestsCount" type="number" />
+                        </div>
+                    </article>
                 }
             }
             <div>
@@ -134,17 +136,17 @@
             <h5>Photo Gallery</h5>
 
             <div id="photo-box">
+                <div>
                 <h6>Upload at least 1 photo</h6>
-                <input name="photo-uploader" type="file" multiple />
-    <img id="blah" src="#" alt="your image" />
+                <input asp-for="Images" name="images" id="photo-uploader" type="file" multiple />
+                </div>
+                <article id="uploaded-photo-gallery">
+                </article>
             </div>
         </section>
-
         <button>SUBMIT</button>
     </form>
     <partial name="_CreateNav" />
-
-
 </section>
 
 <script type="module" defer src=~/js/create/create.js>  </script>

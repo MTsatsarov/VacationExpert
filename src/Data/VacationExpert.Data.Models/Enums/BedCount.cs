@@ -5,9 +5,9 @@ using System.Text;
 
 namespace VacationExpert.Data.Models.Enums
 {
-    public  enum BedCount
+    public enum BedCount
     {
-       [Display(Name = "1")]
+        [Display(Name = "1")]
         One = 1,
         [Display(Name = "2")]
         Two = 2,
@@ -22,6 +22,6 @@ namespace VacationExpert.Data.Models.Enums
         [Display(Name = "7")]
         Seven = 7,
         [Display(Name = "8")]
-        Eigth = 8
+        Eigth = 8,
     }
 }

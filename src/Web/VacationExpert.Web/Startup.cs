@@ -17,6 +17,7 @@
     using VacationExpert.Data.Repositories;
     using VacationExpert.Data.Seeding;
     using VacationExpert.Services.Data;
+    using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Services.Mapping;
     using VacationExpert.Services.Messaging;
     using VacationExpert.Web.ViewModels;
@@ -64,6 +65,7 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IPropertyService,PropertyService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

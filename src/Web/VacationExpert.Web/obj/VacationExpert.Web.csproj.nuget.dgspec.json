@@ -282,8 +282,14 @@
               "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data.Models\\VacationExpert.Data.Models.csproj": {
                 "projectPath": "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data.Models\\VacationExpert.Data.Models.csproj"
               },
+              "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data\\VacationExpert.Data.csproj": {
+                "projectPath": "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data\\VacationExpert.Data.csproj"
+              },
               "D:\\MyGithubRepos\\VacationExpert\\src\\Services\\VacationExpert.Services.Mapping\\VacationExpert.Services.Mapping.csproj": {
                 "projectPath": "D:\\MyGithubRepos\\VacationExpert\\src\\Services\\VacationExpert.Services.Mapping\\VacationExpert.Services.Mapping.csproj"
+              },
+              "D:\\MyGithubRepos\\VacationExpert\\src\\Services\\VacationExpert.Services\\VacationExpert.Services.csproj": {
+                "projectPath": "D:\\MyGithubRepos\\VacationExpert\\src\\Services\\VacationExpert.Services\\VacationExpert.Services.csproj"
               }
             }
           }
@@ -491,7 +497,11 @@
         "frameworks": {
           "netstandard2.1": {
             "targetAlias": "netstandard2.1",
-            "projectReferences": {}
+            "projectReferences": {
+              "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data.Models\\VacationExpert.Data.Models.csproj": {
+                "projectPath": "D:\\MyGithubRepos\\VacationExpert\\src\\Data\\VacationExpert.Data.Models\\VacationExpert.Data.Models.csproj"
+              }
+            }
           }
         },
         "warningProperties": {

@@ -2,7 +2,7 @@
 document.getElementsByClassName('create')[0].addEventListener('click', markArticle)
 var nav = document.getElementsByClassName('create-nav')[0];
 document.getElementById('addBed').addEventListener('click', addBed)
-var input = document.querySelector("input[name=photo-uploader]")
+var input = document.getElementById("photo-uploader")
 input.addEventListener("change", readURL)
 
 Array.from(document.getElementsByClassName('create-nav')).forEach(x => x.addEventListener('click', changeSection))
@@ -48,16 +48,21 @@ function changeSection(e) {
 }
 
 function readURL() {
-    if (input.files && input.files[0]) {
-        Array.from(input.files).forEach(x => () => {
-            var reader = new FileReader();
-            reader.onload = function (e) {
-                attr('src', e.target.result).width(150).height(150);
-            };
+    console.log(input.files);
 
-            reader.readAsDataURL(input.files[x]);
+    for ( var ai of input.files) {
+        let reader = new FileReader();
+        reader.onload = () => {
+            let img = document.createElement('img');
+            img.setAttribute('src', reader.result)
+            var div = document.createElement('div');
+            div.appendChild(img);
+            
+            var article = document.getElementById('uploaded-photo-gallery');
+            article.appendChild(div);
         }
-        )
+
+        reader.readAsDataURL(ai);
     }
 }
 

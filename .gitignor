@@ -1,7 +1,7 @@
 
 #Files build by visual Studio
-bin
+bin/
 .bin
 
 .obj
-*.iobj
+*.obj

@@ -172,3 +172,7 @@ D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\obj
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\obj\Debug\net5.0\ref\VacationExpert.Services.Data.Tests.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\obj\Debug\net5.0\VacationExpert.Services.Data.Tests.pdb
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\obj\Debug\net5.0\VacationExpert.Services.Data.Tests.genruntimeconfig.cache
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\System.IO.Pipelines.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\VacationExpert.Services.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\VacationExpert.Services.pdb

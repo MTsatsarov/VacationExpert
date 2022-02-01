@@ -14,6 +14,7 @@
         [Required]
         public string PropertyId { get; set; }
 
+
         public Property Property { get; set; }
     }
 }

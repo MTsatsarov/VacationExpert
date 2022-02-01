@@ -3618,7 +3618,8 @@
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
           "Microsoft.AspNetCore.Http.Features": "5.0.13",
-          "System.ComponentModel.Annotations": "5.0.0"
+          "System.ComponentModel.Annotations": "5.0.0",
+          "VacationExpert.Data.Models": "1.0.0"
         },
         "compile": {
           "bin/placeholder/VacationExpert.Services.dll": {}
@@ -3631,8 +3632,10 @@
         "type": "project",
         "framework": ".NETStandard,Version=v2.1",
         "dependencies": {
+          "VacationExpert.Data": "1.0.0",
           "VacationExpert.Data.Common": "1.0.0",
           "VacationExpert.Data.Models": "1.0.0",
+          "VacationExpert.Services": "1.0.0",
           "VacationExpert.Services.Mapping": "1.0.0"
         },
         "compile": {

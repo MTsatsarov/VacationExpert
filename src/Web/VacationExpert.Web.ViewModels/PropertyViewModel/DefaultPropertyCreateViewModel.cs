@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+
 using VacationExpert.Data.Models.Enums;
 
 namespace VacationExpert.Web.ViewModels.PropertyViewModel
@@ -11,6 +12,7 @@ namespace VacationExpert.Web.ViewModels.PropertyViewModel
         {
             this.Services = new List<string>();
         }
+
         public ICollection<string> Services { get; set; }
     }
 }
