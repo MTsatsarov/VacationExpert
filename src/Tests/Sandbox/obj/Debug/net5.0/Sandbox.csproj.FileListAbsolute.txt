@@ -77,3 +77,4 @@ D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\obj\Debug\net5.0\Sandbox.genru
 D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\System.IO.Pipelines.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\Sandbox\bin\Debug\net5.0\SixLabors.ImageSharp.dll

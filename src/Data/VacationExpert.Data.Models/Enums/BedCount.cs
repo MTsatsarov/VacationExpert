@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace VacationExpert.Data.Models.Enums
+﻿namespace VacationExpert.Data.Models.Enums
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
+    using System.Text;
+
     public enum BedCount
     {
         [Display(Name = "1")]

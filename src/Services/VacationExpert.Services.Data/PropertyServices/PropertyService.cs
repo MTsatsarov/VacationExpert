@@ -2,15 +2,26 @@
 {
     using System;
     using System.Linq;
+    using System.Threading.Tasks;
 
+    using VacationExpert.Data;
     using VacationExpert.Data.Models;
     using VacationExpert.Data.Models.Enums;
+    using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Models;
 
     public class PropertyService : IPropertyService
     {
+        private readonly ApplicationDbContext dbContext;
+        private readonly IImageService imageService;
 
-        public void Create(CreatePropertyInputModel model)
+        public PropertyService(ApplicationDbContext dbContext, IImageService imageService)
+        {
+            this.dbContext = dbContext;
+            this.imageService = imageService;
+        }
+
+        public async Task Create(CreatePropertyInputModel model)
         {
             var inputModel = new Property();
             inputModel.Name = model.Name;
@@ -37,12 +48,13 @@
                 Parking = (Parking)Enum.Parse(typeof(Parking), model.Facilities.Parking),
             };
 
-            facility.Languages.Add((Language)Enum.Parse(typeof(Service), model.Facilities.Language));
+            facility.Languages.Add(new VacationExpert.Data.Models.Language { Name = model.Facilities.Language });
+
             var selectedServices = model.Facilities.Services.Where(x => x.Selected == true);
 
             foreach (var service in selectedServices)
             {
-                facility.Services.Add((Service)Enum.Parse(typeof(Service), service.Name));
+                facility.Services.Add(new VacationExpert.Data.Models.Service { Name = service.Name });
             }
 
             inputModel.Facility = facility;
@@ -70,6 +82,19 @@
                 inputModel.Rooms.Add(currentRoom);
             }
 
+            var images = model.Images
+                .Select(x => new ImageInputModel
+                {
+                    Name = x.Name,
+                    Type = x.ContentType,
+                    Content = x.OpenReadStream(),
+                }).ToList();
+
+            var resultedImages = await this.imageService.ImageProcess(images);
+            inputModel.Images = resultedImages.ToList();
+
+            await this.dbContext.Properties.AddAsync(inputModel);
+            await this.dbContext.SaveChangesAsync();
         }
     }
 }

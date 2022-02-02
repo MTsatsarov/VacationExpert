@@ -176,3 +176,4 @@ D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\System.IO.Pipelines.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\VacationExpert.Services.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\VacationExpert.Services.pdb
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Services.Data.Tests\bin\Debug\net5.0\SixLabors.ImageSharp.dll

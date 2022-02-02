@@ -23,9 +23,9 @@
         {
         }
 
-        public DbSet<Property> Properties{ get; set; }
+        public DbSet<Property> Properties { get; set; }
 
-        public DbSet<Room> Rooms{ get; set; }
+        public DbSet<Room> Rooms { get; set; }
 
         public DbSet<Bed> Beds { get; set; }
 
@@ -36,7 +36,10 @@
         public DbSet<Facility> Facilities { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
+        public DbSet<Image> Images { get; set; }
 
+        public DbSet<Language> Languages { get; set; }
+        public DbSet<Service> Services { get; set; }
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);

@@ -430,7 +430,6 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Vaca
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.AssemblyInfoInputs.cache
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.AssemblyInfo.cs
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.csproj.CoreCompileInputs.cache
-D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.MvcApplicationPartsAssemblyInfo.cs
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.MvcApplicationPartsAssemblyInfo.cache
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.RazorAssemblyInfo.cache
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.RazorAssemblyInfo.cs
@@ -466,3 +465,5 @@ D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\Micr
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\System.IO.Pipelines.dll
 D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\Razor\Views\Shared\_CreateNav.cshtml.g.cs
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\bin\Debug\net5.0\SixLabors.ImageSharp.dll
+D:\MyGithubRepos\VacationExpert\src\Web\VacationExpert.Web\obj\Debug\net5.0\VacationExpert.Web.MvcApplicationPartsAssemblyInfo.cs

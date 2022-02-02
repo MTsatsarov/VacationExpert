@@ -1,7 +1,7 @@
 ﻿namespace VacationExpert.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     using VacationExpert.Data.Common.Models;
     using VacationExpert.Data.Models.Enums;
 
@@ -17,6 +17,7 @@
         public string ZipCode { get; set; }
 
         [Required]
+        [ForeignKey("Property")]
         public string PropertyId { get; set; }
 
         public virtual Property Property { get; set; }

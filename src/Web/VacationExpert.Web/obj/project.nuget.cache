@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "H1vQ65FVtDFUbk/+Qa3212qgQQpsxgfYABnDNwD7DwbJUEurV2NfZtp8Wr/l8/VL68dopCyybui3IizxWNHJMA==",
+  "dgSpecHash": "+6udHZpaHD4FT6Y+FpJzBJjsLHPVffItR0Yk2niZXC6pKdSFGbjlRPEQ/ni0Y1k+JGMX2gqo3QJeRi9U7+hfOw==",
   "success": true,
   "projectFilePath": "D:\\MyGithubRepos\\VacationExpert\\src\\Web\\VacationExpert.Web\\VacationExpert.Web.csproj",
   "expectedPackageFiles": [
@@ -93,6 +93,7 @@
     "C:\\Users\\User\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\sendgrid\\9.23.1\\sendgrid.9.23.1.nupkg.sha512",
+    "C:\\Users\\User\\.nuget\\packages\\sixlabors.imagesharp\\1.0.4\\sixlabors.imagesharp.1.0.4.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\starkbank-ecdsa\\1.3.1\\starkbank-ecdsa.1.3.1.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\stylecop.analyzers\\1.2.0-beta.312\\stylecop.analyzers.1.2.0-beta.312.nupkg.sha512",
     "C:\\Users\\User\\.nuget\\packages\\stylecop.analyzers.unstable\\1.2.0.312\\stylecop.analyzers.unstable.1.2.0.312.nupkg.sha512",

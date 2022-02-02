@@ -1,7 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace VacationExpert.Services.Models
+﻿namespace VacationExpert.Services.Models
 {
+    using System.ComponentModel.DataAnnotations;
+
     public class ServicesInputModel
     {
         [Required]

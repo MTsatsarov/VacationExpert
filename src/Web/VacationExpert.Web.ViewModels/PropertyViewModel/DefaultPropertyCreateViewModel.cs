@@ -1,10 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-
-using VacationExpert.Data.Models.Enums;
-
-namespace VacationExpert.Web.ViewModels.PropertyViewModel
+﻿namespace VacationExpert.Web.ViewModels.PropertyViewModel
 {
+    using System;
+    using System.Collections.Generic;
+
+    using VacationExpert.Data.Models.Enums;
 
     public class DefaultPropertyCreateViewModel
     {

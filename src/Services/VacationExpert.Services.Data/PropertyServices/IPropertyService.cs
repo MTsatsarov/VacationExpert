@@ -1,10 +1,11 @@
-﻿using VacationExpert.Services.Models;
-
-namespace VacationExpert.Services.Data.PropertyServices
+﻿namespace VacationExpert.Services.Data.PropertyServices
 {
+    using System.Threading.Tasks;
+
+    using VacationExpert.Services.Models;
+
     public interface IPropertyService
     {
-        public void Create(CreatePropertyInputModel model);
+        public Task Create(CreatePropertyInputModel model);
     }
-
 }

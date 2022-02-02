@@ -35,7 +35,12 @@
       "ProjectGuid": "13b7aacb-9c85-4409-8d4b-95a67d0dfff7",
       "DisplayName": "VacationExpert.Web.ViewModels",
       "ColorIndex": 5
+    },
+    "4d39c126-3fb5-4b26-b08c-1bf48effa23e": {
+      "ProjectGuid": "4d39c126-3fb5-4b26-b08c-1bf48effa23e",
+      "DisplayName": "VacationExpert.Services.Data",
+      "ColorIndex": 6
     }
   },
-  "NextColorIndex": 6
+  "NextColorIndex": 7
 }

@@ -524,7 +524,6 @@ D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.AssemblyInfoInputs.cache
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.AssemblyInfo.cs
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.csproj.CoreCompileInputs.cache
-D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.MvcApplicationPartsAssemblyInfo.cs
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.MvcApplicationPartsAssemblyInfo.cache
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\scopedcss\bundle\VacationExpert.Web.Tests.styles.css
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\staticwebassets\VacationExpert.Web.Tests.StaticWebAssets.Manifest.cache
@@ -537,3 +536,5 @@ D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.genruntimeconfig.cache
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\bin\Debug\net5.0\Microsoft.AspNetCore.Http.Features.dll
 D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\bin\Debug\net5.0\Microsoft.Extensions.Primitives.dll
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\obj\Debug\net5.0\VacationExpert.Web.Tests.MvcApplicationPartsAssemblyInfo.cs
+D:\MyGithubRepos\VacationExpert\src\Tests\VacationExpert.Web.Tests\bin\Debug\net5.0\SixLabors.ImageSharp.dll

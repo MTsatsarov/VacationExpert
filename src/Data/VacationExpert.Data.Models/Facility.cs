@@ -2,7 +2,7 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-
+    using System.ComponentModel.DataAnnotations.Schema;
     using VacationExpert.Data.Common.Models;
     using VacationExpert.Data.Models.Enums;
 
@@ -18,11 +18,12 @@
 
         public Breakfast Breakfast { get; set; }
 
-        public ICollection<Language> Languages { get; set; }
+        public virtual ICollection<Language> Languages { get; set; }
 
-        public ICollection<Service> Services { get; set; }
+        public virtual ICollection<Service> Services { get; set; }
 
         [Required]
+        [ForeignKey("Property")]
         public string PropertyId { get; set; }
 
         public Property Property { get; set; }
