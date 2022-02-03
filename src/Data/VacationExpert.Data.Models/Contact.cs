@@ -16,8 +16,6 @@
         [Phone]
         public string AdditionalPhone { get; set; }
 
-        [Required]
-        [ForeignKey("Property")]
         public string PropertyId { get; set; }
 
         public virtual Property Property { get; set; }

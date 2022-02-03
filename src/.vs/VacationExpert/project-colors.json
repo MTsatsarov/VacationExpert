@@ -40,7 +40,17 @@
       "ProjectGuid": "4d39c126-3fb5-4b26-b08c-1bf48effa23e",
       "DisplayName": "VacationExpert.Services.Data",
       "ColorIndex": 6
+    },
+    "3ee06c6e-c8f3-418a-a309-8ac81976a074": {
+      "ProjectGuid": "3ee06c6e-c8f3-418a-a309-8ac81976a074",
+      "DisplayName": "VacationExpert.Web.Tests",
+      "ColorIndex": 7
+    },
+    "a2288c46-0fbf-43b6-80b6-3072fd65bc32": {
+      "ProjectGuid": "a2288c46-0fbf-43b6-80b6-3072fd65bc32",
+      "DisplayName": "VacationExpert.Common",
+      "ColorIndex": 8
     }
   },
-  "NextColorIndex": 7
+  "NextColorIndex": 9
 }

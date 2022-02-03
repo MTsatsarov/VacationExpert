@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VacationExpert.Data;
 
 namespace VacationExpert.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220203150937_RemoveRequiredProp")]
+    partial class RemoveRequiredProp
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -179,7 +181,8 @@ namespace VacationExpert.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PropertyId")
-                        .HasColumnType("nvarchar(max)");
+                        .IsRequired()
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("StreetAddress")
                         .IsRequired()
@@ -191,6 +194,8 @@ namespace VacationExpert.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("IsDeleted");
+
+                    b.HasIndex("PropertyId");
 
                     b.ToTable("Addresses");
                 });
@@ -570,8 +575,7 @@ namespace VacationExpert.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("AddressId")
-                        .IsUnique();
+                    b.HasIndex("AddressId");
 
                     b.HasIndex("ContactId")
                         .IsUnique();
@@ -773,6 +777,17 @@ namespace VacationExpert.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("VacationExpert.Data.Models.Address", b =>
+                {
+                    b.HasOne("VacationExpert.Data.Models.Property", "Property")
+                        .WithMany()
+                        .HasForeignKey("PropertyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Property");
+                });
+
             modelBuilder.Entity("VacationExpert.Data.Models.Bed", b =>
                 {
                     b.HasOne("VacationExpert.Data.Models.Room", "Room")
@@ -807,8 +822,8 @@ namespace VacationExpert.Data.Migrations
             modelBuilder.Entity("VacationExpert.Data.Models.Property", b =>
                 {
                     b.HasOne("VacationExpert.Data.Models.Address", "Address")
-                        .WithOne("Property")
-                        .HasForeignKey("VacationExpert.Data.Models.Property", "AddressId")
+                        .WithMany()
+                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
@@ -839,11 +854,6 @@ namespace VacationExpert.Data.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.Navigation("Property");
-                });
-
-            modelBuilder.Entity("VacationExpert.Data.Models.Address", b =>
-                {
                     b.Navigation("Property");
                 });
 

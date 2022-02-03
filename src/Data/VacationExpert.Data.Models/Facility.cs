@@ -22,8 +22,6 @@
 
         public virtual ICollection<Service> Services { get; set; }
 
-        [Required]
-        [ForeignKey("Property")]
         public string PropertyId { get; set; }
 
         public Property Property { get; set; }
