@@ -1,6 +1,7 @@
 ﻿namespace VacationExpert.Services.Data.PropertyServices
 {
     using System;
+    using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -25,23 +26,25 @@
         {
             var inputModel = new Property();
             inputModel.Name = model.Name;
-            var address = new Address()
-            {
-                City = (City)Enum.Parse(typeof(City), model.Address.City),
-                Country = (Country)Enum.Parse(typeof(Country), model.Address.Country),
-                StreetAddress = model.Address.StreetAddress,
-                ZipCode = model.Address.ZipCode,
-            };
-            inputModel.Address = address;
+            AddAddress(model, inputModel);
+            AddContact(model, inputModel);
+            AddFacilities(model, inputModel);
+            AddRooms(model, inputModel);
+            await this.AddImages(model, inputModel);
 
-            var contact = new Contact()
-            {
-                Name = model.Contact.ContactName,
-                Phone = model.Contact.Phone,
-                AdditionalPhone = model.Contact.AdditionalPhone,
-            };
-            inputModel.Contact = contact;
+            await this.dbContext.Properties.AddAsync(inputModel);
+            await this.dbContext.SaveChangesAsync();
+        }
 
+        public IEnumerable<T> GetLastFIve<T>()
+        {
+            throw new NotImplementedException();
+        }
+
+
+
+        private static void AddFacilities(CreatePropertyInputModel model, Property inputModel)
+        {
             var facility = new Facility()
             {
                 Breakfast = (Breakfast)Enum.Parse(typeof(Breakfast), model.Facilities.Breakfast),
@@ -58,7 +61,33 @@
             }
 
             inputModel.Facility = facility;
+        }
 
+        private static void AddContact(CreatePropertyInputModel model, Property inputModel)
+        {
+            var contact = new Contact()
+            {
+                Name = model.Contact.ContactName,
+                Phone = model.Contact.Phone,
+                AdditionalPhone = model.Contact.AdditionalPhone,
+            };
+            inputModel.Contact = contact;
+        }
+
+        private static void AddAddress(CreatePropertyInputModel model, Property inputModel)
+        {
+            var address = new Address()
+            {
+                City = (City)Enum.Parse(typeof(City), model.Address.City),
+                Country = (Country)Enum.Parse(typeof(Country), model.Address.Country),
+                StreetAddress = model.Address.StreetAddress,
+                ZipCode = model.Address.ZipCode,
+            };
+            inputModel.Address = address;
+        }
+
+        private static void AddRooms(CreatePropertyInputModel model, Property inputModel)
+        {
             foreach (var room in model.Rooms)
             {
                 var currentRoom = new Room()
@@ -81,7 +110,10 @@
 
                 inputModel.Rooms.Add(currentRoom);
             }
+        }
 
+        private async Task AddImages(CreatePropertyInputModel model, Property inputModel)
+        {
             var images = model.Images
                 .Select(x => new ImageInputModel
                 {
@@ -92,9 +124,6 @@
 
             var resultedImages = await this.imageService.ImageProcess(images);
             inputModel.Images = resultedImages.ToList();
-
-            await this.dbContext.Properties.AddAsync(inputModel);
-            await this.dbContext.SaveChangesAsync();
         }
     }
 }
