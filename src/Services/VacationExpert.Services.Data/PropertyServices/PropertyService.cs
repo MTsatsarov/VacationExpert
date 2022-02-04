@@ -76,14 +76,13 @@
 
         private static void AddAddress(CreatePropertyInputModel model, Property inputModel)
         {
-            var address = new Address()
+            inputModel.Address = new Address()
             {
                 City = (City)Enum.Parse(typeof(City), model.Address.City),
                 Country = (Country)Enum.Parse(typeof(Country), model.Address.Country),
                 StreetAddress = model.Address.StreetAddress,
                 ZipCode = model.Address.ZipCode,
             };
-            inputModel.Address = address;
         }
 
         private static void AddRooms(CreatePropertyInputModel model, Property inputModel)
@@ -123,6 +122,9 @@
                 }).ToList();
 
             var resultedImages = await this.imageService.ImageProcess(images);
+            foreach (var image in resultedImages) { 
+                this.dbContext.Images.Add(image);
+            }
             inputModel.Images = resultedImages.ToList();
         }
     }

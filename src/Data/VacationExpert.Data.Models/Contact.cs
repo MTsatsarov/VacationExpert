@@ -15,7 +15,7 @@
 
         [Phone]
         public string AdditionalPhone { get; set; }
-
+     
         public string PropertyId { get; set; }
 
         public virtual Property Property { get; set; }

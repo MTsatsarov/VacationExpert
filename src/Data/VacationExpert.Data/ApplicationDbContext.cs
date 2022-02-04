@@ -36,10 +36,13 @@
         public DbSet<Facility> Facilities { get; set; }
 
         public DbSet<Contact> Contacts { get; set; }
+
         public DbSet<Image> Images { get; set; }
 
         public DbSet<Language> Languages { get; set; }
+
         public DbSet<Service> Services { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
@@ -49,7 +52,6 @@
             this.ApplyAuditInfoRules();
             return base.SaveChanges(acceptAllChangesOnSuccess);
         }
-
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default) =>
             this.SaveChangesAsync(true, cancellationToken);
 
@@ -59,6 +61,11 @@
         {
             this.ApplyAuditInfoRules();
             return base.SaveChangesAsync(acceptAllChangesOnSuccess, cancellationToken);
+        }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseLazyLoadingProxies();
         }
 
         protected override void OnModelCreating(ModelBuilder builder)

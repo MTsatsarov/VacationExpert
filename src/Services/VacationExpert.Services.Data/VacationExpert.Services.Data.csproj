@@ -23,6 +23,7 @@
     <ProjectReference Include="..\..\Data\VacationExpert.Data.Common\VacationExpert.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\VacationExpert.Data.Models\VacationExpert.Data.Models.csproj" />
     <ProjectReference Include="..\..\Data\VacationExpert.Data\VacationExpert.Data.csproj" />
+    <ProjectReference Include="..\..\Web\VacationExpert.Web.ViewModels\VacationExpert.Web.ViewModels.csproj" />
     <ProjectReference Include="..\VacationExpert.Services.Mapping\VacationExpert.Services.Mapping.csproj" />
     <ProjectReference Include="..\VacationExpert.Services\VacationExpert.Services.csproj" />
   </ItemGroup>

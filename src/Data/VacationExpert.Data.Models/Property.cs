@@ -23,7 +23,7 @@
         [Range(1, 5)]
         public int Rating { get; set; }
 
-        public ICollection<Photo> Photos { get; set; }
+        public virtual ICollection<Photo> Photos { get; set; }
 
         [Required]
         [ForeignKey("Contact")]

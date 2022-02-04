@@ -19,6 +19,7 @@
     using VacationExpert.Services.Data;
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Data.PropertyServices;
+    using VacationExpert.Services.Data.SearchService;
     using VacationExpert.Services.Mapping;
     using VacationExpert.Services.Messaging;
     using VacationExpert.Web.ViewModels;
@@ -68,6 +69,8 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IPropertyService, PropertyService>();
             services.AddTransient<IImageService, ImageService>();
+            services.AddTransient<ISearchService, SearchService>();
+
 
         }
 

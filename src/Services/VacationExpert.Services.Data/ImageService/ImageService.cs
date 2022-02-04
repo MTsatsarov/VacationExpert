@@ -28,9 +28,9 @@
                     try
                     {
                         using var imageResult = await Image.LoadAsync(image.Content);
-                        var original = await SaveImage(imageResult, imageResult.Width);
-                        var fullscreen = await SaveImage(imageResult, FullScreenWidth);
-                        var thumbnail = await SaveImage(imageResult, ThumbnailWidth);
+                        var original = await SaveImage(imageResult, imageResult.Width,$"Original_${image.Name}");
+                        var fullscreen = await SaveImage(imageResult, FullScreenWidth,$"Fullscreen_${image.Name}");
+                        var thumbnail = await SaveImage(imageResult, ThumbnailWidth,$"Thumbnail_${image.Name}");
                         inputImages.Add(new VacationExpert.Data.Models.Image
                         {
                             OriginalFileName = image.Name,
@@ -52,7 +52,7 @@
             return inputImages;
         }
 
-        private static async Task<byte[]> SaveImage(Image image, int resizeWIdth)
+        private static async Task<byte[]> SaveImage(Image image, int resizeWIdth,string name)
         {
             var width = image.Width;
             var heigh = image.Height;
@@ -67,7 +67,10 @@
             .Resize(new Size(width, heigh)));
 
             image.Metadata.ExifProfile = null;
-
+            await image.SaveAsJpegAsync(name, new JpegEncoder
+            {
+                Quality = 75,
+            });
             var memoryStream = new MemoryStream();
             return memoryStream.ToArray();
         }

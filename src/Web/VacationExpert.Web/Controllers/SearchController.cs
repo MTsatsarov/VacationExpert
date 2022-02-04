@@ -1,13 +1,32 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using VacationExpert.Services.Data.SearchService;
+using VacationExpert.Services.Models;
 
 namespace VacationExpert.Web.Controllers
 {
     public class SearchController : Controller
     {
-        [HttpPost]
-        public IActionResult GetData()
+        private readonly ISearchService searchService;
+
+        public SearchController(ISearchService searchService)
         {
+            this.searchService = searchService;
+        }
+
+        [HttpGet]
+        public IActionResult Results(SearchInputModel model)
+        {
+            var result = this.searchService.GetResults(model);
             return View();
+        }
+
+        [HttpPost]
+        [Route("api/search/suggestions")]
+        [IgnoreAntiforgeryToken]
+        public IActionResult GetSuggestions([FromBody] SuggestionInputModel model)
+        {
+            var result = this.searchService.GetSuggestions(model.Name);
+            return this.Json(result);
         }
     }
 }

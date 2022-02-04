@@ -1,4 +1,6 @@
 ﻿@using VacationExpert.Common
+@using VacationExpert.Services.Models
+@model SearchInputModel
 @{
     this.ViewData["Title"] = "Home Page";
     this.ViewData["MyGoogleKey"] = "AIzaSyAX5R6J75mQkUsSzpATEMoz30BnCJHPoaY";
@@ -8,18 +10,21 @@
 <link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
 <link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
 
-
 <section class="search-container">
     <article class="search-wrapper">
         <div class="search-box">
-            <form>
+            <form method ='get' asp-controller="Search" asp-action ="Results">
+
                 <div class="field-box">
                     <label>Where are you going</label>
                     <i class="fas fa-city"></i>
-                    <input name="location-input" />
-                </div>
+                    <input asp-for=City  asp-name="City" />
+                    <article id='suggestionBox' >
 
-                <div class="field-box">
+                    </article>
+              </div>
+
+               @*   <div class="field-box">
                     <label>Check-in  -  Check-out</label>
                     <i class="far fa-calendar-alt"></i>
                     <input name="dates" />
@@ -29,7 +34,7 @@
                     <label>Number of people</label>
                     <i class="fas fa-users"></i>
                     <input name="dates" />
-                </div>
+                </div>*@
                 <button>Find</button>
             </form>
         </div>
