@@ -20,7 +20,7 @@
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }
 
-        [Range(1, 5)]
+        [Range(0, 5)]
         public int Rating { get; set; }
 
         public virtual ICollection<Photo> Photos { get; set; }

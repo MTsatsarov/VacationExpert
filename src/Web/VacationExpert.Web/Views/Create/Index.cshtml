@@ -70,7 +70,7 @@
                     <select asp-for="Rooms[i].SmokingPolicy" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
 
                     <label asp-for="Rooms[i].RoomCount">Number of rooms (this type)</label>
-                    <input asp-for="Rooms[i].RoomCount" type="number" />
+                    <input min="1" asp-for="Rooms[i].RoomCount" type="number" />
                 </article>
                 @for (int j = 0; j < @bedsCount; j++)
                 {
@@ -84,17 +84,18 @@
 
                         <div class="guests-number-room">
                             <label asp-for="Rooms[i].GuestsCount">How many guests can stay in the room ?</label>
-                            <input asp-for="Rooms[i].GuestsCount" type="number" />
+                            <input min="1" asp-for="Rooms[i].GuestsCount" type="number" />
                         </div>
                     </article>
                 }
+                <div>
+                    <label>
+                        Room Size (optional, quare meteres)
+                    </label>
+                    <input type="number" asp-for=Rooms[i] min="0" />
+                </div>
             }
-            <div>
-                <label>
-                    Room Size (optional, quare meteres)
-                </label>
-                <input type="number" />
-            </div>
+
         </section>
 
         <section class="facilities-services">
@@ -137,8 +138,8 @@
 
             <div id="photo-box">
                 <div>
-                <h6>Upload at least 1 photo</h6>
-                <input asp-for="Images" name="images" id="photo-uploader" type="file" multiple />
+                    <h6>Upload at least 1 photo</h6>
+                    <input asp-for="Images" name="images" id="photo-uploader" type="file" multiple />
                 </div>
                 <article id="uploaded-photo-gallery">
                 </article>

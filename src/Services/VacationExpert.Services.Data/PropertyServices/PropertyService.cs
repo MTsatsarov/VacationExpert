@@ -26,6 +26,7 @@
         {
             var inputModel = new Property();
             inputModel.Name = model.Name;
+            inputModel.Rating = (int)model.Rating;
             AddAddress(model, inputModel);
             AddContact(model, inputModel);
             AddFacilities(model, inputModel);
