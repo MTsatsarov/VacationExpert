@@ -3,22 +3,26 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Threading.Tasks;
 
     using VacationExpert.Data;
     using VacationExpert.Data.Models.Enums;
+    using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class SearchService : ISearchService
     {
         private readonly ApplicationDbContext dbContext;
+        private readonly IImageService imageService;
 
-        public SearchService(ApplicationDbContext dbContext)
+        public SearchService(ApplicationDbContext dbContext, IImageService imageService)
         {
             this.dbContext = dbContext;
+            this.imageService = imageService;
         }
 
-        public PropertyListViewModel GetResults(SearchInputModel model)
+        public async Task<PropertyListViewModel> GetResults(SearchInputModel model)
         {
             var list = new PropertyListViewModel();
             var city = (City)Enum.Parse(typeof(City), model.City);
@@ -27,15 +31,15 @@
 
             foreach (var property in properties)
             {
-                var currentModel = new PropertyInListViewModel()
+                var currentModel = new PropertyInListViewModel
                 {
+                    Id = property.Id,
+                    Name = property.Name,
+                    City = property.Address.City.ToString(),
+                    Rating = property.Rating.ToString(),
                 };
-                currentModel.Name = property.Name;
-                currentModel.City = property.Address.City.ToString();
-                currentModel.Image = property.Images.Select(x => x.ThumbnailContent).FirstOrDefault();
-                currentModel.Rating = property.Rating.ToString();
-
                 propertiesModel.Add(currentModel);
+
             }
 
             list.Properties = propertiesModel.ToList();

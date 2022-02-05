@@ -1,6 +1,7 @@
 ﻿namespace VacationExpert.Services.Data.ImageService
 {
     using System.Collections.Generic;
+using System.IO;
     using System.Threading.Tasks;
 
     using VacationExpert.Data.Models;
@@ -10,5 +11,7 @@
     {
 
         public Task<List<Image>> ImageProcess(IEnumerable<ImageInputModel> images);
+
+        Task<Stream> GetImageData(string propertyId);
     }
 }

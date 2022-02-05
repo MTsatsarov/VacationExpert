@@ -1,0 +1,28 @@
+﻿@using VacationExpert.Web.ViewModels.PropertyViewModel
+@model PropertyListViewModel;
+
+<style rel = "stylesheet" src="./"></style>
+<aside class="filter-wrapper">
+
+</aside>
+<section class='results-container'>
+    @foreach (var property in Model.Properties)
+    {
+        <article class='single-result'>
+            <a href="/Property/DisplayProperty">
+                <img src= "/Image/GetThumbnail/@property.Id">
+            </a>
+
+            <div class="result-summary">
+                <div class="result-header">
+                    <h3>@property.Name</h3>
+                    <strong>@property.Rating</strong>
+                </div>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure placeat nostrum provident sunt nam deleniti ducimus voluptatem voluptate officiis consequatur, ea doloremque hic ab eius pariatur a officia ullam nesciunt aspernatur adipisci impedit repellat optio modi esse. Numquam, culpa. Consequatur, deserunt. Sunt neque quisquam qui! Aspernatur quam sunt culpa dolor.</p>
+            </div>
+        </article>
+    }
+</section>
+<script>
+
+</script>

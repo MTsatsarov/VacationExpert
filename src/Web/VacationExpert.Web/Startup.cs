@@ -70,8 +70,6 @@
             services.AddTransient<IPropertyService, PropertyService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ISearchService, SearchService>();
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
