@@ -1,24 +1,57 @@
 ﻿@using VacationExpert.Web.ViewModels.PropertyViewModel
+@using VacationExpert.Data.Models.Enums
 @model PropertyListViewModel;
 
-<style rel = "stylesheet" src="./"></style>
-<aside class="filter-wrapper">
+<link rel="stylesheet" href="~/css/search/results.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
+@{
+    var properties = Model.Properties.ToList();
+    this.ViewData["Title"] = $"Properties in {Model.Properties.Select(x=>x.City.ToString()).First()}";
 
+}
+<aside class="filter-wrapper">
+    <h4>Filter By</h4>
+    <hr />
+    <article>
+    </article>
 </aside>
 <section class='results-container'>
-    @foreach (var property in Model.Properties)
+    @foreach (var property in @properties)
     {
         <article class='single-result'>
-            <a href="/Property/DisplayProperty">
-                <img src= "/Image/GetThumbnail/@property.Id">
+            <a href="/Property/DisplayProperty/@property.Id">
+                <img src="/Image/GetThumbnail/@property.Id">
             </a>
 
             <div class="result-summary">
                 <div class="result-header">
-                    <h3>@property.Name</h3>
-                    <strong>@property.Rating</strong>
+                    <h3><a href="/Property/DisplayProperty/@property.Id">@property.Name</a></h3>
+                    <div>
+                        @*   @if (@property.Rating == 0.ToString())
+                            {
+                            <strong>@property.Rating</strong>
+                            }
+                            else
+                            {*@
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        @*}*@
+                    </div>
                 </div>
+                <p class="fas fa-city city-p">  @property.City</p>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure placeat nostrum provident sunt nam deleniti ducimus voluptatem voluptate officiis consequatur, ea doloremque hic ab eius pariatur a officia ullam nesciunt aspernatur adipisci impedit repellat optio modi esse. Numquam, culpa. Consequatur, deserunt. Sunt neque quisquam qui! Aspernatur quam sunt culpa dolor.</p>
+            </div>
+            <div class="grade-box">
+                <div>
+                    <strong>Wonderfull</strong>
+                    <p>3225 reviews</p>
+                </div>
+                <a href="/Property/DisplayProperty/@property.Id">10.0</a>
             </div>
         </article>
     }
