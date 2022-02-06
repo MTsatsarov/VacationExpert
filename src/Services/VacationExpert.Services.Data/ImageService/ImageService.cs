@@ -3,10 +3,11 @@
     using System;
     using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.Data.SqlClient;
     using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.DependencyInjection;
     using SixLabors.ImageSharp;
     using SixLabors.ImageSharp.Formats.Jpeg;
     using SixLabors.ImageSharp.Processing;
@@ -18,12 +19,10 @@
         private const int ThumbnailWidth = 300;
         private const int FullScreenWidth = 1200;
 
-        private readonly IServiceScopeFactory serviceScopeFactory;
         private readonly ApplicationDbContext dbContext;
 
-        public ImageService(IServiceScopeFactory serviceScopeFactory, ApplicationDbContext dbContext)
+        public ImageService(ApplicationDbContext dbContext)
         {
-            this.serviceScopeFactory = serviceScopeFactory;
             this.dbContext = dbContext;
         }
 
@@ -62,16 +61,15 @@
             return inputImages;
         }
 
-        public async Task<Stream> GetImageData(string propertyId)
+        public async Task<Stream> GetImageData(string id, string content)
         {
-
             var data = this.dbContext.Database;
             var dbConnection = (SqlConnection)data.GetDbConnection();
             var command = new SqlCommand(
-                $"SELECT ThumbnailContent FROM Images WHERE PropertyId = @propertyId",
+                $"SELECT {content} FROM Images WHERE Id = @id",
                 dbConnection);
 
-            command.Parameters.Add(new SqlParameter("@propertyId", propertyId));
+            command.Parameters.Add(new SqlParameter("@id", id));
             dbConnection.Open();
 
             var reader = await command.ExecuteReaderAsync();
@@ -113,6 +111,9 @@
             return memoryStream.ToArray();
         }
 
-       
+        public List<string> GetAllImages(string propertyId)
+        {
+            return this.dbContext.Images.Where(x => x.PropertyId == propertyId).Select(x => x.Id.ToString()).ToList();
+        }
     }
 }

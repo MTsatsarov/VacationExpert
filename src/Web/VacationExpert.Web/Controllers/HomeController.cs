@@ -5,7 +5,6 @@
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Web.ViewModels;
-    using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class HomeController : BaseController
     {
@@ -18,7 +17,7 @@
 
         public IActionResult Index()
         {
-            //var result = this.propertyService.GetLastFIve<LastFiveProperties>();
+            // var result = this.propertyService.GetLastFIve<LastFiveProperties>();
             return this.View();
         }
 

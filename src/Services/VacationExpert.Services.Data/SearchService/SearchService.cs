@@ -37,9 +37,9 @@
                     Name = property.Name,
                     City = property.Address.City.ToString(),
                     Rating = property.Rating.ToString(),
+                    ImageId = property.Images.Select(x => x.Id).First().ToString(),
                 };
                 propertiesModel.Add(currentModel);
-
             }
 
             list.Properties = propertiesModel.ToList();

@@ -1,7 +1,7 @@
 ﻿namespace VacationExpert.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+
     using VacationExpert.Data.Common.Models;
 
     public class Contact : BaseDeletableModel<int>
@@ -15,7 +15,7 @@
 
         [Phone]
         public string AdditionalPhone { get; set; }
-     
+
         public string PropertyId { get; set; }
 
         public virtual Property Property { get; set; }

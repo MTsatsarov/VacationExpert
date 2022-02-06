@@ -1,8 +1,9 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace VacationExpert.Data.Migrations
+﻿namespace VacationExpert.Data.Migrations
 {
+    using System;
+
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class addTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

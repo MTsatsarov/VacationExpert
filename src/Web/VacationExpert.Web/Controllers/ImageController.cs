@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using VacationExpert.Services.Data.ImageService;
-
-namespace VacationExpert.Web.Controllers
+﻿namespace VacationExpert.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using VacationExpert.Common;
+    using VacationExpert.Services.Data.ImageService;
+
     public class ImageController : Controller
     {
         private readonly IImageService service;
@@ -15,7 +17,13 @@ namespace VacationExpert.Web.Controllers
 
         public async Task<IActionResult> GetThumbnail([FromRoute] string id)
         {
-            var result = await this.service.GetImageData(id);
+            var result = await this.service.GetImageData(id, GlobalConstants.ThumbnailContent);
+            return this.File(result, "image/jpeg");
+        }
+
+        public async Task<IActionResult> GetFullscreen([FromRoute] string id)
+        {
+            var result = await this.service.GetImageData(id, "Fullscreen");
             return this.File(result, "image/jpeg");
         }
     }

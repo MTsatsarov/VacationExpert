@@ -10,6 +10,7 @@
     using VacationExpert.Data.Models.Enums;
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Models;
+    using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class PropertyService : IPropertyService
     {
@@ -41,8 +42,6 @@
         {
             throw new NotImplementedException();
         }
-
-
 
         private static void AddFacilities(CreatePropertyInputModel model, Property inputModel)
         {
@@ -112,6 +111,26 @@
             }
         }
 
+        public PropertyViewModel GetProperty(string id)
+        {
+            var result = this.dbContext.Properties.Where(x => x.Id == id).Select(
+                x => new PropertyViewModel
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    Address = new PropertyAddressViewModel
+                    {
+                        Street=x.Address.StreetAddress,
+                        City = x.Address.City.ToString(),
+                        Country = x.Address.Country.ToString(),
+                    },
+                    Facilities = x.Facility.Services.Select(x=>x.Name).ToList(),
+                    Images = this.imageService.GetAllImages(x.Id).ToList(),
+                }).FirstOrDefault();
+
+            return result;
+        }
+
         private async Task AddImages(CreatePropertyInputModel model, Property inputModel)
         {
             var images = model.Images
@@ -123,9 +142,11 @@
                 }).ToList();
 
             var resultedImages = await this.imageService.ImageProcess(images);
-            foreach (var image in resultedImages) { 
+            foreach (var image in resultedImages)
+            {
                 this.dbContext.Images.Add(image);
             }
+
             inputModel.Images = resultedImages.ToList();
         }
     }

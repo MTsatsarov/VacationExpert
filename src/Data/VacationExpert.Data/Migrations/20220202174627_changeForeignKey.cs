@@ -1,7 +1,7 @@
-﻿using Microsoft.EntityFrameworkCore.Migrations;
-
-namespace VacationExpert.Data.Migrations
+﻿namespace VacationExpert.Data.Migrations
 {
+    using Microsoft.EntityFrameworkCore.Migrations;
+
     public partial class changeForeignKey : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)

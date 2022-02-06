@@ -1,8 +1,7 @@
 ﻿namespace VacationExpert.Data.Models
 {
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
-    using System.ComponentModel.DataAnnotations.Schema;
+
     using VacationExpert.Data.Common.Models;
     using VacationExpert.Data.Models.Enums;
 
@@ -22,7 +21,6 @@
 
         public virtual ICollection<Service> Services { get; set; }
 
-  
         public string PropertyId { get; set; }
 
         public virtual Property Property { get; set; }

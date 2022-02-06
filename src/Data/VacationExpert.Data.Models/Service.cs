@@ -1,9 +1,10 @@
-﻿using System.Collections.Generic;
-using VacationExpert.Data.Common.Models;
-
-namespace VacationExpert.Data.Models
+﻿namespace VacationExpert.Data.Models
 {
-    public class Service:BaseDeletableModel<int>
+    using System.Collections.Generic;
+
+    using VacationExpert.Data.Common.Models;
+
+    public class Service : BaseDeletableModel<int>
     {
         public string Name { get; set; }
 

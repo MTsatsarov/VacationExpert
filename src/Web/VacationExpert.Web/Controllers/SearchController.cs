@@ -1,11 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Threading.Tasks;
-using VacationExpert.Services.Data.ImageService;
-using VacationExpert.Services.Data.SearchService;
-using VacationExpert.Services.Models;
-
-namespace VacationExpert.Web.Controllers
+﻿namespace VacationExpert.Web.Controllers
 {
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Mvc;
+    using VacationExpert.Services.Data.ImageService;
+    using VacationExpert.Services.Data.SearchService;
+    using VacationExpert.Services.Models;
+
     public class SearchController : Controller
     {
         private readonly ISearchService searchService;
@@ -23,8 +24,6 @@ namespace VacationExpert.Web.Controllers
             var result = await this.searchService.GetResults(model);
             return this.View(result);
         }
-
-
 
         [HttpPost]
         [Route("api/search/suggestions")]

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+
     using VacationExpert.Data.Common.Models;
 
     public class Property : BaseDeletableModel<string>

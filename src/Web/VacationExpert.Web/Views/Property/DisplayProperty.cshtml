@@ -1,0 +1,26 @@
+﻿@using VacationExpert.Web.ViewModels.PropertyViewModel
+
+@model PropertyViewModel
+
+<section class="property-view-container">
+    <article>
+        <h2>@Model.Name</h2>
+        <p>@Model.Address.Street,@Model.Address.City @Model.Address.Country</p>
+        @foreach( var image in @Model.Images) {
+            <img src="/Image/GetThumbnail/@image"/>
+        }
+    </article>
+    <article>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Et doloremque distinctio velit necessitatibus, quae accusamus est. Reprehenderit ipsum praesentium nulla autem tenetur quibusdam sint! Minus amet corrupti animi, nesciunt saepe, beatae dolorem magni explicabo odit placeat fuga dolor eius doloribus quisquam sequi et quod necessitatibus, ullam natus fugiat voluptatem. Fugit soluta, hic dicta eveniet eum ipsa nulla cupiditate voluptates facilis perferendis consequatur incidunt, aliquam consequuntur quaerat ducimus ipsum fuga nesciunt vel maiores. Pariatur totam aperiam soluta error tempore veniam, ut maiores consectetur cum natus earum repudiandae. At nihil repudiandae corporis quis quibusdam officia tenetur sapiente vel tempora quisquam ipsum nesciunt atque, mollitia fugit, accusantium, ipsam ullam. Velit eveniet magnam incidunt deleniti sapiente doloribus dolore. Fugiat alias aliquid, nostrum illum, quidem doloribus et quia nemo earum, deleniti expedita pariatur delectus natus facere accusamus doloremque maxime corporis dolorum. Eaque facere laborum inventore suscipit odit fugiat provident atque tempore. Pariatur atque, accusantium laboriosam cum, rerum voluptates fugit illum in magnam a quis adipisci iste consectetur qui beatae aliquid totam, eos et! Architecto incidunt enim similique, asperiores earum, excepturi nesciunt cum ex unde nisi sapiente itaque ea alias quam vero atque quasi nihil expedita porro sed tempore veniam perferendis corporis aliquid. Veritatis rerum beatae, delectus porro dolorum laboriosam voluptatem sequi suscipit impedit dolorem aut eveniet temporibus fugit quo dolore possimus accusamus quod, ipsa minus alias, ea veniam. Doloribus, error necessitatibus! Vero odit aliquid rem quis libero inventore ratione eligendi eos eius, blanditiis quaerat ullam quasi perferendis eaque itaque quo, beatae soluta labore provident enim ipsum optio? Magnam a omnis nostrum tempora odio accusamus labore. Mollitia magnam doloribus consectetur accusantium quas impedit, sed architecto voluptas, voluptate ad aliquid eum eos, aperiam alias unde inventore distinctio ullam adipisci praesentium eveniet dignissimos libero nemo. Libero doloremque eum officia quasi cumque ea expedita dolorem nemo, soluta similique, enim voluptatibus delectus quos molestiae accusantium, quis illum? Sit distinctio inventore atque dolores cumque animi, laboriosam architecto, repudiandae autem omnis voluptatum nihil tempora hic consectetur soluta quod cupiditate at molestias obcaecati consequatur perspiciatis! Reprehenderit, sint reiciendis! Ipsum ab tempora iste eos commodi, quisquam obcaecati nihil et? Officia magnam, expedita perferendis esse beatae veritatis autem! Recusandae voluptate adipisci explicabo minima et fugit officia aliquam, odit distinctio autem possimus quam, cumque voluptatem aut deserunt hic quod soluta eaque consequuntur. Ullam temporibus hic suscipit perferendis neque ex non consequatur, molestiae doloremque accusamus alias natus incidunt. Quas iure repellat nulla qui excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut.</p>
+    </article>
+    <article>
+        @foreach (var facility in Model.Facilities)
+        {
+            <p>@facility</p>
+        }
+    </article>
+
+    <article>
+        TO DO REVIEWS
+    </article>
+</section>

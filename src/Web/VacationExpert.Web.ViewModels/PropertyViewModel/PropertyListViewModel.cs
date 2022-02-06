@@ -1,9 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace VacationExpert.Web.ViewModels.PropertyViewModel
+﻿namespace VacationExpert.Web.ViewModels.PropertyViewModel
 {
+    using System.Collections.Generic;
+
     public class PropertyListViewModel
     {
         public IEnumerable<PropertyInListViewModel> Properties { get; set; }
