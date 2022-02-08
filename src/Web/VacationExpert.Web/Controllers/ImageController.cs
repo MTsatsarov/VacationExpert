@@ -23,7 +23,7 @@
 
         public async Task<IActionResult> GetFullscreen([FromRoute] string id)
         {
-            var result = await this.service.GetImageData(id, "Fullscreen");
+            var result = await this.service.GetImageData(id, GlobalConstants.FullscreenContent);
             return this.File(result, "image/jpeg");
         }
     }

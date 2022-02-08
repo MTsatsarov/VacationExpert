@@ -3,10 +3,13 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using VacationExpert.Common;
     using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Services.Models;
 
+    [Authorize(Roles = GlobalConstants.CreatorRoleName)]
     public class CreateController : Controller
     {
         private readonly IPropertyService propertyService;
@@ -21,6 +24,7 @@
 
         [HttpPost]
         [RequestSizeLimit(120 * 1024 * 1024)]
+  
         public async Task<IActionResult> Index(CreatePropertyInputModel model)
         {
             if (!this.ModelState.IsValid)
