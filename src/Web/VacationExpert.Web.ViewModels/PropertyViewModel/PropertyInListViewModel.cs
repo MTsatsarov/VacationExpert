@@ -11,5 +11,7 @@
         public string Rating { get; set; }
 
         public string ImageId { get; set; }
+
+        public double Grade { get; set; }
     }
 }

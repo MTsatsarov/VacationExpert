@@ -12,6 +12,7 @@
         public Task<List<Image>> ImageProcess(IEnumerable<ImageInputModel> images);
 
         Task<Stream> GetImageData(string id, string name);
+
         List<string> GetAllImages(string propertyId);
     }
 }

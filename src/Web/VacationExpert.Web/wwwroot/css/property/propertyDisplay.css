@@ -1,40 +1,99 @@
 ﻿.property-view-container {
-    font-size: 12px;
-    font-family: Arial, Helvetica, sans-serif;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+  font-size: 12px;
+  font-family: Arial, Helvetica, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 }
-.property-view-container >article {
-    width: 900px;
-    padding: 10px;
+.property-view-container > article {
+  width: 1000px;
+  padding: 10px;
 }
 .image-gallery {
-    max-height: 250px;
-    overflow-y: scroll;
-    display: flex;
-    flex-wrap: wrap;
-    scrollbar-width: none;
-    box-sizing: content-box;
-    margin-bottom: 20px;
+  max-height: 250px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: content-box;
+  margin-bottom: 20px;
 }
 .image-gallery img {
-    object-fit: cover;
-    border-radius: 8px;
-    margin: 2px;
-    border: 1px solid black;
+  width: 300px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 2px;
+  border: 1px solid black;
 }
+
 .image-gallery::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
 .property-view-facilties {
-    display: flex;
-    align-items: center;
-    flex-wrap: wrap;
-    
-    
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
 }
-.property-view-facilties>p {
-    width: 25%;
+
+.property-view-facilties > p {
+  width: 25%;
+}
+
+.property-view-reviews {
+  display: flex;
+  height: 300px;
+}
+.single-review {
+  overflow-y: scroll;
+  padding: 10px;
+  margin: 10px;
+}
+.single-review::-webkit-scrollbar {
+  display: none;
+}
+
+.single-review-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.create-review-box {
+  margin: 10px auto;
+  width: 50%;
+  flex-direction: column;
+  border: 2px solid black;
+  font-weight: bold;
+  display: none;
+
+}
+.create-review-box p {
+  padding: 10px;
+  background-color: rgb(0, 0, 0);
+  color: white;
+
+  margin-bottom: 0%;
+}
+.create-review-box textarea {
+  margin: 0px auto;
+  flex-basis: 150px;
+  width: 400px;
+  overflow: scroll;
+  border-top: none;
+  border-radius: 14px ;
+}
+.create-review-box button {
+    width: 30%;
+    margin: 12px;
+    align-self: center;
+    border: none;
+    font-size: 22px;
+    color: white;
+    border-radius: 14px ;
+    background-color: black;
+}
+.create-review-box textarea::-webkit-scrollbar {
+  display: none;
 }

@@ -15,6 +15,5 @@
         public const string FullscreenContent = "FullscreenContent";
 
         public const string ThumbnailContent = "ThumbnailContent";
-
     }
 }

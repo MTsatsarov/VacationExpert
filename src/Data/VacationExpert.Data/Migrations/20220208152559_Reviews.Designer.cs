@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VacationExpert.Data;
 
 namespace VacationExpert.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220208152559_Reviews")]
+    partial class Reviews
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -873,7 +875,7 @@ namespace VacationExpert.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("VacationExpert.Data.Models.ApplicationUser", "User")
-                        .WithMany("Properties")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Address");
@@ -888,13 +890,13 @@ namespace VacationExpert.Data.Migrations
             modelBuilder.Entity("VacationExpert.Data.Models.Review", b =>
                 {
                     b.HasOne("VacationExpert.Data.Models.Property", "Property")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("PropertyId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("VacationExpert.Data.Models.ApplicationUser", "User")
-                        .WithMany("Reviews")
+                        .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -926,10 +928,6 @@ namespace VacationExpert.Data.Migrations
 
                     b.Navigation("Logins");
 
-                    b.Navigation("Properties");
-
-                    b.Navigation("Reviews");
-
                     b.Navigation("Roles");
                 });
 
@@ -948,8 +946,6 @@ namespace VacationExpert.Data.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("Photos");
-
-                    b.Navigation("Reviews");
 
                     b.Navigation("Rooms");
                 });

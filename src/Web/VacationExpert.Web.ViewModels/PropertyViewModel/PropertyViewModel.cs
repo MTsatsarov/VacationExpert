@@ -9,6 +9,7 @@
         public string Name { get; set; }
 
         public PropertyAddressViewModel Address { get; set; }
+
         public string Description { get; set; }
 
         public ICollection<string> Images { get; set; }

@@ -12,7 +12,7 @@
     using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 
-    public class PropertyService : IPropertyService
+    public class PropertyService : IPropertyService, IPropertyStoreService
     {
         private readonly ApplicationDbContext dbContext;
         private readonly IImageService imageService;
@@ -23,27 +23,30 @@
             this.imageService = imageService;
         }
 
-        public async Task Create(CreatePropertyInputModel model)
+        public void AddAddress(CreatePropertyInputModel model, Property inputModel)
         {
-            var inputModel = new Property();
-            inputModel.Name = model.Name;
-            inputModel.Rating = (int)model.Rating;
-            AddAddress(model, inputModel);
-            AddContact(model, inputModel);
-            AddFacilities(model, inputModel);
-            AddRooms(model, inputModel);
-            await this.AddImages(model, inputModel);
-
-            await this.dbContext.Properties.AddAsync(inputModel);
-            await this.dbContext.SaveChangesAsync();
+            inputModel.Address = new Address()
+            {
+                City = (City)Enum.Parse(typeof(City), model.Address.City),
+                Country = (Country)Enum.Parse(typeof(Country), model.Address.Country),
+                StreetAddress = model.Address.StreetAddress,
+                ZipCode = model.Address.ZipCode,
+            };
         }
 
-        public IEnumerable<T> GetLastFIve<T>()
+        public void AddContact(CreatePropertyInputModel model, Property inputModel)
         {
-            throw new NotImplementedException();
+            var contact = new Contact()
+            {
+                Name = model.Contact.ContactName,
+                Phone = model.Contact.Phone,
+                AdditionalPhone = model.Contact.AdditionalPhone,
+                PropertyId = inputModel.Id,
+            };
+            inputModel.Contact = contact;
         }
 
-        private static void AddFacilities(CreatePropertyInputModel model, Property inputModel)
+        public void AddFacilities(CreatePropertyInputModel model, Property inputModel)
         {
             var facility = new Facility()
             {
@@ -63,29 +66,7 @@
             inputModel.Facility = facility;
         }
 
-        private static void AddContact(CreatePropertyInputModel model, Property inputModel)
-        {
-            var contact = new Contact()
-            {
-                Name = model.Contact.ContactName,
-                Phone = model.Contact.Phone,
-                AdditionalPhone = model.Contact.AdditionalPhone,
-            };
-            inputModel.Contact = contact;
-        }
-
-        private static void AddAddress(CreatePropertyInputModel model, Property inputModel)
-        {
-            inputModel.Address = new Address()
-            {
-                City = (City)Enum.Parse(typeof(City), model.Address.City),
-                Country = (Country)Enum.Parse(typeof(Country), model.Address.Country),
-                StreetAddress = model.Address.StreetAddress,
-                ZipCode = model.Address.ZipCode,
-            };
-        }
-
-        private static void AddRooms(CreatePropertyInputModel model, Property inputModel)
+        public void AddRooms(CreatePropertyInputModel model, Property inputModel)
         {
             foreach (var room in model.Rooms)
             {
@@ -111,24 +92,44 @@
             }
         }
 
+        public async Task Create(CreatePropertyInputModel model)
+        {
+            var inputModel = new Property();
+            inputModel.UserId = model.UserId;
+            inputModel.Name = model.Name;
+            inputModel.Rating = (int)model.Rating;
+            this.AddAddress(model, inputModel);
+            this.AddContact(model, inputModel);
+            this.AddFacilities(model, inputModel);
+            this.AddRooms(model, inputModel);
+            await this.AddImages(model, inputModel);
+
+            await this.dbContext.Properties.AddAsync(inputModel);
+            await this.dbContext.SaveChangesAsync();
+        }
+
+        public IEnumerable<T> GetLastFIve<T>()
+        {
+            throw new NotImplementedException();
+        }
+
         public PropertyViewModel GetProperty(string id)
         {
-            var result = this.dbContext.Properties.Where(x => x.Id == id).Select(
-                x => new PropertyViewModel
-                {
-                    Id = x.Id,
-                    Name = x.Name,
-                    Address = new PropertyAddressViewModel
-                    {
-                        Street=x.Address.StreetAddress,
-                        City = x.Address.City.ToString(),
-                        Country = x.Address.Country.ToString(),
-                    },
-                    Facilities = x.Facility.Services.Select(x=>x.Name).ToList(),
-                    Images = this.imageService.GetAllImages(x.Id).ToList(),
-                }).FirstOrDefault();
+            var result = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
+            var model = new PropertyViewModel();
+            model.Id = result.Id;
+            model.Name = result.Name;
+            model.Address = new PropertyAddressViewModel
+            {
+                Street = result.Address.StreetAddress,
+                City = result.Address.City.ToString(),
+                Country = result.Address.Country.ToString(),
+                Grade = result.Reviews.Count > 0 ? ((double)Math.Round(result.Reviews.Average(x => x.Rating), 2)) : (double)(0.0),
+            };
+            model.Facilities = result.Facility.Services.Select(x => x.Name).ToList();
+            model.Images = this.imageService.GetAllImages(result.Id).ToList();
 
-            return result;
+            return model;
         }
 
         private async Task AddImages(CreatePropertyInputModel model, Property inputModel)

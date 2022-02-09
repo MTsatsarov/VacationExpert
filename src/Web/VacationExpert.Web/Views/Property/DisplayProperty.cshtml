@@ -1,4 +1,10 @@
-﻿@using VacationExpert.Web.ViewModels.PropertyViewModel
+﻿@using VacationExpert.Common
+@using VacationExpert.Web.ViewModels.PropertyViewModel
+@using VacationExpert.Data.Models
+@using Microsoft.AspNetCore.Identity
+
+@inject UserManager<ApplicationUser> userManager
+@inject SignInManager<ApplicationUser> signInManager
 
 @model PropertyViewModel
 
@@ -9,15 +15,16 @@
 
 
 <section class="property-view-container">
-    <article class= "property-view-header">
+    <article class="property-view-header">
         <h2>@Model.Name</h2>
         <p>@Model.Address.Street, @Model.Address.City @Model.Address.Country</p>
         <div class="image-gallery">
-        @foreach( var image in @Model.Images) {
-            <a href="/Image/GetFullscreen/@image">
-            <img src="/Image/GetThumbnail/@image"/>
-            </a>
-        }
+            @foreach (var image in @Model.Images)
+            {
+                <a href="/Image/GetFullscreen/@image">
+                    <img src="/Image/GetThumbnail/@image" />
+                </a>
+            }
         </div>
     </article>
     <article class="property-view-description">
@@ -31,6 +38,32 @@
     </article>
 
     <article class="property-view-reviews">
-        TO DO REVIEWS
+        <div class="single-review">
+            <div class="single-review-header">
+                <p>Username</p> <p>Datetime</p>
+            </div>
+            <p> excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut</p>
+        </div>
+        <div class="single-review">
+            <div class="single-review-header">
+                <p>Username</p> <p>Datetime</p>
+            </div>
+            <p> excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut</p>
+        </div>        <div class="single-review">
+            <div class="single-review-header">
+                <p>Username</p> <p>Datetime</p>
+            </div>
+            <p> excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut</p>
+        </div>
     </article>
 </section>
+@if (signInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.UserRoleName))
+{
+    <button id="show-review-btn">Write your review</button>
+    <section class="create-review-box">
+        <p>@userManager.GetUserName(this.User)</p>
+        <textarea placeholder="Add your review here"></textarea>
+        <button>Send</button>
+    </section>
+}
+<script defer type='module' src=~/js/property/displayProperty.js></script>

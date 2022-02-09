@@ -4,8 +4,10 @@
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Common;
+    using VacationExpert.Data.Models;
     using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Services.Models;
 
@@ -13,8 +15,13 @@
     public class CreateController : Controller
     {
         private readonly IPropertyService propertyService;
+        private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager;
 
-        public CreateController(IPropertyService propertyService) => this.propertyService = propertyService;
+        public CreateController(IPropertyService propertyService, UserManager<ApplicationUser> userManager)
+        {
+            this.propertyService = propertyService;
+            this.userManager = userManager;
+        }
 
         [HttpGet]
         public IActionResult Index()
@@ -27,6 +34,8 @@
   
         public async Task<IActionResult> Index(CreatePropertyInputModel model)
         {
+            model.UserId = this.userManager.GetUserId(this.User);
+
             if (!this.ModelState.IsValid)
             {
                 return this.View(model);

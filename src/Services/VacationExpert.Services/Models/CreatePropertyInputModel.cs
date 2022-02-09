@@ -16,6 +16,8 @@
 
         public ContactInputModel Contact { get; set; }
 
+        public string UserId { get; set; }
+
         public AddressInputModel Address { get; set; }
 
         public List<RoomInputModel> Rooms { get; set; }

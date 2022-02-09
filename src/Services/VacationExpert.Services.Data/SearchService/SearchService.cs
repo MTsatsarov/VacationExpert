@@ -39,6 +39,7 @@
                     Rating = property.Rating.ToString(),
                     ImageId = property.Images.Select(x => x.Id).First().ToString(),
                 };
+                currentModel.Grade = property.Reviews.Count() > 0 ? Math.Round(property.Reviews.Average(x => x.Rating)) : 0.0;
                 propertiesModel.Add(currentModel);
             }
 

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using VacationExpert.Data;
 
 namespace VacationExpert.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220208143822_RelationBetweenUserAndProperty")]
+    partial class RelationBetweenUserAndProperty
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -589,49 +591,6 @@ namespace VacationExpert.Data.Migrations
                     b.ToTable("Properties");
                 });
 
-            modelBuilder.Entity("VacationExpert.Data.Models.Review", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("Content")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("PropertyId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("Rating")
-                        .HasColumnType("int");
-
-                    b.Property<string>("UserId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("PropertyId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Reviews");
-                });
-
             modelBuilder.Entity("VacationExpert.Data.Models.Room", b =>
                 {
                     b.Property<int>("Id")
@@ -873,7 +832,7 @@ namespace VacationExpert.Data.Migrations
                         .IsRequired();
 
                     b.HasOne("VacationExpert.Data.Models.ApplicationUser", "User")
-                        .WithMany("Properties")
+                        .WithMany()
                         .HasForeignKey("UserId");
 
                     b.Navigation("Address");
@@ -881,25 +840,6 @@ namespace VacationExpert.Data.Migrations
                     b.Navigation("Contact");
 
                     b.Navigation("Facility");
-
-                    b.Navigation("User");
-                });
-
-            modelBuilder.Entity("VacationExpert.Data.Models.Review", b =>
-                {
-                    b.HasOne("VacationExpert.Data.Models.Property", "Property")
-                        .WithMany("Reviews")
-                        .HasForeignKey("PropertyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.HasOne("VacationExpert.Data.Models.ApplicationUser", "User")
-                        .WithMany("Reviews")
-                        .HasForeignKey("UserId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
-                    b.Navigation("Property");
 
                     b.Navigation("User");
                 });
@@ -926,10 +866,6 @@ namespace VacationExpert.Data.Migrations
 
                     b.Navigation("Logins");
 
-                    b.Navigation("Properties");
-
-                    b.Navigation("Reviews");
-
                     b.Navigation("Roles");
                 });
 
@@ -948,8 +884,6 @@ namespace VacationExpert.Data.Migrations
                     b.Navigation("Images");
 
                     b.Navigation("Photos");
-
-                    b.Navigation("Reviews");
 
                     b.Navigation("Rooms");
                 });

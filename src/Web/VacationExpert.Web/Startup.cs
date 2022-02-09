@@ -19,6 +19,7 @@
     using VacationExpert.Services.Data;
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Data.PropertyServices;
+    using VacationExpert.Services.Data.ReviewServices;
     using VacationExpert.Services.Data.SearchService;
     using VacationExpert.Services.Mapping;
     using VacationExpert.Services.Messaging;
@@ -70,6 +71,7 @@
             services.AddTransient<IPropertyService, PropertyService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ISearchService, SearchService>();
+            services.AddTransient<IReviewService, ReviewService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
