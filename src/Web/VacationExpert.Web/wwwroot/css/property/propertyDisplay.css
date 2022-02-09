@@ -26,8 +26,12 @@
   border-radius: 8px;
   margin: 2px;
   border: 1px solid black;
-}
+cursor: pointer;
 
+}
+.image-gallery img:hover {
+  box-shadow: 5px 5px 30px 13px rgba(135,135,135,0.74);
+}
 .image-gallery::-webkit-scrollbar {
   display: none;
 }
@@ -44,6 +48,7 @@
 
 .property-view-reviews {
   display: flex;
+  justify-content: space-evenly;
   height: 300px;
 }
 .single-review {
@@ -51,7 +56,11 @@
   margin: 10px;
   text-align: start;
   flex-basis: 30%;
-  border: 2px solid black;
+  border: 1px ridge rgb(146, 146, 146);
+  border-radius: 12px;
+}
+.single-review:hover {
+  box-shadow: 5px 5px 30px 13px rgba(135,135,135,0.74);
 }
 .single-review::-webkit-scrollbar {
   display: none;
@@ -64,11 +73,10 @@
   color: white;
   background-color: rgb(0, 61, 175);
   box-sizing: content-box;
+
 }
 .single-review-header p {
   padding-top: 5px;
-  text-align: center;
-
 }
 .create-review-box {
   margin: 10px auto;
@@ -114,4 +122,8 @@
   text-align: center;
   width: 40px;
   height: 30px;
+}
+.review-content  {
+  text-align: justify;
+  padding: 10px;
 }

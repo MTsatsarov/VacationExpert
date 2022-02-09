@@ -6,6 +6,9 @@
 @inject UserManager<ApplicationUser> userManager
 @inject SignInManager<ApplicationUser> signInManager
 
+    @{
+        this.ViewData["Title"] = Model.Name;
+    }
 @model PropertyViewModel
 
 <link rel="stylesheet" href="~/css/property/propertyDisplay.css">
@@ -44,7 +47,7 @@
             <div class="single-review-header">
                 <p>@review.Username</p> <p>@review.DateTime</p> <p class = 'review-rating'>@review.Rating</p>
             </div>
-            <p> @review.Content</p>
+            <p class='review-content'> @review.Content</p>
         </div>
         }
     </article>

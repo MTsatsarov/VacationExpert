@@ -36,8 +36,10 @@
                     Id = property.Id,
                     Name = property.Name,
                     City = property.Address.City.ToString(),
-                    Rating = property.Rating.ToString(),
+                    Rating = property.Rating,
                     ImageId = property.Images.Select(x => x.Id).First().ToString(),
+                    Grade = Math.Round(property.Reviews.Average(x => x.Rating), 2),
+                    Reviews = property.Reviews.Count(),
                 };
                 currentModel.Grade = property.Reviews.Count() > 0 ? Math.Round(property.Reviews.Average(x => x.Rating)) : 0.0;
                 propertiesModel.Add(currentModel);
