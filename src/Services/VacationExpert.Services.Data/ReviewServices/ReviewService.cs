@@ -39,8 +39,9 @@
             {
                 Content = x.Content,
                 Username = x.User.UserName,
-                Rating = Math.Round(this.db.Properties.Where(x => x.Id == propertyId).Average(x => x.Rating), 2),
-            }).ToList();
+                Rating = x.Rating,
+                DateTime= x.CreatedOn.ToShortDateString(),
+            }).ToList().Take(3);
 
             model.Reviews.AddRange(reviews);
             return model;

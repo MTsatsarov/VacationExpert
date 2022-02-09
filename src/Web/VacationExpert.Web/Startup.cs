@@ -69,6 +69,7 @@
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IPropertyService, PropertyService>();
+            services.AddTransient<IPropertyStoreService, PropertyService>();
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IReviewService, ReviewService>();

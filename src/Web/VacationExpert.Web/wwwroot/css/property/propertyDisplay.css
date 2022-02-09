@@ -48,8 +48,10 @@
 }
 .single-review {
   overflow-y: scroll;
-  padding: 10px;
   margin: 10px;
+  text-align: start;
+  flex-basis: 30%;
+  border: 2px solid black;
 }
 .single-review::-webkit-scrollbar {
   display: none;
@@ -59,6 +61,14 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  color: white;
+  background-color: rgb(0, 61, 175);
+  box-sizing: content-box;
+}
+.single-review-header p {
+  padding-top: 5px;
+  text-align: center;
+
 }
 .create-review-box {
   margin: 10px auto;
@@ -96,4 +106,12 @@
 }
 .create-review-box textarea::-webkit-scrollbar {
   display: none;
+}
+
+.review-rating {
+  background-color: black;
+  border-radius: 50%;
+  text-align: center;
+  width: 40px;
+  height: 30px;
 }

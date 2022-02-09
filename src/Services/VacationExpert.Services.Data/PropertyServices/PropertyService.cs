@@ -9,18 +9,22 @@
     using VacationExpert.Data.Models;
     using VacationExpert.Data.Models.Enums;
     using VacationExpert.Services.Data.ImageService;
+    using VacationExpert.Services.Data.ReviewServices;
     using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
+    using VacationExpert.Web.ViewModels.ReviewViewModels;
 
     public class PropertyService : IPropertyService, IPropertyStoreService
     {
         private readonly ApplicationDbContext dbContext;
         private readonly IImageService imageService;
+        private readonly IReviewService reviewService;
 
-        public PropertyService(ApplicationDbContext dbContext, IImageService imageService)
+        public PropertyService(ApplicationDbContext dbContext, IImageService imageService, IReviewService reviewService)
         {
             this.dbContext = dbContext;
             this.imageService = imageService;
+            this.reviewService = reviewService;
         }
 
         public void AddAddress(CreatePropertyInputModel model, Property inputModel)
@@ -126,6 +130,8 @@
                 Country = result.Address.Country.ToString(),
                 Grade = result.Reviews.Count > 0 ? ((double)Math.Round(result.Reviews.Average(x => x.Rating), 2)) : (double)(0.0),
             };
+            var a = result.Reviews;
+            model.ReviewCollection= this.reviewService.GetReviews(id);
             model.Facilities = result.Facility.Services.Select(x => x.Name).ToList();
             model.Images = this.imageService.GetAllImages(result.Id).ToList();
 

@@ -16,11 +16,13 @@
     {
         private readonly IPropertyService propertyService;
         private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager;
+        private readonly IPropertyStoreService storeProeprtyService;
 
-        public CreateController(IPropertyService propertyService, UserManager<ApplicationUser> userManager)
+        public CreateController(IPropertyService propertyService, UserManager<ApplicationUser> userManager,IPropertyStoreService storeProeprtyService)
         {
             this.propertyService = propertyService;
             this.userManager = userManager;
+            this.storeProeprtyService = storeProeprtyService;
         }
 
         [HttpGet]
@@ -53,7 +55,7 @@
                 return this.View(model);
             }
 
-            await this.propertyService.Create(model);
+            await this.storeProeprtyService.Create(model);
 
             return this.Redirect("/");
         }

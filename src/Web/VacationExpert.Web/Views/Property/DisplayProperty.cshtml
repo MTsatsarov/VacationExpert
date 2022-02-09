@@ -38,32 +38,29 @@
     </article>
 
     <article class="property-view-reviews">
-        <div class="single-review">
+        @foreach(var review in Model.ReviewCollection.Reviews)
+        {
+             <div class="single-review">
             <div class="single-review-header">
-                <p>Username</p> <p>Datetime</p>
+                <p>@review.Username</p> <p>@review.DateTime</p> <p class = 'review-rating'>@review.Rating</p>
             </div>
-            <p> excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut</p>
+            <p> @review.Content</p>
         </div>
-        <div class="single-review">
-            <div class="single-review-header">
-                <p>Username</p> <p>Datetime</p>
-            </div>
-            <p> excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut</p>
-        </div>        <div class="single-review">
-            <div class="single-review-header">
-                <p>Username</p> <p>Datetime</p>
-            </div>
-            <p> excepturi nihil, omnis cupiditate rem delectus architecto! Culpa consequuntur iure illum, esse vel voluptas! Quos, molestiae! Voluptas corrupti dignissimos veniam, consectetur libero in dolorem temporibus consequatur tempora blanditiis fuga accusantium ipsum at quibusdam ad reprehenderit incidunt officia, provident sit cumque hic quas, illum unde. Neque dolorum quaerat suscipit assumenda sint ullam laborum. Commodi quis, blanditiis fugit, sit recusandae ipsum, libero autem quia vitae perspiciatis sint. Possimus, itaque dignissimos! Ut sequi voluptatibus possimus, omnis voluptatum, ipsam blanditiis libero sint eligendi mollitia aut voluptate minima debitis iure, incidunt porro molestias? In at, repellendus voluptatum vero facere eum ad necessitatibus porro? Doloribus fuga aperiam neque molestias aut</p>
-        </div>
+        }
     </article>
 </section>
+
 @if (signInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.UserRoleName))
 {
     <button id="show-review-btn">Write your review</button>
     <section class="create-review-box">
         <p>@userManager.GetUserName(this.User)</p>
-        <textarea placeholder="Add your review here"></textarea>
+        <textarea data-property= "@Model.Id" placeholder="Add your review here"></textarea>
+        <label>Rate:</label>
+        <input type="number" max=10, min=1 />
         <button>Send</button>
     </section>
+} else
+{
 }
 <script defer type='module' src=~/js/property/displayProperty.js></script>
