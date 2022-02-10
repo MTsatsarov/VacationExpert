@@ -15,6 +15,7 @@
     {
         private readonly ApplicationDbContext dbContext;
         private readonly IImageService imageService;
+        private const int PropertiesPerPage = 10;
 
         public SearchService(ApplicationDbContext dbContext, IImageService imageService)
         {
@@ -22,14 +23,25 @@
             this.imageService = imageService;
         }
 
-        public async Task<PropertyListViewModel> GetResults(SearchInputModel model)
+        public async Task<PropertyListViewModel> GetResults(SearchInputModel model, int page)
         {
+
             var list = new PropertyListViewModel();
             var city = (City)Enum.Parse(typeof(City), model.City);
             var properties = this.dbContext.Properties.Where(x => x.Address.City == city).ToList();
+            var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)PropertiesPerPage);
+
+            if (page > totalPages || page == 0)
+            {
+                throw new InvalidOperationException();
+            }
+
             var propertiesModel = new List<PropertyInListViewModel>();
 
-            foreach (var property in properties)
+            list.CurrentPage = page;
+            list.TotalPages = properties.Count();
+
+            foreach (var property in properties.Skip((page - 1) * PropertiesPerPage).Take(PropertiesPerPage))
             {
                 var currentModel = new PropertyInListViewModel
                 {
@@ -38,10 +50,9 @@
                     City = property.Address.City.ToString(),
                     Rating = property.Rating,
                     ImageId = property.Images.Select(x => x.Id).First().ToString(),
-                    Grade = Math.Round(property.Reviews.Average(x => x.Rating), 2),
+                    Grade = property.Reviews.Average(x => x.Rating).ToString("F2"),
                     Reviews = property.Reviews.Count(),
                 };
-                currentModel.Grade = property.Reviews.Count() > 0 ? Math.Round(property.Reviews.Average(x => x.Rating)) : 0.0;
                 propertiesModel.Add(currentModel);
             }
 

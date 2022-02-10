@@ -10,6 +10,6 @@
     {
         public ICollection<string> GetSuggestions(string terms);
 
-        public Task<PropertyListViewModel> GetResults(SearchInputModel model);
+        public Task<PropertyListViewModel> GetResults(SearchInputModel model, int page);
     }
 }

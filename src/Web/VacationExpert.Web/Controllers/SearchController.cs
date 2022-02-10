@@ -6,6 +6,7 @@
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Data.SearchService;
     using VacationExpert.Services.Models;
+    using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class SearchController : Controller
     {
@@ -19,9 +20,20 @@
         }
 
         [HttpGet]
-        public async Task<IActionResult> Results(SearchInputModel model)
+        [Route("/search/Results/page")]
+        public async Task<IActionResult> Results(SearchInputModel model, int id = 1)
         {
-            var result = await this.searchService.GetResults(model);
+            var result = new PropertyListViewModel();
+            try
+            {
+                 result = await this.searchService.GetResults(model, id);
+
+            }
+            catch (System.Exception)
+            {
+
+                return this.BadRequest();
+            }
             return this.View(result);
         }
 
