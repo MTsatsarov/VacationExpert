@@ -131,7 +131,7 @@
                 Grade = result.Reviews.Count > 0 ? ((double)Math.Round(result.Reviews.Average(x => x.Rating), 2)) : (double)(0.0),
             };
             var a = result.Reviews;
-            model.ReviewCollection= this.reviewService.GetReviews(id);
+            model.ReviewCollection = this.reviewService.GetReviews(id, "1");
             model.Facilities = result.Facility.Services.Select(x => x.Name).ToList();
             model.Images = this.imageService.GetAllImages(result.Id).ToList();
 

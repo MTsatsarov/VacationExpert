@@ -11,6 +11,7 @@
 
     public class ReviewService : IReviewService
     {
+        private const int ReviewsPerPage = 3;
         private readonly ApplicationDbContext db;
 
         public ReviewService(ApplicationDbContext db)
@@ -32,18 +33,31 @@
             await this.db.SaveChangesAsync();
         }
 
-        public ReviewListViewModel GetReviews(string propertyId)
+        public int Count(string propertyId)
+        {
+            return this.db.Reviews.Where(x => x.PropertyId == propertyId).Count();
+        }
+
+        public ReviewListViewModel GetReviews(string propertyId, string page = "1")
         {
             var model = new ReviewListViewModel();
-            var reviews = this.db.Reviews.Where(x => x.PropertyId == propertyId).Select(x => new ReviewInListViewModel
+            var currentPage = int.Parse(page);
+            model.TotalPages = (int)Math.Ceiling((double)this.Count(propertyId) / (double)ReviewsPerPage);
+
+            if (currentPage <= 0 || currentPage > model.TotalPages)
+            {
+                throw new InvalidOperationException("Invalid page");
+            }
+
+            model.Reviews = this.db.Reviews.Where(x => x.PropertyId == propertyId).Select(x => new ReviewInListViewModel
             {
                 Content = x.Content,
-                Username = x.User.UserName,
+                DateTime = x.CreatedOn.ToShortDateString(),
                 Rating = x.Rating,
-                DateTime= x.CreatedOn.ToShortDateString(),
-            }).ToList().Take(3);
+                Username = x.User.UserName,
+            }).Skip((currentPage - 1) * ReviewsPerPage).Take(3).ToList();
+            model.CurrentPage = currentPage;
 
-            model.Reviews.AddRange(reviews);
             return model;
         }
     }

@@ -7,8 +7,8 @@
 @inject SignInManager<ApplicationUser> signInManager
 
     @{
-        this.ViewData["Title"] = Model.Name;
-    }
+    this.ViewData["Title"] = Model.Name;
+}
 @model PropertyViewModel
 
 <link rel="stylesheet" href="~/css/property/propertyDisplay.css">
@@ -17,7 +17,7 @@
 <link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
 
 
-<section class="property-view-container">
+<section id="display-container" data-property="@Model.Id" class="property-view-container">
     <article class="property-view-header">
         <h2>@Model.Name</h2>
         <p>@Model.Address.Street, @Model.Address.City @Model.Address.Country</p>
@@ -39,18 +39,9 @@
             <p>@facility</p>
         }
     </article>
+    <section id="reviews">
 
-    <article class="property-view-reviews">
-        @foreach(var review in Model.ReviewCollection.Reviews)
-        {
-             <div class="single-review">
-            <div class="single-review-header">
-                <p>@review.Username</p> <p>@review.DateTime</p> <p class = 'review-rating'>@review.Rating</p>
-            </div>
-            <p class='review-content'> @review.Content</p>
-        </div>
-        }
-    </article>
+    </section>
 </section>
 
 @if (signInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.UserRoleName))
@@ -58,12 +49,13 @@
     <button id="show-review-btn">Write your review</button>
     <section class="create-review-box">
         <p>@userManager.GetUserName(this.User)</p>
-        <textarea data-property= "@Model.Id" placeholder="Add your review here"></textarea>
+        <textarea placeholder="Add your review here"></textarea>
         <label>Rate:</label>
         <input type="number" max=10, min=1 />
         <button>Send</button>
     </section>
-} else
+}
+else
 {
 }
 <script defer type='module' src=~/js/property/displayProperty.js></script>

@@ -9,6 +9,8 @@
     {
         public Task AddReview(ReviewInputModel model);
 
-        public ReviewListViewModel GetReviews(string propertyId);
+        public ReviewListViewModel GetReviews(string propertyId, string page);
+
+        public int Count(string propertyId);
     }
 }

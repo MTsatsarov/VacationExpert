@@ -9,6 +9,7 @@
     using VacationExpert.Data.Models;
     using VacationExpert.Services.Data.ReviewServices;
     using VacationExpert.Services.Models;
+    using VacationExpert.Web.ViewModels.ReviewViewModels;
 
     public class ReviewController : Controller
     {
@@ -19,6 +20,24 @@
         {
             this.reviewService = reviewService;
             this.userManager = userManager;
+        }
+
+        [HttpPost]
+        [Route("api/review/GetReviews")]
+        [IgnoreAntiforgeryToken]
+        public IActionResult GetReviews([FromBody] ReviewAjaxModel model)
+        {
+            var result = new ReviewListViewModel();
+            try
+            {
+                result = this.reviewService.GetReviews(model.PropertyId, model.Page);
+            }
+            catch (System.Exception)
+            {
+                return this.BadRequest();
+            }
+
+            return this.Json(result);
         }
 
         [HttpPost]
