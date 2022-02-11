@@ -1,7 +1,7 @@
 ﻿namespace VacationExpert.Web.Controllers
 {
     using System.Security.Claims;
-
+    using System.Threading.Tasks;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Common;
@@ -22,6 +22,13 @@
         {
             var result = this.propertyService.GetProperty(id);
             return this.View(result);
+        }
+
+        [Route("Property/Delete/id")]
+        public async Task<IActionResult> Delete(string owner, string id)
+        {
+            await this.propertyService.Delete(owner, id);
+            return this.Redirect("/");
         }
 
         [HttpGet]

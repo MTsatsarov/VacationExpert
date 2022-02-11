@@ -112,6 +112,15 @@
             await this.dbContext.SaveChangesAsync();
         }
 
+        public async Task Delete(string userId, string propertyId)
+        {
+            var property = this.dbContext.Properties.FirstOrDefault(x => x.Id == propertyId);
+            property.IsDeleted = true;
+            property.DeletedOn = DateTime.UtcNow;
+            this.dbContext.Properties.Update(property);
+            await this.dbContext.SaveChangesAsync();
+        }
+
         public PropertyListViewModel GetByUser(string userId, int page = 1)
         {
             var model = new PropertyListViewModel();
@@ -122,12 +131,13 @@
                 Id = x.Id,
                 Name = x.Name,
                 Rating = x.Rating,
-                Grade = x.Reviews.Average(x => x.Rating).ToString(),
+                Grade = x.Reviews.Average(x => x.Rating).ToString("F2"),
                 ReviewsCount = x.Reviews.Count,
+                UserId = userId,
             }).ToList();
 
             model.TotalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
-            if (page == 0 || page >model.TotalPages)
+            if (page == 0 || page > model.TotalPages)
             {
                 throw new InvalidOperationException("Invalid page");
             }
