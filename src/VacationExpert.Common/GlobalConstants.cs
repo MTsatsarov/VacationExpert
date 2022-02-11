@@ -15,5 +15,7 @@
         public const string FullscreenContent = "FullscreenContent";
 
         public const string ThumbnailContent = "ThumbnailContent";
+
+        public const int PropertiesPerPage = 10;
     }
 }

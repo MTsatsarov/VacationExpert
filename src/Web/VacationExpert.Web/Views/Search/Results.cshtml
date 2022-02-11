@@ -1,16 +1,19 @@
 ﻿@using VacationExpert.Web.ViewModels.PropertyViewModel
 @using VacationExpert.Data.Models.Enums
+
 @model PropertyListViewModel;
 
-<link rel="stylesheet" href="~/css/search/results.css">
-<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
-<link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
-<link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
 @{
     var properties = Model.Properties.ToList();
     this.ViewData["Title"] = $"Properties in {Model.Properties.Select(x => x.City.ToString()).First()}";
     var city = properties.Select(x => x.City).First();
 }
+
+<link rel="stylesheet" href="~/css/search/results.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
+
 <aside class="filter-wrapper">
     <h4>Filter By</h4>
     <hr />
@@ -18,42 +21,8 @@
     </article>
 </aside>
 <div>
-
-
     <a asp-action="Results" asp-route-id="@Model.PreviousPageNumber" asp-route-city="@city">Previous</a>
     <a asp-action="Results" asp-route-id="@Model.NextPageNumber" asp-route-city="@city">Next</a>
-    <section class='results-container'>
-        @foreach (var property in @properties)
-        {
-            <article class='single-result'>
-                <a href="/Property/DisplayProperty/@property.Id">
-                    <img src="/Image/GetThumbnail/@property.ImageId">
-                </a>
 
-                <div class="result-summary">
-                    <div class="result-header">
-                        <h3><a href="/Property/DisplayProperty/@property.Id">@property.Name</a></h3>
-                        <div>
-                            @for (int i = 0; i < @property.Rating; i++)
-                            {
-                                <i class="fas fa-star"></i>
-                            }
-                        </div>
-                    </div>
-                    <p class="fas fa-city city-p">  @property.City</p>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure placeat nostrum provident sunt nam deleniti ducimus voluptatem voluptate officiis consequatur, ea doloremque hic ab eius pariatur a officia ullam nesciunt aspernatur adipisci impedit repellat optio modi esse. Numquam, culpa. Consequatur, deserunt. Sunt neque quisquam qui! Aspernatur quam sunt culpa dolor.</p>
-                </div>
-                <div class="grade-box">
-                    <div>
-                        <strong>Wonderfull</strong>
-                        <p>Reviews: @property.Reviews</p>
-                    </div>
-                    <a href="/Property/DisplayProperty/@property.Id">@property.Grade</a>
-                </div>
-            </article>
-        }
-    </section>
+    <partial name="_PropertiesListPartial" />
 </div>
-<script>
-
-</script>

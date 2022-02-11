@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using VacationExpert.Common;
     using VacationExpert.Data;
     using VacationExpert.Data.Models.Enums;
     using VacationExpert.Services.Data.ImageService;
@@ -15,7 +15,6 @@
     {
         private readonly ApplicationDbContext dbContext;
         private readonly IImageService imageService;
-        private const int PropertiesPerPage = 10;
 
         public SearchService(ApplicationDbContext dbContext, IImageService imageService)
         {
@@ -29,7 +28,7 @@
             var list = new PropertyListViewModel();
             var city = (City)Enum.Parse(typeof(City), model.City);
             var properties = this.dbContext.Properties.Where(x => x.Address.City == city).ToList();
-            var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)PropertiesPerPage);
+            var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
 
             if (page > totalPages || page == 0)
             {
@@ -41,7 +40,7 @@
             list.CurrentPage = page;
             list.TotalPages = properties.Count();
 
-            foreach (var property in properties.Skip((page - 1) * PropertiesPerPage).Take(PropertiesPerPage))
+            foreach (var property in properties.Skip((page - 1) * GlobalConstants.PropertiesPerPage).Take(GlobalConstants.PropertiesPerPage))
             {
                 var currentModel = new PropertyInListViewModel
                 {
@@ -51,7 +50,7 @@
                     Rating = property.Rating,
                     ImageId = property.Images.Select(x => x.Id).First().ToString(),
                     Grade = property.Reviews.Average(x => x.Rating).ToString("F2"),
-                    Reviews = property.Reviews.Count(),
+                    ReviewsCount = property.Reviews.Count(),
                 };
                 propertiesModel.Add(currentModel);
             }

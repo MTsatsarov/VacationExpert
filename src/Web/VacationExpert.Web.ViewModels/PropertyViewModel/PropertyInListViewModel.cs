@@ -13,7 +13,7 @@
         public string ImageId { get; set; }
 
         public string Grade { get; set; }
-        public double Reviews { get; set; }
+        public double ReviewsCount { get; set; }
 
     }
 }

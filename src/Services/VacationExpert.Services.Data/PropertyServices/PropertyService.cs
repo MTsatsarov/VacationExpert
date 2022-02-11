@@ -4,7 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using VacationExpert.Common;
     using VacationExpert.Data;
     using VacationExpert.Data.Models;
     using VacationExpert.Data.Models.Enums;
@@ -112,6 +112,33 @@
             await this.dbContext.SaveChangesAsync();
         }
 
+        public PropertyListViewModel GetByUser(string userId, int page = 1)
+        {
+            var model = new PropertyListViewModel();
+            var properties = this.dbContext.Properties.Where(x => x.UserId == userId).Select(x => new PropertyInListViewModel()
+            {
+                City = x.Address.City.ToString(),
+                ImageId = x.Images.Select(x => x.Id).First().ToString(),
+                Id = x.Id,
+                Name = x.Name,
+                Rating = x.Rating,
+                Grade = x.Reviews.Average(x => x.Rating).ToString(),
+                ReviewsCount = x.Reviews.Count,
+            }).ToList();
+
+            model.TotalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
+            if (page == 0 || page >model.TotalPages)
+            {
+                throw new InvalidOperationException("Invalid page");
+            }
+            properties = properties.Skip((page - 1) * GlobalConstants.PropertiesPerPage).Take(GlobalConstants.PropertiesPerPage).ToList();
+            model.CurrentPage = page;
+
+            model.Properties = properties.ToList();
+
+            return model;
+        }
+
         public IEnumerable<T> GetLastFIve<T>()
         {
             throw new NotImplementedException();
@@ -119,6 +146,7 @@
 
         public PropertyViewModel GetProperty(string id)
         {
+
             var result = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
             var model = new PropertyViewModel();
             model.Id = result.Id;

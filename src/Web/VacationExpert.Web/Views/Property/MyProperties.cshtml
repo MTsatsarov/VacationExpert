@@ -1,0 +1,8 @@
+﻿  @using System.Security.Claims;
+
+@{
+    this.ViewData["Title"] = $"{this.User.FindFirst(ClaimTypes.Name)}";
+}
+
+
+<partial name="_PropertiesListPartial" />

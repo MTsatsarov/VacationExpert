@@ -9,5 +9,7 @@
         public IEnumerable<T> GetLastFIve<T>();
 
         public PropertyViewModel GetProperty(string id);
+
+        public PropertyListViewModel GetByUser(string userId,int page);
     }
 }

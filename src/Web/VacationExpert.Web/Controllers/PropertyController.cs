@@ -1,7 +1,12 @@
 ﻿namespace VacationExpert.Web.Controllers
 {
+    using System.Security.Claims;
+
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using VacationExpert.Common;
     using VacationExpert.Services.Data.PropertyServices;
+    using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class PropertyController : Controller
     {
@@ -17,6 +22,25 @@
         {
             var result = this.propertyService.GetProperty(id);
             return this.View(result);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = GlobalConstants.CreatorRoleName)]
+        [Route("Property/MyProperties/page")]
+        public IActionResult MyProperties(int id)
+        {
+            var properties = new PropertyListViewModel();
+            try
+            {
+                var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+                properties = this.propertyService.GetByUser(userId, id);
+            }
+            catch (System.Exception ex)
+            {
+                return this.BadRequest(ex);
+            }
+
+            return this.View(properties);
         }
     }
 }
