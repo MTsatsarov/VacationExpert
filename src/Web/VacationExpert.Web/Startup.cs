@@ -50,6 +50,12 @@
                         options.MinimumSameSitePolicy = SameSiteMode.None;
                     });
 
+            services.AddAuthentication().AddGoogle(googleOptions =>
+            {
+                googleOptions.ClientId = this.configuration["Google:Client"];
+                googleOptions.ClientSecret = this.configuration["Google:Secret"];
+            });
+
             services.AddControllersWithViews(
                 options =>
                     {
