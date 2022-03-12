@@ -10,7 +10,7 @@
 
 @{
     var properties = Model.Properties.ToList();
-    var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    //var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
     var creator = Model.Properties.Select(x => x.UserId).First();
 
 }
@@ -49,13 +49,13 @@
                 </div>
                 <a href="/Property/DisplayProperty/@property.Id">@property.Grade</a>
             </div>
-            @if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.CreatorRoleName) && @userId == @creator)
-            {
+            @*@if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.CreatorRoleName) && @userId == @creator)*@
+            @*{*@
                 <div>
                     <button>Edit</button>
-                    <a asp-controller="Property" asp-route-owner=@property.UserId asp-action="Delete" asp-route-id=@property.Id>Delete</a>
+                    <a asp-controller="Property"asp-action="Delete" asp-route-id=@property.Id>Delete</a>
                 </div>
-            }
+            @*}*@
         </article>
     }
 </section>

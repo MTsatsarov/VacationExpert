@@ -30,7 +30,7 @@
             var properties = this.dbContext.Properties.Where(x => x.Address.City == city).ToList();
             var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
 
-            if (page > totalPages || page == 0)
+            if (page == 0)
             {
                 throw new InvalidOperationException();
             }

@@ -40,8 +40,6 @@
         }
     </article>
     <section id="reviews">
-        @*TO DO *@
-        @*Remove reviews from model *@
     </section>
 </section>
 
@@ -58,5 +56,8 @@
 }
 else
 {
+    <p>Please login to see reviews</p>
+      <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
 }
-<script defer type='module' src=~/js/property/displayProperty.js></script>
+
+        <script type = "module" defer src="~/js/property/displayProperty.js"></script>

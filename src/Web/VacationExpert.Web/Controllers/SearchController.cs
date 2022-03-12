@@ -1,11 +1,13 @@
 ﻿namespace VacationExpert.Web.Controllers
 {
+    using System;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Data.SearchService;
     using VacationExpert.Services.Models;
+    using VacationExpert.Web.ViewModels;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class SearchController : Controller
@@ -27,13 +29,15 @@
             try
             {
                  result = await this.searchService.GetResults(model, id);
-
             }
-            catch (System.Exception)
+            catch (Exception e)
             {
-
-                return this.BadRequest();
+                return this.View("Error", new ErrorViewModel()
+                {
+                    RequestId = e.Message,
+                });
             }
+
             return this.View(result);
         }
 

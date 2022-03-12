@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Common;
     using VacationExpert.Services.Data.PropertyServices;
+    using VacationExpert.Web.ViewModels;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public class PropertyController : Controller
@@ -44,7 +45,10 @@
             }
             catch (System.Exception ex)
             {
-                return this.BadRequest(ex);
+                return this.View("Error", new ErrorViewModel()
+                {
+                    RequestId = ex.Message,
+                });
             }
 
             return this.View(properties);

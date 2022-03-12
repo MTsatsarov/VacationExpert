@@ -136,6 +136,11 @@
                 UserId = userId,
             }).ToList();
 
+            if (properties.Count == 0)
+            {
+                throw new InvalidOperationException("Sorry you haven't create any properties.");
+            }
+
             model.TotalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
             if (page == 0 || page > model.TotalPages)
             {
