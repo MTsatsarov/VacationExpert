@@ -30,9 +30,14 @@
             var properties = this.dbContext.Properties.Where(x => x.Address.City == city).ToList();
             var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
 
+            if (properties.Count == 0)
+            {
+                throw new InvalidOperationException("Sorry no properties found for this city");
+            }
+
             if (page == 0)
             {
-                throw new InvalidOperationException();
+                throw new InvalidOperationException("Invalid page");
             }
 
             var propertiesModel = new List<PropertyInListViewModel>();
