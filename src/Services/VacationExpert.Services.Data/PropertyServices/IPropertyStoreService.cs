@@ -7,7 +7,6 @@ namespace VacationExpert.Services.Data.PropertyServices
 
     public interface IPropertyStoreService
     {
-
         public Task Create(CreatePropertyInputModel model);
 
         public void AddAddress(CreatePropertyInputModel model, Property inputModel);

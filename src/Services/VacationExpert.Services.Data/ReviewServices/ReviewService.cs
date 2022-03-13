@@ -44,7 +44,7 @@
             var currentPage = int.Parse(page);
             model.TotalPages = (int)Math.Ceiling((double)this.Count(propertyId) / (double)ReviewsPerPage);
 
-            if (currentPage <= 0 || currentPage > model.TotalPages)
+            if (currentPage <= 0)
             {
                 throw new InvalidOperationException("Invalid page");
             }

@@ -43,6 +43,42 @@
     </section>
 </section>
 
+<secton>
+    <table>
+        <thead>
+        </thead>
+        <tbody>
+            @foreach (var room in Model.Rooms)
+            {
+                <tr>
+                    <td>
+                        @room.Type
+                    </td>
+                    <td>
+                        @room.SmokingPolicy
+                    </td>
+                    <td>
+                        @room.GuestCount
+                    </td>
+                    <td>
+                        @room.RoomCount
+                    </td>
+                </tr>
+                @foreach (var bed in @room.Beds)
+               {
+                   <tr>
+                       <td>
+                           @bed.Count
+                       </td>
+                        <td>
+                           @bed.Type
+                       </td>
+                   </tr>
+               }
+            }
+        </tbody>
+    </table>
+</secton>
 @if (signInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.UserRoleName))
 {
     <button id="show-review-btn">Write your review</button>
@@ -57,7 +93,7 @@
 else
 {
     <p>Please login to see reviews</p>
-      <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
 }
 
-        <script type = "module" defer src="~/js/property/displayProperty.js"></script>
+<script type="module" defer src="~/js/property/displayProperty.js"></script>

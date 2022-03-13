@@ -11,8 +11,10 @@
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Services.Data.ReviewServices;
     using VacationExpert.Services.Models;
+    using VacationExpert.Web.ViewModels.BedModels;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
     using VacationExpert.Web.ViewModels.ReviewViewModels;
+    using VacationExpert.Web.ViewModels.RoomViewModels;
 
     public class PropertyService : IPropertyService, IPropertyStoreService
     {
@@ -146,6 +148,7 @@
             {
                 throw new InvalidOperationException("Invalid page");
             }
+
             properties = properties.Skip((page - 1) * GlobalConstants.PropertiesPerPage).Take(GlobalConstants.PropertiesPerPage).ToList();
             model.CurrentPage = page;
 
@@ -162,23 +165,48 @@
         public PropertyViewModel GetProperty(string id)
         {
 
-            var result = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
-            var model = new PropertyViewModel();
-            model.Id = result.Id;
-            model.Name = result.Name;
-            model.Address = new PropertyAddressViewModel
+            var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
+            var viewModel = new PropertyViewModel();
+            viewModel.Id = property.Id;
+            viewModel.Name = property.Name;
+            viewModel.Address = new PropertyAddressViewModel
             {
-                Street = result.Address.StreetAddress,
-                City = result.Address.City.ToString(),
-                Country = result.Address.Country.ToString(),
-                Grade = result.Reviews.Count > 0 ? ((double)Math.Round(result.Reviews.Average(x => x.Rating), 2)) : (double)(0.0),
+                Street = property.Address.StreetAddress,
+                City = property.Address.City.ToString(),
+                Country = property.Address.Country.ToString(),
+                Grade = property.Reviews.Count > 0 ? ((double)Math.Round(property.Reviews.Average(x => x.Rating), 2)) : (double)0.0,
             };
-            var a = result.Reviews;
-            model.ReviewCollection = this.reviewService.GetReviews(id, "1");
-            model.Facilities = result.Facility.Services.Select(x => x.Name).ToList();
-            model.Images = this.imageService.GetAllImages(result.Id).ToList();
 
-            return model;
+            foreach (var room in property.Rooms)
+            {
+                var currentRoom = new RoomViewModel()
+                {
+                    SmokingPolicy = room.SmookingPolicy,
+                    Size = room.Size,
+                    Type = room.Type,
+                    RoomCount = room.RoomCount,
+                    GuestCount = room.TotalGuestsCount,
+                };
+
+                foreach (var bed in room.Beds)
+                {
+                    var currentBed = new BedViewModel()
+                    {
+                        Type = bed.Type,
+                        Count = bed.Count,
+                    };
+                    currentRoom.Beds.Add(currentBed);
+                }
+
+                viewModel.Rooms.Add(currentRoom);
+            }
+
+            var a = property.Reviews;
+            viewModel.ReviewCollection = this.reviewService.GetReviews(id, "1");
+            viewModel.Facilities = property.Facility.Services.Select(x => x.Name).ToList();
+            viewModel.Images = this.imageService.GetAllImages(property.Id).ToList();
+
+            return viewModel;
         }
 
         private async Task AddImages(CreatePropertyInputModel model, Property inputModel)

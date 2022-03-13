@@ -2,10 +2,12 @@
 {
     using System.Security.Claims;
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Common;
     using VacationExpert.Services.Data.PropertyServices;
+    using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 

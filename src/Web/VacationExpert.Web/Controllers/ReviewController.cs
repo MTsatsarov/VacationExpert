@@ -32,9 +32,9 @@
             {
                 result = this.reviewService.GetReviews(model.PropertyId, model.Page);
             }
-            catch (System.Exception)
+            catch (System.Exception e)
             {
-                return this.BadRequest();
+                return this.Json(e.Message);
             }
 
             return this.Json(result);

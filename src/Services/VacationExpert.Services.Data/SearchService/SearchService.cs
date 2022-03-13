@@ -27,7 +27,7 @@
 
             var list = new PropertyListViewModel();
             var city = (City)Enum.Parse(typeof(City), model.City);
-            var properties = this.dbContext.Properties.Where(x => x.Address.City == city).ToList();
+            var properties = this.dbContext.Properties.Where(x => x.Address.City == city).Skip((page - 1) * GlobalConstants.PropertiesPerPage).Take(GlobalConstants.PropertiesPerPage).ToList();
             var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
 
             if (properties.Count == 0)
@@ -45,18 +45,24 @@
             list.CurrentPage = page;
             list.TotalPages = properties.Count();
 
-            foreach (var property in properties.Skip((page - 1) * GlobalConstants.PropertiesPerPage).Take(GlobalConstants.PropertiesPerPage))
+            foreach (var property in properties)
             {
-                var currentModel = new PropertyInListViewModel
+                var currentModel = new PropertyInListViewModel();
+                currentModel.Id = property.Id;
+                currentModel.Name = property.Name;
+                currentModel.City = property.Address.City.ToString();
+                currentModel.Rating = property.Rating;
+                currentModel.ImageId = property.Images.Select(x => x.Id).First().ToString();
+                if (property.Reviews.Count > 0)
                 {
-                    Id = property.Id,
-                    Name = property.Name,
-                    City = property.Address.City.ToString(),
-                    Rating = property.Rating,
-                    ImageId = property.Images.Select(x => x.Id).First().ToString(),
-                    Grade = property.Reviews.Average(x => x.Rating).ToString("F2"),
-                    ReviewsCount = property.Reviews.Count(),
-                };
+                    currentModel.Grade = property.Reviews.Average(x => x.Rating).ToString("F2") ?? "0";
+                }
+                else
+                {
+                    currentModel.Grade = "0";
+                }
+
+                currentModel.ReviewsCount = property.Reviews.Count();
                 propertiesModel.Add(currentModel);
             }
 
