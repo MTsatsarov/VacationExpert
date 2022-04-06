@@ -2,16 +2,19 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+    using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 
     public interface IPropertyService
     {
-        public IEnumerable<T> GetLastFIve<T>();
+        public ICollection<LastFiveProperties> GetLastFIve();
 
         public PropertyViewModel GetProperty(string id);
 
-        public PropertyListViewModel GetByUser(string userId,int page);
-        public Task Delete(string userId, string propertyId);
+        public CreatePropertyInputModel GetUpdateModel(string id);
 
+        public PropertyListViewModel GetByUser(string userId, int page);
+
+        public Task Delete(string userId, string propertyId);
     }
 }

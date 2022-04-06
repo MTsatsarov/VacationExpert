@@ -3,10 +3,15 @@
     using VacationExpert.Data.Models;
     using VacationExpert.Services.Mapping;
 
-    public class LastFiveProperties : IMapFrom<Property>
+    public class LastFiveProperties
     {
+
+        public string Id { get; set; }
+
         public string CityName { get; set; }
 
-        public int PropertiesCount { get; set; }
+        public string Name { get; set; }
+
+        public byte[] Image { get; set; }
     }
 }

@@ -52,7 +52,7 @@
             @*@if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.CreatorRoleName) && @userId == @creator)*@
             @*{*@
                 <div>
-                    <button>Edit</button>
+                    <a asp-controller="Property" asp-action="Edit" asp-route-id="@property.Id">Edit</a>
                     <a asp-controller="Property"asp-action="Delete" asp-route-id=@property.Id>Delete</a>
                 </div>
             @*}*@

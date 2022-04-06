@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using VacationExpert.Common;
     using VacationExpert.Data;
     using VacationExpert.Data.Models;
@@ -157,9 +158,15 @@
             return model;
         }
 
-        public IEnumerable<T> GetLastFIve<T>()
+        public ICollection<LastFiveProperties> GetLastFIve()
         {
-            throw new NotImplementedException();
+            return this.dbContext.Properties.OrderByDescending(x => x.CreatedOn).Take(5).Select(x => new LastFiveProperties()
+            {
+                CityName = x.Address.City.ToString(),
+                Image = x.Images.Select(x => x.FullScreenContent).FirstOrDefault(),
+                Id = x.Id,
+                Name = x.Name,
+            }).ToList();
         }
 
         public PropertyViewModel GetProperty(string id)
@@ -207,6 +214,42 @@
             viewModel.Images = this.imageService.GetAllImages(property.Id).ToList();
 
             return viewModel;
+        }
+
+        public CreatePropertyInputModel GetUpdateModel(string id)
+        {
+            var model = new CreatePropertyInputModel();
+            var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
+
+
+            model.UserId = property.UserId;
+            model.Name = property.Name;
+            model.Rating = (Rating)Enum.Parse(typeof(Rating), property.Rating.ToString());
+            model.Contact = new ContactInputModel()
+            {
+                ContactName = property.Contact.Name,
+                Phone = property.Contact.Phone,
+                AdditionalPhone = property.Contact.AdditionalPhone,
+            };
+            model.Address = new AddressInputModel()
+            {
+                City = property.Address.City.ToString(),
+                Country = property.Address.Country.ToString(),
+                StreetAddress = property.Address.StreetAddress.ToString(),
+                ZipCode = property.Address.ZipCode.ToString(),
+            };
+            model.Facilities = new FacilityInputModel()
+            {
+                Breakfast = property.Facility.Breakfast.ToString(),
+                Language = property.Facility.Languages.ToString(),
+                Parking = property.Facility.Parking.ToString(),
+                Services = property.Facility.Services.Select(y => new ServicesInputModel()
+                {
+                    Name = y.Name,
+                    Selected = true,
+                }).ToList(),
+            };
+            return model;
         }
 
         private async Task AddImages(CreatePropertyInputModel model, Property inputModel)

@@ -65,16 +65,16 @@
                     </td>
                 </tr>
                 @foreach (var bed in @room.Beds)
-               {
-                   <tr>
-                       <td>
-                           @bed.Count
-                       </td>
+                {
+                    <tr>
                         <td>
-                           @bed.Type
-                       </td>
-                   </tr>
-               }
+                            @bed.Count
+                        </td>
+                        <td>
+                            @bed.Type
+                        </td>
+                    </tr>
+                }
             }
         </tbody>
     </table>

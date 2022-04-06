@@ -4,7 +4,7 @@
 
     public class BedViewModel
     {
-        public BedType Type{ get; set; }
+        public BedType Type { get; set; }
 
         public int Count { get; set; }
     }

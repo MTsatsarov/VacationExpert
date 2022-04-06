@@ -18,7 +18,7 @@
         private readonly Microsoft.AspNetCore.Identity.UserManager<ApplicationUser> userManager;
         private readonly IPropertyStoreService storeProeprtyService;
 
-        public CreateController(IPropertyService propertyService, UserManager<ApplicationUser> userManager,IPropertyStoreService storeProeprtyService)
+        public CreateController(IPropertyService propertyService, UserManager<ApplicationUser> userManager, IPropertyStoreService storeProeprtyService)
         {
             this.propertyService = propertyService;
             this.userManager = userManager;
@@ -33,7 +33,7 @@
 
         [HttpPost]
         [RequestSizeLimit(120 * 1024 * 1024)]
-  
+
         public async Task<IActionResult> Index(CreatePropertyInputModel model)
         {
             model.UserId = this.userManager.GetUserId(this.User);

@@ -18,6 +18,5 @@
         public bool HasPreviousPage => this.CurrentPage > 1;
 
         public int CurrentPage { get; set; }
-
     }
 }

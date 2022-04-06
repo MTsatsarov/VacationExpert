@@ -24,7 +24,7 @@
         private readonly ILogger<LoginModel> logger;
 
         public LoginModel(
-            SignInManager<ApplicationUser> signInManager, 
+            SignInManager<ApplicationUser> signInManager,
             ILogger<LoginModel> logger,
             UserManager<ApplicationUser> userManager)
         {
@@ -79,7 +79,7 @@
             returnUrl ??= this.Url.Content("~/");
 
             this.ExternalLogins = (await this._signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
-        
+
             if (this.ModelState.IsValid)
             {
                 // This doesn't count login failures towards account lockout

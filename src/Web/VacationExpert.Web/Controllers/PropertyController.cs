@@ -36,6 +36,18 @@
 
         [HttpGet]
         [Authorize(Roles = GlobalConstants.CreatorRoleName)]
+        [Route("Property/edit/id")] 
+        public IActionResult Edit(string id)
+        {
+            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            var model = this.propertyService.GetUpdateModel(id);
+            this.ViewData["Property"] = model;
+            return this.View();
+
+        }
+
+        [HttpGet]
+        [Authorize(Roles = GlobalConstants.CreatorRoleName)]
         [Route("Property/MyProperties/page")]
         public IActionResult MyProperties(int id)
         {

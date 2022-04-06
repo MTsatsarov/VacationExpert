@@ -2,6 +2,7 @@
 namespace VacationExpert.Services.Data.PropertyServices
 {
     using System.Threading.Tasks;
+
     using VacationExpert.Data.Models;
     using VacationExpert.Services.Models;
 

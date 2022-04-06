@@ -11,10 +11,11 @@
         public int Rating { get; set; }
 
         public string ImageId { get; set; }
+
         public string UserId { get; set; }
 
         public string Grade { get; set; }
-        public double ReviewsCount { get; set; }
 
+        public double ReviewsCount { get; set; }
     }
 }

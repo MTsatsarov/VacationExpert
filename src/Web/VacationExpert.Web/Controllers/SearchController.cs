@@ -28,7 +28,7 @@
             var result = new PropertyListViewModel();
             try
             {
-                 result = await this.searchService.GetResults(model, id);
+                result = await this.searchService.GetResults(model, id);
             }
             catch (Exception e)
             {

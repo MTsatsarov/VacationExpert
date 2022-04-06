@@ -1,14 +1,15 @@
-﻿@using VacationExpert.Data.Models.Enums
-@using VacationExpert.Services.Models
-@model CreatePropertyInputModel
-<link rel="stylesheet" href="~/css/create/index.css" />
-
+﻿@using VacationExpert.Services.Models
+@using VacationExpert.Data.Models.Enums
+@using VacationExpert.Web.ViewModels.PropertyViewModel
+@model PropertyUpdateModel
 @{
+    CreatePropertyInputModel property = (CreatePropertyInputModel)(this.ViewData["Property"]);
     var services = Enum.GetNames<Service>().ToList();
-    var roomsCount = 1;
-    var bedsCount = 1;
+    var languages = Enum.GetNames<Language>().ToList();
+    var countries = Enum.GetNames<Country>().ToList();
+    var cities = Enum.GetNames<City>().ToList();
 }
-
+<link rel="stylesheet" href="~/css/create/index.css" />
 <section class="create">
     <partial name="_CreateNav" />
     <form method="post" asp-controller="create" asp-action="index" enctype="multipart/form-data">
@@ -18,7 +19,7 @@
             <article class="main-property-details">
                 <h4>Name and rating</h4>
 
-                <input placeholder='Enter the name of your property' asp-for=Name />
+                <input placeholder='Enter the name of your property' asp-for=Name value=@property.Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <div>
                     <label>Your star rating</label>
@@ -46,22 +47,47 @@
 
             <article class="secondary-basic-details">
                 <h4>Property Address</h4>
-                <textarea placeholder="Street address" asp-for=Address.StreetAddress></textarea>
+                <textarea placeholder="Street address" value="@property.Address.StreetAddress" asp-for=Address.StreetAddress></textarea>
                 <label asp-for="Address.Country"></label>
-                <select class="form-control" asp-for="Address.Country" asp-items="@Html.GetEnumSelectList<Country>()"></select>
+                <select class="form-control" asp-for="Address.Country">
+                    @for (var i = 0; i < countries.Count; i++)
+                    {
+                        @if (@property.Address.Country == countries[i])
+                        {
+                            <option selected>@countries[i]</option>
+                        }
+                        else
+                        {
+                            <option>@countries[i]</option>
+                        }
+                    }
+
+                </select>
 
                 <label asp-for="Address.City">City</label>
-                <select class="form-control" asp-for="Address.City" asp-items="@Html.GetEnumSelectList<City>()"></select>
+                <select class="form-control" asp-for="Address.City">
+                    @for (var i = 0; i < @cities.Count; i++)
+                    {
+                        @if (@property.Address.City == @cities[i])
+                        {
+                            <option selected>@cities[i]</option>
+                        }
+                        else
+                        {
+                            <option>@cities[i]</option>
+                        }
+                    }
+                </select>
 
                 <label asp-for="Address.ZipCode">Zip code</label>
-                <input type="text" asp-for="Address.ZipCode" />
+                @*<input type="text" asp-for="Address.ZipCode" value="@property.Address.ZipCode" />*@
             </article>
         </section>
 
         <section class="layout-pricing">
             <h3>Layout & Pricing</h3>
 
-            @for (int i = 0; i < @roomsCount; i++)
+            @for (int i = 0; i < 1; i++)
             {
                 <article class="type-smoking" asp-for="Rooms">
                     <label asp-for="Rooms[i].Type">Room type</label>
@@ -73,7 +99,7 @@
                     <label asp-for="Rooms[i].RoomCount">Number of rooms (this type)</label>
                     <input min="1" asp-for="Rooms[i].RoomCount" type="number" />
                 </article>
-                @for (int j = 0; j < @bedsCount; j++)
+                @for (int j = 0; j < 1; j++)
                 {
                     <article class="bed-options-wrapper">
                         <h5>Bed options</h5>
@@ -98,7 +124,7 @@
             }
 
             <section>
-                <button type="button" >AddRoom</button>
+                <button type="button">AddRoom</button>
             </section>
 
         </section>
@@ -115,7 +141,19 @@
                 </div>
                 <div>
                     <h5>Languages</h5>
-                    <select class="form-control" asp-for="Facilities.Language" asp-items="@Html.GetEnumSelectList<Language>()"></select>
+                    <select class="form-control" asp-for="Facilities.Language">
+                        @for (var i = 0; i < @languages.Count; i++)
+                        {
+                            @if (@property.Facilities.Language == @languages[i])
+                            {
+                                <option selected>@languages[i]</option>
+                            }
+                            else
+                            {
+                                <option>@languages[i]</option>
+                            }
+                        }
+                    </select>
                 </div>
             </article>
 
@@ -126,9 +164,19 @@
                     @for (int i = 0; i < @services.Count(); i++)
                     {
                         <div class='single-facility'>
-                            <input asp-for=@Model.Facilities.Services[i].Selected type="checkbox" />
-                            <input asp-for=@Model.Facilities.Services[i].Name value=@services[i] type="hidden" />
-                            <label asp-for=Facilities.Services[i]>@services[i]</label>
+                            @if (@property.Facilities.Services.First(x=>x.Name==@services[i]).Selected==true)
+                            {
+                                <input asp-for=@Model.Facilities.Services[i].Selected type="checkbox" checked />
+                                <input asp-for=@Model.Facilities.Services[i].Name value=@services[i] type="hidden" />
+                                <label asp-for=Facilities.Services[i]>@services[i]</label>
+                            }
+                            else
+                            {
+                                <input asp-for=@Model.Facilities.Services[i].Selected type="checkbox" />
+                                <input asp-for=@Model.Facilities.Services[i].Name value=@services[i] type="hidden" />
+                                <label asp-for=Facilities.Services[i]>@services[i]</label>
+                            }
+
                         </div>
                     }
                 </div>
@@ -144,7 +192,7 @@
             <div id="photo-box">
                 <div>
                     <h6>Upload at least 1 photo</h6>
-                    <input asp-for="Images" name="images" id="photo-uploader" type="file" multiple />
+                    @*<input asp-for="Images" name="images" id="photo-uploader" type="file" multiple />*@
                 </div>
                 <article id="uploaded-photo-gallery">
                 </article>
