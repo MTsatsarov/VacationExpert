@@ -6,6 +6,7 @@
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using VacationExpert.Common;
+    using VacationExpert.Services.Data.PropertyService.Services;
     using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels;
@@ -14,10 +15,12 @@
     public class PropertyController : Controller
     {
         private readonly IPropertyService propertyService;
+        private readonly IPropertyServices services;
 
-        public PropertyController(IPropertyService propertyService)
+        public PropertyController(IPropertyService propertyService, IPropertyServices services)
         {
             this.propertyService = propertyService;
+            this.services = services;
         }
 
         [HttpGet]
@@ -42,6 +45,7 @@
             var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
             var model = this.propertyService.GetUpdateModel(id);
             this.ViewData["Property"] = model;
+            this.ViewData["Services"] = this.services.GetServices();
             return this.View();
 
         }

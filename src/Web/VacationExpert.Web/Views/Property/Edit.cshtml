@@ -4,10 +4,11 @@
 @model PropertyUpdateModel
 @{
     CreatePropertyInputModel property = (CreatePropertyInputModel)(this.ViewData["Property"]);
-    var services = Enum.GetNames<Service>().ToList();
+    List<string> services = (List<string>)(this.ViewData["Services"]);
     var languages = Enum.GetNames<Language>().ToList();
     var countries = Enum.GetNames<Country>().ToList();
     var cities = Enum.GetNames<City>().ToList();
+    var rating = Enum.GetNames<Rating>().ToList();
 }
 <link rel="stylesheet" href="~/css/create/index.css" />
 <section class="create">
@@ -23,7 +24,19 @@
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <div>
                     <label>Your star rating</label>
-                    <select asp-for=Rating asp-items="@Html.GetEnumSelectList<Rating>()"></select>
+                    <select asp-for=Rating >
+                         @for (var i = 0; i < @rating.Count; i++)
+                    {
+                        @if (@property.Rating.ToString() == @rating[i])
+                        {
+                            <option selected >@property.Rating</option>
+                        }
+                        else
+                        {
+                            <option>@rating[i]</option>
+                        }
+                    }
+                    </select>
                 </div>
             </article>
 
@@ -31,23 +44,23 @@
                 <h4>Contact detail for this property</h4>
                 <div class="contact-name">
                     <label>Contract name</label>
-                    <input type="text" asp-for=Contact.ContactName />
+                    <input type="text" asp-for=Contact.ContactName value=@property.Contact.ContactName/>
                 </div>
                 <div class="phone-info">
                     <div>
                         <label>Phone Number</label>
-                        <input type="tel" asp-for=Contact.Phone />
+                        <input type="tel" asp-for=Contact.Phone value=@property.Contact.Phone />
                     </div>
                     <div>
                         <label>Alternative phone number (otional)</label>
-                        <input type="tel" asp-for=Contact.AdditionalPhone />
+                        <input type="tel" asp-for=Contact.AdditionalPhone value=@property.Contact.AdditionalPhone />
                     </div>
                 </div>
             </article>
 
             <article class="secondary-basic-details">
                 <h4>Property Address</h4>
-                <textarea placeholder="Street address" value="@property.Address.StreetAddress" asp-for=Address.StreetAddress></textarea>
+                <textarea placeholder="Street address" asp-for=Address.StreetAddress>@property.Address.StreetAddress</textarea>
                 <label asp-for="Address.Country"></label>
                 <select class="form-control" asp-for="Address.Country">
                     @for (var i = 0; i < countries.Count; i++)
@@ -80,7 +93,7 @@
                 </select>
 
                 <label asp-for="Address.ZipCode">Zip code</label>
-                @*<input type="text" asp-for="Address.ZipCode" value="@property.Address.ZipCode" />*@
+                <input type="text" asp-for="Address.ZipCode" value="@property.Address.ZipCode" />
             </article>
         </section>
 
@@ -164,7 +177,7 @@
                     @for (int i = 0; i < @services.Count(); i++)
                     {
                         <div class='single-facility'>
-                            @if (@property.Facilities.Services.First(x=>x.Name==@services[i]).Selected==true)
+                            @if (@property.Facilities.Services.Any(x=>x.Name==@services[i]))
                             {
                                 <input asp-for=@Model.Facilities.Services[i].Selected type="checkbox" checked />
                                 <input asp-for=@Model.Facilities.Services[i].Name value=@services[i] type="hidden" />

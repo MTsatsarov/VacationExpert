@@ -14,7 +14,6 @@
     using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels.BedModels;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
-    using VacationExpert.Web.ViewModels.ReviewViewModels;
     using VacationExpert.Web.ViewModels.RoomViewModels;
 
     public class PropertyService : IPropertyService, IPropertyStoreService
@@ -249,6 +248,7 @@
                     Selected = true,
                 }).ToList(),
             };
+
             return model;
         }
 
