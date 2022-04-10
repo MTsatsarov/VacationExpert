@@ -10,7 +10,6 @@
 
 @{
     var properties = Model.Properties.ToList();
-    //var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
     var creator = Model.Properties.Select(x => x.UserId).First();
 
 }
@@ -47,7 +46,13 @@
                     <strong>Wonderfull</strong>
                     <p>Reviews: @property.ReviewsCount</p>
                 </div>
+                @if(@property.Grade== null) {
+                <a href="/Property/DisplayProperty/@property.Id">0</a>
+                }
+                else {
                 <a href="/Property/DisplayProperty/@property.Id">@property.Grade</a>
+
+                }
             </div>
             @*@if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.CreatorRoleName) && @userId == @creator)*@
             @*{*@
