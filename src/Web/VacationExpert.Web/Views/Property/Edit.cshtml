@@ -9,11 +9,15 @@
     var countries = Enum.GetNames<Country>().ToList();
     var cities = Enum.GetNames<City>().ToList();
     var rating = Enum.GetNames<Rating>().ToList();
+    var roomType = Enum.GetNames<RoomType>().ToList();
+    var smokingPolicy = Enum.GetNames<SmokingPolicy>().ToList();
+    var bedsType = Enum.GetNames<BedType>().ToList();
+    var bedsCount = Enum.GetNames<BedCount>().ToList();
 }
 <link rel="stylesheet" href="~/css/create/index.css" />
 <section class="create">
     <partial name="_CreateNav" />
-    <form method="post" asp-controller="create" asp-action="index" enctype="multipart/form-data">
+    <form method="post" asp-controller="Property" asp-action="Edit" asp-route-id="@property.Id" enctype="multipart/form-data">
         <div asp-validation-summary="All" class="text-danger"></div>
         <section class="basic-info">
             <h3>Basic info</h3>
@@ -24,18 +28,18 @@
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <div>
                     <label>Your star rating</label>
-                    <select asp-for=Rating >
-                         @for (var i = 0; i < @rating.Count; i++)
-                    {
-                        @if (@property.Rating.ToString() == @rating[i])
+                    <select asp-for=Rating>
+                        @for (var i = 0; i < @rating.Count; i++)
                         {
-                            <option selected >@property.Rating</option>
+                            @if (@property.Rating.ToString() == @rating[i])
+                            {
+                                <option selected>@property.Rating</option>
+                            }
+                            else
+                            {
+                                <option>@rating[i]</option>
+                            }
                         }
-                        else
-                        {
-                            <option>@rating[i]</option>
-                        }
-                    }
                     </select>
                 </div>
             </article>
@@ -44,7 +48,7 @@
                 <h4>Contact detail for this property</h4>
                 <div class="contact-name">
                     <label>Contract name</label>
-                    <input type="text" asp-for=Contact.ContactName value=@property.Contact.ContactName/>
+                    <input type="text" asp-for=Contact.ContactName value=@property.Contact.ContactName />
                 </div>
                 <div class="phone-info">
                     <div>
@@ -60,7 +64,7 @@
 
             <article class="secondary-basic-details">
                 <h4>Property Address</h4>
-                <textarea placeholder="Street address" asp-for=Address.StreetAddress>@property.Address.StreetAddress</textarea>
+                <textarea placeholder="Street address" asp-for="Address.StreetAddress">@property.Address.StreetAddress</textarea>
                 <label asp-for="Address.Country"></label>
                 <select class="form-control" asp-for="Address.Country">
                     @for (var i = 0; i < countries.Count; i++)
@@ -100,31 +104,83 @@
         <section class="layout-pricing">
             <h3>Layout & Pricing</h3>
 
-            @for (int i = 0; i < 1; i++)
+            @for (int i = 0; i < @property.Rooms.Count(); i++)
             {
                 <article class="type-smoking" asp-for="Rooms">
+                    <h3>Rooms</h3>
                     <label asp-for="Rooms[i].Type">Room type</label>
-                    <select asp-for="Rooms[i].Type" asp-items="@Html.GetEnumSelectList<RoomType>()"></select>
+                    <select asp-for="Rooms[i].Type">
+                        @foreach (string room in roomType)
+                        {
+                            if (@property.Rooms.Any(x => x.Type.ToString() == @room))
+                            {
+                                <option selected>@room</option>
+                            }
+                            else
+                            {
+                                <option>@room</option>
+
+                            }
+                        }
+                    </select>
 
                     <label asp-for="Rooms[i].SmokingPolicy">Smoking policy</label>
-                    <select asp-for="Rooms[i].SmokingPolicy" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
+                    <select asp-for="Rooms[i].SmokingPolicy">
+                        @foreach (string smokingPolict in @smokingPolicy)
+                        {
+                            if (@property.Rooms.Any(x => x.SmokingPolicy.ToString() == @smokingPolict))
+                            {
+                                <option selected>@smokingPolict</option>
+                            }
+                            else
+                            {
+                                <option>@smokingPolict</option>
+
+                            }
+                        }
+                    </select>
 
                     <label asp-for="Rooms[i].RoomCount">Number of rooms (this type)</label>
-                    <input min="1" asp-for="Rooms[i].RoomCount" type="number" />
+                    <input min="1" asp-for="Rooms[i].RoomCount" type="number" value=@property.Rooms[i].RoomCount />
                 </article>
                 @for (int j = 0; j < 1; j++)
                 {
                     <article class="bed-options-wrapper">
                         <h5>Bed options</h5>
                         <div>
-                            <select asp-for="Rooms[i].Beds[j].Type" asp-items="@Html.GetEnumSelectList<BedType>();"></select>
-                            <select asp-for="Rooms[i].Beds[j].Count" asp-items="@Html.GetEnumSelectList<BedCount>()"></select>
+                            <select asp-for="Rooms[i].Beds[j].Type">
+                                @foreach (string bedType in @bedsType)
+                                {
+                                    if (@property.Rooms[i].Beds[j].Type == @bedType.ToString())
+                                    {
+                                        <option selected>@bedType</option>
+                                    }
+                                    else
+                                    {
+                                        <option>@bedType</option>
+                                    }
+                                }
+                            </select>
+                            <select asp-for="Rooms[i].Beds[j].Count">
+                                @foreach (string bedCount in @bedsCount)
+                                {
+                                    if (@property.Rooms[i].Beds[j].Count.ToString() ==@bedCount)
+                                    {
+                                        <option selected>@bedCount</option>
+                                    }
+                                    else
+                                    {
+                                        <option>@bedCount</option>
+
+                                    }
+                                }
+                            </select>
                         </div>
                         <button type='button' id='addBed'>Add another bed</button>
 
                         <div class="guests-number-room">
                             <label asp-for="Rooms[i].GuestsCount">How many guests can stay in the room ?</label>
-                            <input min="1" asp-for="Rooms[i].GuestsCount" type="number" />
+                            <input min="1" asp-for="Rooms[i].GuestsCount" type="number" value=@property.Rooms[i].GuestsCount />
                         </div>
                     </article>
                 }
@@ -132,7 +188,7 @@
                     <label>
                         Room Size (optional, quare meteres)
                     </label>
-                    <input type="number" asp-for=Rooms[i] min="0" />
+                    <input type="number" asp-for=Rooms[i] min="0" value=@property.Rooms[i].RoomSize />
                 </div>
             }
 
@@ -177,7 +233,7 @@
                     @for (int i = 0; i < @services.Count(); i++)
                     {
                         <div class='single-facility'>
-                            @if (@property.Facilities.Services.Any(x=>x.Name==@services[i]))
+                            @if (@property.Facilities.Services.Any(x => x.Name == @services[i]))
                             {
                                 <input asp-for=@Model.Facilities.Services[i].Selected type="checkbox" checked />
                                 <input asp-for=@Model.Facilities.Services[i].Name value=@services[i] type="hidden" />
@@ -212,6 +268,7 @@
             </div>
         </section>
         <button>SUBMIT</button>
+
     </form>
     <partial name="_CreateNav" />
 </section>

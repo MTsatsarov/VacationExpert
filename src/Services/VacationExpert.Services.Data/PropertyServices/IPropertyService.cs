@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Threading.Tasks;
+
     using VacationExpert.Services.Models;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
 
@@ -16,5 +17,7 @@
         public PropertyListViewModel GetByUser(string userId, int page);
 
         public Task Delete(string userId, string propertyId);
+
+        public Task Update(CreatePropertyInputModel model);
     }
 }

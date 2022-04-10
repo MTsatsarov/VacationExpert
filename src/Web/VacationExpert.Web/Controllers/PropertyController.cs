@@ -39,7 +39,7 @@
 
         [HttpGet]
         [Authorize(Roles = GlobalConstants.CreatorRoleName)]
-        [Route("Property/edit/id")] 
+        [Route("Property/edit/id")]
         public IActionResult Edit(string id)
         {
             var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
@@ -47,7 +47,25 @@
             this.ViewData["Property"] = model;
             this.ViewData["Services"] = this.services.GetServices();
             return this.View();
+        }
 
+        [HttpPost]
+        [Authorize(Roles = GlobalConstants.CreatorRoleName)]
+        [Route("Property/edit/id")]
+        public async Task<IActionResult> Edit(CreatePropertyInputModel model)
+        {
+            var user = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+            model.UserId = user;
+            try
+            {
+                await this.propertyService.Update(model);
+            }
+            catch (System.Exception)
+            {
+                return this.View("Error");
+            }
+
+            return this.Redirect("/");
         }
 
         [HttpGet]

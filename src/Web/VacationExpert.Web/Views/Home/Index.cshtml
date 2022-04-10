@@ -1,8 +1,10 @@
 ﻿@using VacationExpert.Common
 @using VacationExpert.Services.Models
+@using VacationExpert.Web.ViewModels.PropertyViewModel
 @model SearchInputModel
 @{
     this.ViewData["Title"] = "Home Page";
+    List<LastFiveProperties> props = (List<LastFiveProperties>)(this.ViewData["Properties"]);
 }
 <link rel="stylesheet" href="~/css/home/home.css" />
 
@@ -19,18 +21,6 @@
 
                     </article>
               </div>
-
-               @*   <div class="field-box">
-                    <label>Check-in  -  Check-out</label>
-                    <i class="far fa-calendar-alt"></i>
-                    <input name="dates" />
-                </div>
-
-                <div class="field-box">
-                    <label>Number of people</label>
-                    <i class="fas fa-users"></i>
-                    <input name="dates" />
-                </div>*@
                 <button>Find</button>
             </form>
         </div>
@@ -38,53 +28,17 @@
 </section>
 <section class="random-places-container">
 
-    <div class="random-horizontal">
+    @for (int i=0; i<props.Count(); i++)
+    {
         <div>
-            <h2>Sofia</h2>
-            <p>1857 properties.</p>
+            <h2>@props[i].CityName.</h2>
             <article>
-                <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
+                <image src="/Image/GetThumbnail/@props[i].Image">
                 </image>
             </article>
-        </div>
+        </div> 
+    }
 
-        <div>
-            <h2>Burgas</h2>
-            <p>12567 properties.</p>
-            <article>
-                <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
-                </image>
-            </article>
-        </div>
-    </div>
-    <div class="random-vertical">
-        <div>
-            <h2>Varna</h2>
-            <p>424 properties.</p>
-            <article>
-                <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
-                </image>
-            </article>
-        </div>
-
-        <div>
-            <h2>Burgas</h2>
-            <p>12567 properties.</p>
-            <article>
-                <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
-                </image>
-            </article>
-        </div>
-
-        <div>
-            <h2>Burgas</h2>
-            <p>12567 properties.</p>
-            <article>
-                <image src="https://i.picsum.photos/id/214/500/300.jpg?hmac=jnk8AxdbBYT4vFPKNAN7SljpOJvkuuL_eRdrfRTw1GA">
-                </image>
-            </article>
-        </div>
-    </div>
 </section>
 
         <script type = "module" defer src=~/js/home/home.js></script>

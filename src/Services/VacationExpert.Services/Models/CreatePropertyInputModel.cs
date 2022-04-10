@@ -8,6 +8,8 @@
 
     public class CreatePropertyInputModel
     {
+        public string Id { get; set; }
+
         [Required]
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }

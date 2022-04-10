@@ -170,7 +170,6 @@
 
         public PropertyViewModel GetProperty(string id)
         {
-
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
             var viewModel = new PropertyViewModel();
             viewModel.Id = property.Id;
@@ -220,7 +219,7 @@
             var model = new CreatePropertyInputModel();
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
 
-
+            model.Id = property.Id;
             model.UserId = property.UserId;
             model.Name = property.Name;
             model.Rating = (Rating)Enum.Parse(typeof(Rating), property.Rating.ToString());
@@ -237,6 +236,19 @@
                 StreetAddress = property.Address.StreetAddress.ToString(),
                 ZipCode = property.Address.ZipCode.ToString(),
             };
+            model.Rooms = property.Rooms.Select(x => new RoomInputModel
+            {
+                Type = x.Type.ToString(),
+                SmokingPolicy = x.SmookingPolicy.ToString(),
+                RoomSize = x.Size,
+                RoomCount = x.RoomCount,
+                GuestsCount = x.TotalGuestsCount,
+                Beds = x.Beds.Select(x => new BedInputModel
+                {
+                    Count = x.Count,
+                    Type = x.Type.ToString(),
+                }).ToList(),
+            }).ToList();
             model.Facilities = new FacilityInputModel()
             {
                 Breakfast = property.Facility.Breakfast.ToString(),
@@ -248,8 +260,16 @@
                     Selected = true,
                 }).ToList(),
             };
-
             return model;
+        }
+
+        public async Task Update(CreatePropertyInputModel model)
+        {
+            var property = this.dbContext.Properties.Where(x => x.Id == model.Id).FirstOrDefault();
+            property.Name = model.Name;
+
+            this.dbContext.Update(property);
+            await this.dbContext.SaveChangesAsync();
         }
 
         private async Task AddImages(CreatePropertyInputModel model, Property inputModel)

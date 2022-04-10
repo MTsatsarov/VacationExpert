@@ -19,6 +19,7 @@
         public IActionResult Index()
         {
             var result = this.propertyService.GetLastFIve();
+            this.ViewData["Properties"] = result;
             return this.View();
         }
 

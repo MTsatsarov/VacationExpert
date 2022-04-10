@@ -1,5 +1,4 @@
-﻿
-namespace VacationExpert.Services.Data.PropertyServices
+﻿namespace VacationExpert.Services.Data.PropertyServices
 {
     using System.Threading.Tasks;
 
