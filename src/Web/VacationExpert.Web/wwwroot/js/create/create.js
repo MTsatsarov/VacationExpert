@@ -7,6 +7,7 @@ input.addEventListener("change", readURL)
 
 Array.from(document.getElementsByClassName('create-nav')).forEach(x => x.addEventListener('click', changeSection))
 var sections = Array.from(document.querySelectorAll("form>section"));
+
 var navLiItemsArray = Array.from(document.querySelectorAll('li[data-section]'));
 
 function markArticle(e) {
@@ -15,10 +16,13 @@ function markArticle(e) {
     var currentNode = e.target;
     if (currentNode.tagName == 'ARTICLE') {
         currentNode.classList.add('clicked-article')
+      
+
     } else {
         while (currentNode.tagName != "SECTION") {
             if (currentNode.tagName == 'ARTICLE') {
                 currentNode.classList.add('clicked-article')
+                console.log("inside")
                 break;
             }
             else {
@@ -29,7 +33,7 @@ function markArticle(e) {
 }
 init();
 function init() {
-    Array.from(document.querySelectorAll("li[data-section = basic-info]")).forEach(x => x.classList.add('clicked-part'))
+    var a = Array.from(document.querySelectorAll("li[data-section = basic-info]")).forEach(x => x.classList.add('clicked-part'))
     sections.forEach(x => x.style.display = "none")
     document.querySelector(".basic-info").style.display = "flex";
 

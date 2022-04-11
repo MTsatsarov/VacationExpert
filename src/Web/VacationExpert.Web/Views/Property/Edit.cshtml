@@ -15,6 +15,7 @@
     var bedsCount = Enum.GetNames<BedCount>().ToList();
 }
 <link rel="stylesheet" href="~/css/create/index.css" />
+
 <section class="create">
     <partial name="_CreateNav" />
     <form method="post" asp-controller="Property" asp-action="Edit" asp-route-id="@property.Id" enctype="multipart/form-data">
@@ -263,7 +264,7 @@
             <div id="photo-box">
                 <div>
                     <h6>Upload at least 1 photo</h6>
-                    @*<input asp-for="Images" name="images" id="photo-uploader" type="file" multiple />*@
+                    <input name="images" id="photo-uploader" type="file" multiple />
                 </div>
                 <article id="uploaded-photo-gallery">
                 </article>
