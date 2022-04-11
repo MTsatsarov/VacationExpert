@@ -1,8 +1,7 @@
-﻿namespace VacationExpert.Web.ViewModels.PropertyViewModel
-{
-    using VacationExpert.Data.Models;
-    using VacationExpert.Services.Mapping;
+﻿using System.Collections.Generic;
 
+namespace VacationExpert.Web.ViewModels.PropertyViewModel
+{
     public class LastFiveProperties
     {
 
@@ -12,6 +11,6 @@
 
         public string Name { get; set; }
 
-        public byte[] Image { get; set; }
+        public ICollection<string> Images { get; set; }
     }
 }

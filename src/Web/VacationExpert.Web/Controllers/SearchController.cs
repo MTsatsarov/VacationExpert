@@ -1,6 +1,7 @@
 ﻿namespace VacationExpert.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Microsoft.AspNetCore.Mvc;
@@ -32,9 +33,9 @@
             }
             catch (Exception e)
             {
-                return this.View("Error", new ErrorViewModel()
+                return this.View(new PropertyListViewModel()
                 {
-                    RequestId = e.Message,
+                    Properties=new List<PropertyInListViewModel>(),
                 });
             }
 

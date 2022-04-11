@@ -14,15 +14,12 @@
 <link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
 <link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
 
-<aside class="filter-wrapper">
-    <h4>Filter By</h4>
-    <hr />
-    <article>
-    </article>
-</aside>
-<div>
-    <a asp-action="Results" asp-route-id="@Model.PreviousPageNumber" asp-route-city="@city">Previous</a>
-    <a asp-action="Results" asp-route-id="@Model.NextPageNumber" asp-route-city="@city">Next</a>
 
+<div>
+    <h2>Search Results:</h2>
+
+    <a asp-action="Results" asp-route-id="@Model.PreviousPageNumber" asp-route-city="@city">Previous</a>
+
+    <a asp-action="Results" asp-route-id="@Model.NextPageNumber" asp-route-city="@city">Next</a>
     <partial name="_PropertiesListPartial" />
 </div>

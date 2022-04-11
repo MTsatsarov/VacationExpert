@@ -54,13 +54,13 @@
 
                 }
             </div>
-            @*@if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.CreatorRoleName) && @userId == @creator)*@
-            @*{*@
+            @if (this.SignInManager.IsSignedIn(this.User) && this.User.IsInRole(GlobalConstants.CreatorRoleName) && this.Context.User.FindFirst(ClaimTypes.NameIdentifier).Value == @creator)
+           {
                 <div>
                     <a asp-controller="Property" asp-action="Edit" asp-route-id="@property.Id">Edit</a>
                     <a asp-controller="Property"asp-action="Delete" asp-route-id=@property.Id>Delete</a>
                 </div>
-            @*}*@
+            }
         </article>
     }
 </section>

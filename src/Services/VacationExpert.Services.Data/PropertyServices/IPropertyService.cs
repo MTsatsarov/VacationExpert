@@ -8,7 +8,7 @@
 
     public interface IPropertyService
     {
-        public ICollection<LastFiveProperties> GetLastFIve();
+        public PropertyListViewModel GetLastFIve();
 
         public PropertyViewModel GetProperty(string id);
 

@@ -20,6 +20,8 @@
 
                 <input placeholder='Enter the name of your property' asp-for=Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
+                    <h4>Description:</h4>
+                <textarea asp-for =Description></textarea>
                 <div>
                     <label>Your star rating</label>
                     <select asp-for=Rating asp-items="@Html.GetEnumSelectList<Rating>()"></select>
@@ -98,7 +100,7 @@
             }
 
             <section>
-                <button type="button" >AddRoom</button>
+                <button onclick="AddRooms()" type="button" >AddRoom</button>
             </section>
 
         </section>

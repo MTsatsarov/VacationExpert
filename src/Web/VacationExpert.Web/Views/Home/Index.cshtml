@@ -1,44 +1,81 @@
 ﻿@using VacationExpert.Common
 @using VacationExpert.Services.Models
 @using VacationExpert.Web.ViewModels.PropertyViewModel
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+@using VacationExpert.Data.Models
+
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
 @model SearchInputModel
 @{
+    List<PropertyInListViewModel> properties = (List<PropertyInListViewModel>)(this.ViewData["Properties"]);
     this.ViewData["Title"] = "Home Page";
-    List<LastFiveProperties> props = (List<LastFiveProperties>)(this.ViewData["Properties"]);
 }
 <link rel="stylesheet" href="~/css/home/home.css" />
+<link rel="stylesheet" href="~/css/search/results.css">
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
 
 <section class="search-container">
     <article class="search-wrapper">
         <div class="search-box">
-            <form method ='get' asp-controller="Search" asp-action ="Results">
+            <form method='get' asp-controller="Search" asp-action="Results">
 
                 <div class="field-box">
                     <label>Where are you going</label>
                     <i class="fas fa-city"></i>
-                    <input asp-for=City  asp-name="City" />
-                    <article id='suggestionBox' >
-
+                    <input asp-for=City asp-name="City" />
+                    <article id='suggestionBox'>
                     </article>
-              </div>
+                </div>
                 <button>Find</button>
             </form>
         </div>
     </article>
-</section>
-<section class="random-places-container">
+    <section class='results-container'>
+            <h2>Last Five Added Properties:</h2>
 
-    @for (int i=0; i<props.Count(); i++)
-    {
-        <div>
-            <h2>@props[i].CityName.</h2>
-            <article>
-                <image src="/Image/GetThumbnail/@props[i].Image">
-                </image>
+        @foreach (var property in @properties)
+        {
+            <article class='single-result'>
+                <a href="/Property/DisplayProperty/@property.Id">
+                    <img src="/Image/GetThumbnail/@property.ImageId">
+                </a>
+
+                <div class="result-summary">
+                    <div class="result-header">
+                        <h3><a href="/Property/DisplayProperty/@property.Id">@property.Name</a></h3>
+                        <div>
+                            @for (int i = 0; i < @property.Rating; i++)
+                            {
+                                <i class="fas fa-star"></i>
+                            }
+                        </div>
+                    </div>
+                    <p class="fas fa-city city-p">  @property.City</p>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure placeat nostrum provident sunt nam deleniti ducimus voluptatem voluptate officiis consequatur, ea doloremque hic ab eius pariatur a officia ullam nesciunt aspernatur adipisci impedit repellat optio modi esse. Numquam, culpa. Consequatur, deserunt. Sunt neque quisquam qui! Aspernatur quam sunt culpa dolor.</p>
+                </div>
+                <div class="grade-box">
+                    <div>
+                        <strong>Wonderfull</strong>
+                        <p>Reviews: @property.ReviewsCount</p>
+                    </div>
+                    @if (@property.Grade == null)
+                    {
+                        <a href="/Property/DisplayProperty/@property.Id">0</a>
+                    }
+                    else
+                    {
+                        <a href="/Property/DisplayProperty/@property.Id">@property.Grade</a>
+
+                    }
+                </div>
             </article>
-        </div> 
-    }
-
+        }
+    </section>
 </section>
 
-        <script type = "module" defer src=~/js/home/home.js></script>
+<script type="module" defer src=~/js/home/home.js></script>

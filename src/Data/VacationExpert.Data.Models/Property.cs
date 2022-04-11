@@ -21,6 +21,7 @@
         [Required]
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }
+        public string Description { get; set; }
 
         [Range(0, 5)]
         public int Rating { get; set; }

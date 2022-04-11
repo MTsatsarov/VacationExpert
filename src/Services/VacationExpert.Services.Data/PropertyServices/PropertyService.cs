@@ -101,6 +101,7 @@
         public async Task Create(CreatePropertyInputModel model)
         {
             var inputModel = new Property();
+            inputModel.Description = model.Description;
             inputModel.UserId = model.UserId;
             inputModel.Name = model.Name;
             inputModel.Rating = (int)model.Rating;
@@ -157,15 +158,22 @@
             return model;
         }
 
-        public ICollection<LastFiveProperties> GetLastFIve()
+        public PropertyListViewModel GetLastFIve()
         {
-            return this.dbContext.Properties.OrderByDescending(x => x.CreatedOn).Take(5).Select(x => new LastFiveProperties()
+            var properties = this.dbContext.Properties.OrderByDescending(x => x.CreatedOn).Select(x => new PropertyInListViewModel()
             {
-                CityName = x.Address.City.ToString(),
-                Image = x.Images.Select(x => x.FullScreenContent).FirstOrDefault(),
                 Id = x.Id,
                 Name = x.Name,
-            }).ToList();
+                City = x.Address.City.ToString(),
+                Rating = x.Rating,
+                ImageId = x.Images.Select(x => x.Id).First().ToString(),
+                ReviewsCount = x.Reviews.Count(),
+                Grade = x.Reviews.Count > 0 ? x.Reviews.Average(x => x.Rating).ToString("F2") : "0",
+            }).Take(5).ToList();
+            var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
+            var model = new PropertyListViewModel();
+            model.Properties = new List<PropertyInListViewModel>(properties);
+            return model;
         }
 
         public PropertyViewModel GetProperty(string id)

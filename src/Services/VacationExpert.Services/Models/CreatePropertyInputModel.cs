@@ -14,6 +14,8 @@
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }
 
+        public string Description { get; set; }
+
         public Rating Rating { get; set; }
 
         public ContactInputModel Contact { get; set; }

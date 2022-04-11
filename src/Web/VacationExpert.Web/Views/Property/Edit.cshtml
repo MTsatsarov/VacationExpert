@@ -26,6 +26,8 @@
 
                 <input placeholder='Enter the name of your property' asp-for=Name value=@property.Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
+                <h4>Description:</h4>
+                <textarea asp-for=Description></textarea>
                 <div>
                     <label>Your star rating</label>
                     <select asp-for=Rating>
@@ -64,7 +66,7 @@
 
             <article class="secondary-basic-details">
                 <h4>Property Address</h4>
-                <textarea placeholder="Street address" asp-for="Address.StreetAddress">@property.Address.StreetAddress</textarea>
+                <textarea placeholder="Street address" name="Address.StreetAddress">@property.Address.StreetAddress</textarea>
                 <label asp-for="Address.Country"></label>
                 <select class="form-control" asp-for="Address.Country">
                     @for (var i = 0; i < countries.Count; i++)
@@ -164,7 +166,7 @@
                             <select asp-for="Rooms[i].Beds[j].Count">
                                 @foreach (string bedCount in @bedsCount)
                                 {
-                                    if (@property.Rooms[i].Beds[j].Count.ToString() ==@bedCount)
+                                    if (@property.Rooms[i].Beds[j].Count.ToString() == @bedCount)
                                     {
                                         <option selected>@bedCount</option>
                                     }
