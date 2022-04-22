@@ -25,6 +25,10 @@
 
         public async Task<PropertyListViewModel> GetResults(SearchInputModel model, int page)
         {
+            if (page == 0)
+            {
+                throw new InvalidOperationException("Invalid page");
+            }
 
             var list = new PropertyListViewModel();
             var city = (City)Enum.Parse(typeof(City), model.City);
@@ -33,12 +37,8 @@
 
             if (properties.Count == 0)
             {
-                throw new InvalidOperationException("Sorry no properties found for this city");
-            }
-
-            if (page == 0)
-            {
-                throw new InvalidOperationException("Invalid page");
+                list.Properties = new List<PropertyInListViewModel>();
+                return list;
             }
 
             var propertiesModel = new List<PropertyInListViewModel>();
