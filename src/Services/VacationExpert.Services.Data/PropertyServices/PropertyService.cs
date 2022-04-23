@@ -117,6 +117,14 @@
 
         public async Task Delete(string userId, string propertyId)
         {
+            if (userId == null || !this.dbContext.Properties.Any(x => x.UserId == userId))
+            {
+                throw new InvalidOperationException("User not found");
+            }
+            if (propertyId == null || !this.dbContext.Properties.Any(x => x.Id == propertyId))
+            {
+                throw new InvalidOperationException("Property not found");
+            }
             var property = this.dbContext.Properties.FirstOrDefault(x => x.Id == propertyId);
             property.IsDeleted = true;
             property.DeletedOn = DateTime.UtcNow;
@@ -127,6 +135,7 @@
         public PropertyListViewModel GetByUser(string userId, int page = 1)
         {
             var model = new PropertyListViewModel();
+
             var properties = this.dbContext.Properties.Where(x => x.UserId == userId).Select(x => new PropertyInListViewModel()
             {
                 City = x.Address.City.ToString(),
@@ -141,11 +150,12 @@
 
             if (properties.Count == 0)
             {
-                throw new InvalidOperationException("Sorry you haven't create any properties.");
+                model.Properties = new List<PropertyInListViewModel>();
+                return model;
             }
 
             model.TotalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
-            if (page == 0 || page > model.TotalPages)
+            if (page < 1 || page > model.TotalPages)
             {
                 throw new InvalidOperationException("Invalid page");
             }

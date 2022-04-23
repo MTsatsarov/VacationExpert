@@ -26,7 +26,7 @@
             this.dbContext = dbContext;
         }
 
-        public async Task<List<VacationExpert.Data.Models.Image>> ImageProcess(IEnumerable<ImageInputModel> images)
+        public virtual async Task<List<VacationExpert.Data.Models.Image>> ImageProcess(IEnumerable<ImageInputModel> images)
         {
             var tasks = new List<Task>();
             var inputImages = new List<VacationExpert.Data.Models.Image>();

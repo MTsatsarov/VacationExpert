@@ -21,6 +21,16 @@
 
         public async Task AddReview(ReviewInputModel model)
         {
+            if (model == null)
+            {
+                throw new InvalidOperationException("Review is invalid");
+            }
+
+            if (!this.db.Properties.Any(x => x.Id == model.PropertyId))
+            {
+                throw new InvalidOperationException("Property not found");
+            }
+
             var review = new Review()
             {
                 Content = model.Content,
@@ -40,14 +50,20 @@
 
         public ReviewListViewModel GetReviews(string propertyId, string page = "1")
         {
-            var model = new ReviewListViewModel();
             var currentPage = int.Parse(page);
-            model.TotalPages = (int)Math.Ceiling((double)this.Count(propertyId) / (double)ReviewsPerPage);
 
             if (currentPage <= 0)
             {
                 throw new InvalidOperationException("Invalid page");
             }
+
+            if (!this.db.Properties.Any(x => x.Id == propertyId))
+            {
+                throw new InvalidOperationException("Property not found");
+            }
+
+            var model = new ReviewListViewModel();
+            model.TotalPages = (int)Math.Ceiling((double)this.Count(propertyId) / (double)ReviewsPerPage);
 
             model.Reviews = this.db.Reviews.Where(x => x.PropertyId == propertyId).Select(x => new ReviewInListViewModel
             {

@@ -70,5 +70,6 @@
             Assert.That(result.Properties.Count, Is.EqualTo(1));
             Assert.That(result.Properties.First().City, Is.EqualTo("Burgas"));
         }
+
     }
 }
