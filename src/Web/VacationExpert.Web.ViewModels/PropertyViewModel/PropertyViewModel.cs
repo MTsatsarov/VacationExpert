@@ -1,7 +1,7 @@
 ﻿namespace VacationExpert.Web.ViewModels.PropertyViewModel
 {
     using System.Collections.Generic;
-
+    using VacationExpert.Data.Models.Enums;
     using VacationExpert.Web.ViewModels.ReviewViewModels;
     using VacationExpert.Web.ViewModels.RoomViewModels;
 
@@ -25,7 +25,7 @@
 
         public ICollection<string> Images { get; set; }
 
-        public ICollection<string> Facilities { get; set; }
+        public ICollection<Service> Facilities { get; set; }
 
         public ReviewListViewModel ReviewCollection { get; set; }
     }

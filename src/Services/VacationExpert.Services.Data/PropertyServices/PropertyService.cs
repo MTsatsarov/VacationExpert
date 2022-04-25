@@ -226,7 +226,8 @@
 
             var a = property.Reviews;
             viewModel.ReviewCollection = this.reviewService.GetReviews(id, "1");
-            viewModel.Facilities = property.Facility.Services.Select(x => x.Name).ToList();
+            var services = property.Facility.Services.Select(x => x.Name).ToList();
+            viewModel.Facilities = services.Select(x => Enum.Parse<VacationExpert.Data.Models.Enums.Service>(x)).ToList();
             viewModel.Images = this.imageService.GetAllImages(property.Id).ToList();
 
             return viewModel;

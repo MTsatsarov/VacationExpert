@@ -1,5 +1,6 @@
 ﻿@using VacationExpert.Data.Models.Enums
 @using VacationExpert.Services.Models
+@using VacationExpert.Common
 @model CreatePropertyInputModel
 <link rel="stylesheet" href="~/css/create/index.css" />
 
@@ -20,8 +21,8 @@
 
                 <input placeholder='Enter the name of your property' asp-for=Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
-                    <h4>Description:</h4>
-                <textarea asp-for =Description></textarea>
+                <h4>Description:</h4>
+                <textarea asp-for=Description></textarea>
                 <div>
                     <label>Your star rating</label>
                     <select asp-for=Rating asp-items="@Html.GetEnumSelectList<Rating>()"></select>
@@ -50,7 +51,9 @@
                 <h4>Property Address</h4>
                 <textarea placeholder="Street address" asp-for=Address.StreetAddress></textarea>
                 <label asp-for="Address.Country"></label>
-                <select class="form-control" asp-for="Address.Country" asp-items="@Html.GetEnumSelectList<Country>()"></select>
+                <select class="form-control" asp-for="Address.Country" asp-items="@Html.GetEnumSelectList<Country>()">
+
+                </select>
 
                 <label asp-for="Address.City">City</label>
                 <select class="form-control" asp-for="Address.City" asp-items="@Html.GetEnumSelectList<City>()"></select>
@@ -100,7 +103,7 @@
             }
 
             <section>
-                <button onclick="AddRooms()" type="button" >AddRoom</button>
+                <button id = "addRoom" onclick="AddRoom()" type="button">AddRoom</button>
             </section>
 
         </section>
@@ -158,3 +161,4 @@
 </section>
 
 <script type="module" defer src=~/js/create/create.js>  </script>
+

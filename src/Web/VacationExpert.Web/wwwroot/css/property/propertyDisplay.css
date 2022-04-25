@@ -5,6 +5,11 @@
   flex-direction: column;
   align-items: flex-end;
 }
+.property-view-container i {
+  color: green;
+  margin-right: 5px;
+
+}
 .property-view-container > article {
   width: 1000px;
   padding: 10px;
@@ -34,7 +39,10 @@
 .image-gallery::-webkit-scrollbar {
   display: none;
 }
-
+.single-display-room div {
+  display: flex;
+  align-items: flex-start;
+}
 .property-view-facilties {
   display: flex;
   align-items: center;

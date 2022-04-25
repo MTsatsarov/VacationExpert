@@ -4,11 +4,23 @@ var nav = document.getElementsByClassName('create-nav')[0];
 document.getElementById('addBed').addEventListener('click', addBed)
 var input = document.getElementById("photo-uploader")
 input.addEventListener("change", readURL)
-
+document.getElementById("addRoom").addEventListener('click',AddRoom)
 Array.from(document.getElementsByClassName('create-nav')).forEach(x => x.addEventListener('click', changeSection))
 var sections = Array.from(document.querySelectorAll("form>section"));
 
 var navLiItemsArray = Array.from(document.querySelectorAll('li[data-section]'));
+function AddRoom(e) {
+  var section = document.getElementsByClassName('bed-options-wrapper')[0]
+    section.innerHTML +=  ` <article class="type-smoking" asp-for="Rooms">
+    <label asp-for="Rooms[i].Type">Room type</label>
+    <select asp-for="Rooms[i].Type" asp-items="@Html.GetEnumSelectList<RoomType>()"></select>
+
+    <label asp-for="Rooms[i].SmokingPolicy">Smoking policy</label>
+    <select asp-for="Rooms[i].SmokingPolicy" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
+
+    <label asp-for="Rooms[i].RoomCount">Number of rooms (this type)</label>
+    <input min="1" asp-for="Rooms[i].RoomCount" type="number" /> `
+};
 
 function markArticle(e) {
     var articles = document.getElementsByTagName('article');

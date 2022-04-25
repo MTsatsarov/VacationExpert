@@ -104,7 +104,7 @@
                 table: "Facilities",
                 type: "nvarchar(450)",
                 nullable: false,
-                defaultValue: "",
+                defaultValue: string.Empty,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
@@ -114,7 +114,7 @@
                 table: "Contacts",
                 type: "nvarchar(450)",
                 nullable: false,
-                defaultValue: "",
+                defaultValue: string.Empty,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);
@@ -124,7 +124,7 @@
                 table: "Addresses",
                 type: "nvarchar(450)",
                 nullable: false,
-                defaultValue: "",
+                defaultValue: string.Empty,
                 oldClrType: typeof(string),
                 oldType: "nvarchar(max)",
                 oldNullable: true);

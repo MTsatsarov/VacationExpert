@@ -1,36 +1,44 @@
 ﻿namespace VacationExpert.Data.Models.Enums
 {
+    using System;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
 
     public enum Service
     {
-        [Display(Name = "Free Wifi")]
+        [Description("Free Wifi")]
         FreeWifi = 1,
-        [Display(Name = "Non-smoking rooms")]
+        [Description("Non-smoking rooms")]
         NonSmokingRooms = 2,
+        [Description("Restaurant")]
         Restaurant = 3,
-        [Display(Name = "Airport shuttle")]
+        [Description("Airport shuttle")]
         Airportshuttle = 4,
-        [Display(Name = "Room service")]
+        [Description("Room service")]
         RoomService = 5,
-        [Display(Name = "Family rooms")]
+        [Description("Family rooms")]
         FamilyRooms = 6,
+        [Description("Bar")]
         Bar = 7,
+        [Description("Spa")]
         Spa = 8,
-        [Display(Name = "24-hour front desk")]
+        [Description("24-hour front desk")]
         TwentyFourHourFrontDesk = 9,
-        [Display(Name = "Hot tub/Jacuzzi")]
+        [Description("Hot tub/Jacuzzi")]
         Hottubjacuzzi = 10,
+        [Description("Sauna")]
         Sauna = 11,
-        [Display(Name = "Air Conditioning")]
+        [Description("Air Conditioning")]
         AurConditioning = 12,
-        [Display(Name = "Fitness Center")]
+        [Description("Fitness Center")]
         FitnesCenter = 13,
-        [Display(Name = "Water Park")]
+        [Description("Water Park")]
         WaterPark = 14,
+        [Description("Garden")]
         Garden = 15,
-        [Display(Name = "Swimming Pool")]
+        [Description("Swimming Pool")]
         SwimmingPool = 16,
-        Terrace = 17,
+        [Description("Terrace")]
+        sTerrace = 17,
     }
 }

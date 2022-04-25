@@ -2,12 +2,12 @@
 @using VacationExpert.Web.ViewModels.PropertyViewModel
 @using VacationExpert.Data.Models
 @using Microsoft.AspNetCore.Identity
-
 @inject UserManager<ApplicationUser> userManager
 @inject SignInManager<ApplicationUser> signInManager
 
-    @{
+@{
     this.ViewData["Title"] = Model.Name;
+
 }
 @model PropertyViewModel
 
@@ -36,48 +36,49 @@
     <article class="property-view-facilties">
         @foreach (var facility in Model.Facilities)
         {
-            <p>@facility</p>
+                <p>@Helper.GetName(@facility)</p>
         }
+
     </article>
     <article>
         <h3>Rooms</h3>
         @foreach (var room in Model.Rooms)
         {
-            <div class="room-wrapper" >
+            <div class="room-wrapper">
                 <article class='single-display-room'>
 
                     <div>
                         <p><strong>Type:</strong></p>
-                        <p>@room.Type</p>
+                        <p>@Helper.GetName(@room.Type)</p>
                     </div>
                     <div>
-                        <p><i class="fas fa-house-blank"></i></p>
+                        <p></p>
                         <p><strong>Size:</strong></p>
                         <p>@room.Size</p>
                     </div>
                     <div>
-                        <p><strong>SmokingPolicy:</strong></p>
-                        <p>@room.SmokingPolicy</p>
+                        <p><i class="fas fa-smoking"></i><strong>SmokingPolicy:</strong> </p>
+                        <p>@Helper.GetName(@room.SmokingPolicy)</p>
                     </div>
                     <div>
                         <p><strong>Count:</strong></p>
                         <p>@room.RoomCount</p>
                     </div>
                     <div>
-                        <p><strong>Max Guests in the room:</strong></p>
+                        <p><i class=" fas fa-people-group"></i><strong>Max Guests in the room:</strong></p>
                         <p>@room.GuestCount</p>
                     </div>
                     <br />
                 </article>
-                <hr/>
-                 <h5>Beds</h5>
+                <hr />
+                <h5>Beds</h5>
                 <article>
-                   
+
                     @foreach (var bed in @room.Beds)
                     {
                         <div>
-                            <p><strong>Bed Type:</strong></p>
-                            <p>@bed.Type</p>
+                            <p><i class="fas fa-bed"></i><strong>Bed Type:</strong></p>
+                            <p>@Helper.GetName(@bed.Type)</p>
                         </div>
                         <div>
                             <p><strong>Bed Count:</strong></p>
@@ -106,8 +107,8 @@
 else
 {
     <div class="login-to-review">
-    <p>Please login to see reviews</p>
-    <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        <p>Please login to see reviews</p>
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </div>
 }
 

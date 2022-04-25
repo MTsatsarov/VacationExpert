@@ -1,22 +1,23 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Http.Internal;
-using Microsoft.EntityFrameworkCore;
-using Moq;
-using NUnit.Framework;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Threading.Tasks;
-using VacationExpert.Data;
-using VacationExpert.Data.Models;
-using VacationExpert.Data.Models.Enums;
-using VacationExpert.Services.Data.ImageService;
-using VacationExpert.Services.Data.ReviewServices;
-using VacationExpert.Services.Models;
-
-namespace VacationExpert.Services.Data.Tests
+﻿namespace VacationExpert.Services.Data.Tests
 {
+    using System;
+    using System.Collections.Generic;
+    using System.IO;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.AspNetCore.Http.Internal;
+    using Microsoft.EntityFrameworkCore;
+    using Moq;
+    using NUnit.Framework;
+    using VacationExpert.Data;
+    using VacationExpert.Data.Models;
+    using VacationExpert.Data.Models.Enums;
+    using VacationExpert.Services.Data.ImageService;
+    using VacationExpert.Services.Data.ReviewServices;
+    using VacationExpert.Services.Models;
+
     public class PropertyServiceTests
     {
         private CreatePropertyInputModel inputModel;
