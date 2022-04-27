@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using VacationExpert.Data.Models;
@@ -14,6 +15,10 @@
 
             foreach (var service in services)
             {
+                if (dbContext.Services.Any(x => x.Name == service))
+                {
+                    continue;
+                }
                 await SeedServiceAsync(dbContext, service);
             }
         }
