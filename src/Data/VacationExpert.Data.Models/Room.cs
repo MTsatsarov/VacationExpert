@@ -13,7 +13,7 @@
             this.Beds = new HashSet<Bed>();
         }
 
-        public RoomType Type { get; set; }
+        public string Type { get; set; }
 
         public SmokingPolicy SmookingPolicy { get; set; }
 

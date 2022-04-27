@@ -31,9 +31,19 @@
         }
 
         [Route("Property/Delete/id")]
-        public async Task<IActionResult> Delete(string owner, string id)
+        public async Task<IActionResult> Delete(string id)
         {
-            await this.propertyService.Delete(owner, id);
+            var userId = this.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+            try
+            {
+                await this.propertyService.Delete(userId, id);
+            }
+            catch (System.Exception e)
+            {
+                return this.View("Error", e.Message);
+            }
+
             return this.Redirect("/");
         }
 

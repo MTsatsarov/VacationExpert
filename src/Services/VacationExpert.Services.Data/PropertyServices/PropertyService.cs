@@ -78,7 +78,7 @@
             {
                 var currentRoom = new Room()
                 {
-                    Type = (RoomType)Enum.Parse(typeof(RoomType), room.Type),
+                    Type = room.Type,
                     RoomCount = room.RoomCount,
                     Size = room.RoomSize,
                     TotalGuestsCount = room.GuestsCount,
@@ -89,7 +89,7 @@
                     var currentBed = new Bed()
                     {
                         Count = bed.Count,
-                        Type = (BedType)Enum.Parse(typeof(BedType), bed.Type),
+                        Type = bed.Type,
                     };
                     currentRoom.Beds.Add(currentBed);
                 }
@@ -121,10 +121,12 @@
             {
                 throw new InvalidOperationException("User not found");
             }
+
             if (propertyId == null || !this.dbContext.Properties.Any(x => x.Id == propertyId))
             {
                 throw new InvalidOperationException("Property not found");
             }
+
             var property = this.dbContext.Properties.FirstOrDefault(x => x.Id == propertyId);
             property.IsDeleted = true;
             property.DeletedOn = DateTime.UtcNow;
@@ -227,10 +229,16 @@
             var a = property.Reviews;
             viewModel.ReviewCollection = this.reviewService.GetReviews(id, "1");
             var services = property.Facility.Services.Select(x => x.Name).ToList();
-            viewModel.Facilities = services.Select(x => Enum.Parse<VacationExpert.Data.Models.Enums.Service>(x)).ToList();
+            viewModel.Services.AddRange(services);
+
             viewModel.Images = this.imageService.GetAllImages(property.Id).ToList();
 
             return viewModel;
+        }
+
+        public List<string> GetServices()
+        {
+            return this.dbContext.Services.Select(x => x.Name).ToList();
         }
 
         public CreatePropertyInputModel GetUpdateModel(string id)

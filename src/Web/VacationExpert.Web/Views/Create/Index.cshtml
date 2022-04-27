@@ -5,7 +5,7 @@
 <link rel="stylesheet" href="~/css/create/index.css" />
 
 @{
-    var services = Enum.GetNames<Service>().ToList();
+    List<string> services = (List<string>)this.ViewData["Services"];
     var roomsCount = 1;
     var bedsCount = 1;
 }
@@ -41,7 +41,7 @@
                         <input type="tel" asp-for=Contact.Phone />
                     </div>
                     <div>
-                        <label>Alternative phone number (otional)</label>
+                        <label>Alternative phone number (optional)</label>
                         <input type="tel" asp-for=Contact.AdditionalPhone />
                     </div>
                 </div>
@@ -52,7 +52,6 @@
                 <textarea placeholder="Street address" asp-for=Address.StreetAddress></textarea>
                 <label asp-for="Address.Country"></label>
                 <select class="form-control" asp-for="Address.Country" asp-items="@Html.GetEnumSelectList<Country>()">
-
                 </select>
 
                 <label asp-for="Address.City">City</label>
@@ -68,9 +67,10 @@
 
             @for (int i = 0; i < @roomsCount; i++)
             {
-                <article class="type-smoking" asp-for="Rooms">
+                <article class="type-smoking" asp-for="Rooms" id="test">
                     <label asp-for="Rooms[i].Type">Room type</label>
-                    <select asp-for="Rooms[i].Type" asp-items="@Html.GetEnumSelectList<RoomType>()"></select>
+                    <input asp-for="Rooms[i].Type" />
+
 
                     <label asp-for="Rooms[i].SmokingPolicy">Smoking policy</label>
                     <select asp-for="Rooms[i].SmokingPolicy" asp-items="@Html.GetEnumSelectList<SmokingPolicy>()"></select>
@@ -83,7 +83,7 @@
                     <article class="bed-options-wrapper">
                         <h5>Bed options</h5>
                         <div>
-                            <select asp-for="Rooms[i].Beds[j].Type" asp-items="@Html.GetEnumSelectList<BedType>();"></select>
+                            <input asp-for="Rooms[i].Beds[j].Type">
                             <select asp-for="Rooms[i].Beds[j].Count" asp-items="@Html.GetEnumSelectList<BedCount>()"></select>
                         </div>
                         <button type='button' id='addBed'>Add another bed</button>
@@ -103,7 +103,7 @@
             }
 
             <section>
-                <button id = "addRoom" onclick="AddRoom()" type="button">AddRoom</button>
+                <button id="addRoom" type="button">AddRoom</button>
             </section>
 
         </section>
@@ -161,4 +161,3 @@
 </section>
 
 <script type="module" defer src=~/js/create/create.js>  </script>
-

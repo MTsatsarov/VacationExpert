@@ -19,5 +19,6 @@
         public Task Delete(string userId, string propertyId);
 
         public Task Update(CreatePropertyInputModel model);
+        public List<string> GetServices();
     }
 }

@@ -4,6 +4,7 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
+
     using Microsoft.EntityFrameworkCore;
     using Moq;
     using NUnit.Framework;
@@ -12,6 +13,7 @@
     using VacationExpert.Data.Models.Enums;
     using VacationExpert.Services.Data.ImageService;
     using VacationExpert.Web.ViewModels.PropertyViewModel;
+
     public class SearchServiceTests
     {
         [Test]
@@ -60,7 +62,6 @@
                 Rating = 4,
                 Reviews = new HashSet<Review>(),
                 Rooms = new HashSet<Room>(),
-
             });
             await db.SaveChangesAsync();
             var imageService = new Mock<IImageService>();
@@ -70,6 +71,5 @@
             Assert.That(result.Properties.Count, Is.EqualTo(1));
             Assert.That(result.Properties.First().City, Is.EqualTo("Burgas"));
         }
-
     }
 }

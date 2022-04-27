@@ -10,7 +10,7 @@
 
 @{
     var properties = Model.Properties.ToList();
-    var creator = Model.Properties.Select(x => x.UserId).First();
+    var creator = Model.Properties.Select(x => x.UserId).FirstOrDefault();
 
 }
 

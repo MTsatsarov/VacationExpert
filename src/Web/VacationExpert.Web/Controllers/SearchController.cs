@@ -31,11 +31,11 @@
             {
                 result = await this.searchService.GetResults(model, id);
             }
-            catch (Exception e)
+            catch (Exception)
             {
                 return this.View(new PropertyListViewModel()
                 {
-                    Properties=new List<PropertyInListViewModel>(),
+                    Properties = new List<PropertyInListViewModel>(),
                 });
             }
 

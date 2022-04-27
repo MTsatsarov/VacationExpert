@@ -1,13 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
-
-namespace VacationExpert.Common
+﻿namespace VacationExpert.Common
 {
+    using System;
+    using System.Collections.Generic;
+    using System.ComponentModel;
+    using System.Text;
+
     public static class Helper
     {
-
         public static string GetName(this Enum @enum)
         {
             var description = string.Empty;
@@ -25,7 +24,6 @@ namespace VacationExpert.Common
             }
 
             return description;
-
         }
     }
 }

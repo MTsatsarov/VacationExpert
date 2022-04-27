@@ -285,14 +285,11 @@
             await db.Properties.AddAsync(this.propertyEntity);
             await db.SaveChangesAsync();
 
-
             var property = propertyService.GetByUser(userId);
 
             Assert.That(db.Properties.Count(), Is.EqualTo(2));
             Assert.That(property.Properties.Count(), Is.EqualTo(1));
             Assert.That(property.Properties.First().Name, Is.EqualTo(propertyModel.Name));
         }
-
-
     }
 }

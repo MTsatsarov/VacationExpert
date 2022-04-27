@@ -4,7 +4,6 @@
 
     public class LastFiveProperties
     {
-
         public string Id { get; set; }
 
         public string CityName { get; set; }

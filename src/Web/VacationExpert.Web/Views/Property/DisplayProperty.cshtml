@@ -34,9 +34,9 @@
         <p>@Model.Description</p>
     </article>
     <article class="property-view-facilties">
-        @foreach (var facility in Model.Facilities)
+        @foreach (var facility in Model.Services)
         {
-                <p>@Helper.GetName(@facility)</p>
+                <p>@facility</p>
         }
 
     </article>
@@ -49,7 +49,7 @@
 
                     <div>
                         <p><strong>Type:</strong></p>
-                        <p>@Helper.GetName(@room.Type)</p>
+                        <p>@room.Type</p>
                     </div>
                     <div>
                         <p></p>
@@ -78,7 +78,7 @@
                     {
                         <div>
                             <p><i class="fas fa-bed"></i><strong>Bed Type:</strong></p>
-                            <p>@Helper.GetName(@bed.Type)</p>
+                            <p>@bed.Type</p>
                         </div>
                         <div>
                             <p><strong>Bed Count:</strong></p>
@@ -107,7 +107,7 @@
 else
 {
     <div class="login-to-review">
-        <p>Please login to see reviews</p>
+        <p>Please login as client to see reviews.</p>
         <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
     </div>
 }

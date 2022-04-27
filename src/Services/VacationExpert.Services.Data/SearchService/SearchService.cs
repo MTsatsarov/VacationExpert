@@ -31,7 +31,15 @@
             }
 
             var list = new PropertyListViewModel();
+            var cities = Enum.GetNames<City>().ToList();
+            if (!cities.Any(x => x == model.City))
+            {
+                list.Properties = new List<PropertyInListViewModel>();
+                return list;
+            }
+
             var city = (City)Enum.Parse(typeof(City), model.City);
+
             var properties = this.dbContext.Properties.Where(x => x.Address.City == city).Skip((page - 1) * GlobalConstants.PropertiesPerPage).Take(GlobalConstants.PropertiesPerPage).ToList();
             var totalPages = (int)Math.Ceiling((double)properties.Count() / (double)GlobalConstants.PropertiesPerPage);
 

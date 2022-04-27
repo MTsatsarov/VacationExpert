@@ -10,6 +10,7 @@
     using VacationExpert.Data.Models;
     using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Services.Models;
+    using VacationExpert.Web.ViewModels;
 
     [Authorize(Roles = GlobalConstants.CreatorRoleName)]
     public class CreateController : Controller
@@ -28,6 +29,8 @@
         [HttpGet]
         public IActionResult Index()
         {
+            this.ViewData["Services"]= this.propertyService.GetServices();
+
             return this.View();
         }
 
@@ -55,7 +58,17 @@
                 return this.View(model);
             }
 
-            await this.storeProeprtyService.Create(model);
+            try
+            {
+                await this.storeProeprtyService.Create(model);
+            }
+            catch (System.Exception e)
+            {
+                return this.View("Error", new ErrorViewModel()
+                {
+                    RequestId = e.Message,
+                });
+            }
 
             return this.Redirect("/");
         }

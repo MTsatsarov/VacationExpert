@@ -4,6 +4,6 @@
 
     public interface IPropertyServices
     {
-      public ICollection<string> GetServices();
+        public ICollection<string> GetServices();
     }
 }
