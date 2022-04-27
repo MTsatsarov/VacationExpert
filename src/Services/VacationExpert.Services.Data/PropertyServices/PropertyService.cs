@@ -66,7 +66,7 @@
 
             foreach (var service in selectedServices)
             {
-                facility.Services.Add(new VacationExpert.Data.Models.Service { Name = service.Name });
+                facility.Services.Add(this.dbContext.Services.Where(x => x.Name == service.Name).FirstOrDefault());
             }
 
             inputModel.Facility = facility;
@@ -246,7 +246,7 @@
         {
             var model = new CreatePropertyInputModel();
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
-            
+
             model.Description = property.Description;
             model.Id = property.Id;
             model.UserId = property.UserId;
