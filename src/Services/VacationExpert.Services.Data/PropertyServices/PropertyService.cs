@@ -194,6 +194,7 @@
             var viewModel = new PropertyViewModel();
             viewModel.Id = property.Id;
             viewModel.Name = property.Name;
+            viewModel.Rating = property.Rating;
             viewModel.Address = new PropertyAddressViewModel
             {
                 Street = property.Address.StreetAddress,
@@ -245,11 +246,12 @@
         {
             var model = new CreatePropertyInputModel();
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
-
+            
+            model.Description = property.Description;
             model.Id = property.Id;
             model.UserId = property.UserId;
             model.Name = property.Name;
-            model.Rating = (Rating)Enum.Parse(typeof(Rating), property.Rating.ToString());
+            model.Rating = model.Rating;
             model.Contact = new ContactInputModel()
             {
                 ContactName = property.Contact.Name,

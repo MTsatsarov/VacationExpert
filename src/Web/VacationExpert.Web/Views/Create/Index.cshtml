@@ -25,7 +25,19 @@
                 <textarea asp-for=Description></textarea>
                 <div>
                     <label>Your star rating</label>
-                    <select asp-for=Rating asp-items="@Html.GetEnumSelectList<Rating>()"></select>
+                    <select asp-for=Rating>
+                        @for(int i =0; i<=5; i++)
+                        {
+                            if(i==0)
+                            {
+                                <option value=0; selected>None</option>
+                            }
+                            else
+                            {
+                                <option>@i</option>
+                            }
+                        }
+                    </select>
                 </div>
             </article>
 
@@ -160,4 +172,8 @@
     <partial name="_CreateNav" />
 </section>
 
+
+@section Scripts {
 <script type="module" defer src=~/js/create/create.js>  </script>
+
+}

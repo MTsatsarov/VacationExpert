@@ -58,7 +58,7 @@
                 },
                 Description = "test_description",
                 Name = "test_property",
-                Rating = Enum.Parse<Rating>("4"),
+                Rating = 4,
                 UserId = Guid.NewGuid().ToString(),
                 Facilities = new FacilityInputModel()
                 {
@@ -119,7 +119,7 @@
         [Test]
         [TestCase("Invalid_id")]
         [TestCase(null)]
-        public async Task AssertErrorIfUserInvalid(string userId)
+        public void AssertErrorIfUserInvalid(string userId)
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
  .UseInMemoryDatabase("Server=DESKTOP-K5IJHSE\\SQLEXPRESS;Database=VacationExpert;Trusted_Connection=True;MultipleActiveResultSets=true");

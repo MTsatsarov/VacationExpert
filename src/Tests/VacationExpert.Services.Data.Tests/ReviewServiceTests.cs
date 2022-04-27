@@ -110,7 +110,7 @@
         }
 
         [Test]
-        public async Task AssertThrows_IfPropertyINvalid()
+        public void AssertThrows_IfPropertyINvalid()
         {
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>()
   .UseInMemoryDatabase("ThrowIfInvalidPropertyForReview");

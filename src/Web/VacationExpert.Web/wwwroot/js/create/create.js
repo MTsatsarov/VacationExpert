@@ -1,7 +1,6 @@
 ﻿import { render, html } from "../../lib/node_modules/lit-html/lit-html.js"
 document.getElementsByClassName('create')[0].addEventListener('click', markArticle)
 var nav = document.getElementsByClassName('create-nav')[0];
-document.getElementById('addBed').addEventListener('click', addBed)
 var input = document.getElementById("photo-uploader")
 input.addEventListener("change", readURL)
 Array.from(document.getElementsByClassName('create-nav')).forEach(x => x.addEventListener('click', changeSection))
@@ -22,7 +21,6 @@ function markArticle(e) {
         while (currentNode.tagName != "SECTION") {
             if (currentNode.tagName == 'ARTICLE') {
                 currentNode.classList.add('clicked-article')
-                console.log("inside")
                 break;
             }
             else {
@@ -69,10 +67,3 @@ function readURL() {
         reader.readAsDataURL(ai);
     }
 }
-
-
-const listTemplate = (images) => html`
-    <article id="uploaded-photo-gallery">
-    
-    </article>
-    `

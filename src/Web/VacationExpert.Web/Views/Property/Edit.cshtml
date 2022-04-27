@@ -8,7 +8,6 @@
     var languages = Enum.GetNames<Language>().ToList();
     var countries = Enum.GetNames<Country>().ToList();
     var cities = Enum.GetNames<City>().ToList();
-    var rating = Enum.GetNames<Rating>().ToList();
     var smokingPolicy = Enum.GetNames<SmokingPolicy>().ToList();
     var bedsCount = Enum.GetNames<BedCount>().ToList();
 }
@@ -26,19 +25,19 @@
                 <input placeholder='Enter the name of your property' asp-for=Name value=@property.Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <h4>Description:</h4>
-                <textarea asp-for=Description></textarea>
+                <textarea name="Description" >@property.Description.ToString()</textarea>
                 <div>
                     <label>Your star rating</label>
                     <select asp-for=Rating>
-                        @for (var i = 0; i < @rating.Count; i++)
+                        @for (var i = 0; i <= 5; i++)
                         {
-                            @if (@property.Rating.ToString() == @rating[i])
+                            @if (i==0)
                             {
-                                <option selected>@property.Rating</option>
+                                <option value=0 selected>None</option>
                             }
                             else
                             {
-                                <option>@rating[i]</option>
+                                <option>@i</option>
                             }
                         }
                     </select>

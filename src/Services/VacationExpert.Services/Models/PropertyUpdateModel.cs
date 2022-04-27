@@ -13,7 +13,7 @@
 
         public string Description { get; set; }
 
-        public Rating Rating { get; set; }
+        public int Rating { get; set; }
 
         public ContactInputModel Contact { get; set; }
 

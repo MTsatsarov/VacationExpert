@@ -19,7 +19,14 @@
 
 <section id="display-container" data-property="@Model.Id" class="property-view-container">
     <article class="property-view-header">
-        <h2>@Model.Name</h2>
+        <div>
+            <h2>@Model.Name</h2><p>
+                @for (int i = 0; i < @Model.Rating; i++)
+                {
+                    <i class="fas fa-star"></i>
+                }
+            </p>
+        </div>
         <p>@Model.Address.Street, @Model.Address.City @Model.Address.Country</p>
         <div class="image-gallery">
             @foreach (var image in @Model.Images)
@@ -36,7 +43,7 @@
     <article class="property-view-facilties">
         @foreach (var facility in Model.Services)
         {
-                <p>@facility</p>
+            <p>@facility</p>
         }
 
     </article>
