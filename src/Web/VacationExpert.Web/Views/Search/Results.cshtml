@@ -16,18 +16,17 @@
 
 
 <div>
-    @if(@properties.Count <=0) {
+    @if (@properties.Count <= 0)
+    {
         <h2>Sorry no results found</h2>
-            <a asp-controller="Home" asp-action="Index">Return to home page </a>
+        <a asp-controller="Home" asp-action="Index">Return to home page </a>
 
     }
-    else {
-    <h2>Search Results:</h2>
-
-            <a asp-action="Results" asp-route-id="@Model.PreviousPageNumber" asp-route-city="@city">Previous</a>
-
-    <a asp-action="Results" asp-route-id="@Model.NextPageNumber" asp-route-city="@city">Next</a>
-    <partial name="_PropertiesListPartial" />
+    else
+    {
+        <h2>Search Results:</h2>
+        <partial name ="_PropertyPaginationPartial" />
+        <partial name="_PropertiesListPartial" />
     }
 
 </div>

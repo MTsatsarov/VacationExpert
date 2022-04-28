@@ -1,0 +1,30 @@
+﻿.div-pagination {
+  margin: 0px auto;
+   width:50%;
+   font-size: 30px;
+margin-bottom: 20px;
+font-weight: bold;
+}
+
+#current-page {
+    margin:0px 30px;
+    border-radius: 50%;
+    padding: 15px;
+    background-color: rgb(70, 70, 70);
+    color: white;
+
+}
+#next-page {
+    background-color: rgb(70, 70, 70);
+    padding: 5px;
+    border-radius: 5px;
+color: white;
+
+}
+#previous-page {
+    background-color: rgb(70, 70, 70);
+    padding: 5px;
+    border-radius: 5px; 
+color: white;
+
+}

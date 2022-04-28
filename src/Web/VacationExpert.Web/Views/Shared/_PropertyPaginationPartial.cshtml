@@ -1,0 +1,27 @@
+﻿@using VacationExpert.Web.ViewModels.PropertyViewModel
+@using Microsoft.AspNetCore.Identity
+@using System.Security.Claims;
+@using VacationExpert.Data.Models
+@using VacationExpert.Common
+@model PropertyListViewModel;
+
+@{
+     var properties = Model.Properties.ToList();
+     var city = properties.Select(x => x.City).FirstOrDefault();
+}
+
+<link rel="stylesheet" href="~/css/pagination/pagination.css">
+
+<div class="div-pagination">
+    @if (@Model.HasPreviousPage)
+    {
+        <a id="previous-page" asp-action="Results" asp-route-id="@Model.PreviousPageNumber" asp-route-city="@city">Previous</a>
+    }
+
+    <a id="current-page" asp-action="Results" asp-route-id="@Model.CurrentPage" asp-route-city="@city">@Model.CurrentPage</a>
+
+    @if (Model.HasNextPage)
+    {
+        <a id="next-page" asp-action="Results" asp-route-id="@Model.NextPageNumber" asp-route-city="@city">Next</a>
+    }
+</div>
