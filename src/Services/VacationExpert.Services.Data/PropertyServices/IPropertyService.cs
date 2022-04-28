@@ -12,7 +12,7 @@
 
         public PropertyViewModel GetProperty(string id);
 
-        public CreatePropertyInputModel GetUpdateModel(string id);
+        public PropertyUpdateModel GetUpdateModel(string id);
 
         public PropertyListViewModel GetByUser(string userId, int page);
 

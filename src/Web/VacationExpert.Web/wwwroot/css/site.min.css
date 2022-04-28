@@ -1,13 +1,22 @@
 a.navbar-brand {
     white-space: normal;
     text-align: center;
-    word-break: break-all
+    word-break: break-all;
+    color: white !important;
 }
 
+.navbar  {
+background-color: rgb(46, 46, 46) !important;
+}
 a {
     color: #0366d6
 }
-
+.nav-link {
+    color: white !important;
+}
+.nav-link :hover {
+    color: #000000 !important;
+}
 .btn-primary {
     color: #fff;
     background-color: #1b6ec2;
@@ -64,5 +73,7 @@ body {
         bottom: 0;
         width: 100%;
         white-space: nowrap;
-        line-height: 60px
+        line-height: 60px;
+        color: white !important;
+        background-color: rgb(46, 46, 46) !important;
     }

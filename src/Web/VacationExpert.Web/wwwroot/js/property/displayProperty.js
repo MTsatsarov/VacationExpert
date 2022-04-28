@@ -1,12 +1,10 @@
 ﻿import { html, render } from "../../lib/node_modules/lit-html/lit-html.js";
 import * as service from "../data.js"
 
-
 var reviewBox = document.getElementsByClassName('create-review-box')[0];
 reviewBox.addEventListener('click', sendReview)
 
 var reviewContainer = document.getElementById('reviews')
-reviewContainer.addEventListener('click', getNewReviews);
 
 var container = document.getElementById('display-container');
 
@@ -35,14 +33,14 @@ async function sendReview(e) {
 
 doSmth()
 async function doSmth() {
+    console.log('doSmth');
     var result = await service.getAnotherReviews({ propertyId: container.getAttribute('data-property'), page: "1" })
     if (result.status == 400) {
     } else {
         reviewContainer = document.querySelector('.property-view-reviews');
-        render(containerTemplate(result), container)
+        render(containerTemplate(result,vote), container)
 
     }
-    console.log(result);
 }
 
 async function getNewReviews(e) {
@@ -51,27 +49,41 @@ async function getNewReviews(e) {
         if (result.status == 400) {
         } else {
             reviewContainer = document.querySelector('.property-view-reviews');
-            render(containerTemplate(result), container)
-
+            render(containerTemplate(result,vote), container)
         }
     }
 }
 
 
-const containerTemplate = (reviews) => html`
-<article ${onclick = getNewReviews} class="property-view-reviews">
-    <button data-page=${Number(reviews.currentPage) - 1} class="review-nav-btn">Prev</button>
-    ${reviews.reviews.map(x => singleTemplate(x))}
-    <button data-page=${Number(reviews.currentPage) + 1} class="review-nav-btn">Next</button>
+const containerTemplate = (reviews,vote) => html`
+<article  class="property-view-reviews">
+    <button ${onclick = getNewReviews} data-page=${Number(reviews.currentPage) - 1} class="review-nav-btn">Prev</button>
+    ${reviews.reviews.map(x => singleTemplate(x,vote))}
+    <button ${onclick = getNewReviews} data-page=${Number(reviews.currentPage) + 1} class="review-nav-btn">Next</button>
 </article>
 `
+async function vote(e) {
+if(e.target.tagName=='BUTTON')
+var reviewId = e.target.getAttribute("data-id");
+var like = e.target.getAttribute('data-like') == 'true' ? true :false
+await service.Vote({reviewId,like})
 
-const singleTemplate = (a) => html`
+doSmth()
+
+}
+
+const singleTemplate = (review,vote) => html`
         <div class="single-review">
             <div class="single-review-header">
-                <p>${a.username}</p>
-                <p>${a.dateTime}</p>
-                <p class='review-rating'>${a.rating}</p>
+                <p>${review.username}</p>
+                <p>${review.dateTime}</p>
+                <p class='review-rating'>${review.rating}</p>
             </div>
-            <p class='review-content'> ${a.content}</p>
+            <p class='review-content'> ${review.content}</p>
+            <div class="single-review-header">
+                <div @click=${vote}>
+                <button class="like-review" data-id=${review.id} data-like=${true} >${review.likeCount}</button>
+                    <button class="dislike-review" data-id=${review.id}  data-like=${false}>${review.dislikeCount}</button>
+                </div>
+            </div>
         </div>`

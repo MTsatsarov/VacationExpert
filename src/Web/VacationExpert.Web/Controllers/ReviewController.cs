@@ -46,6 +46,11 @@
         [Authorize(Roles = GlobalConstants.UserRoleName)]
         public async Task<IActionResult> AddReview([FromBody] ReviewInputModel model)
         {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
             model.UserId = this.userManager.GetUserId(this.User);
             await this.reviewService.AddReview(model);
             return this.Ok();

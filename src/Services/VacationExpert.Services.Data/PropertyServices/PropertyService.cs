@@ -193,7 +193,9 @@
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
             var viewModel = new PropertyViewModel();
             viewModel.Id = property.Id;
+            viewModel.Description = property.Description;
             viewModel.Name = property.Name;
+            viewModel.Owner = property.User.Id;
             viewModel.Rating = property.Rating;
             viewModel.Address = new PropertyAddressViewModel
             {
@@ -242,9 +244,9 @@
             return this.dbContext.Services.Select(x => x.Name).ToList();
         }
 
-        public CreatePropertyInputModel GetUpdateModel(string id)
+        public PropertyUpdateModel GetUpdateModel(string id)
         {
-            var model = new CreatePropertyInputModel();
+            var model = new PropertyUpdateModel();
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
 
             model.Description = property.Description;
@@ -289,6 +291,7 @@
                     Selected = true,
                 }).ToList(),
             };
+            model.Images = property.Images.Select(x=>x.ThumbnailContent).ToList();
             return model;
         }
 

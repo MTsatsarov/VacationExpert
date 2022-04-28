@@ -7,6 +7,13 @@
 
     public class PropertyUpdateModel
     {
+        public PropertyUpdateModel()
+        {
+            this.Rooms = new List<RoomInputModel>();
+            this.Images = new List<byte[]>();
+        }
+
+        public string Id { get; set; }
         [Required]
         [StringLength(100, MinimumLength = 1)]
         public string Name { get; set; }
@@ -24,5 +31,6 @@
         public List<RoomInputModel> Rooms { get; set; }
 
         public FacilityInputModel Facilities { get; set; }
+        public List<byte[]> Images { get; set; }
     }
 }

@@ -44,6 +44,7 @@
         public DbSet<Service> Services { get; set; }
 
         public DbSet<Review> Reviews { get; set; }
+        public DbSet<Vote> Votes{ get; set; }
 
         public DbSet<Setting> Settings { get; set; }
 

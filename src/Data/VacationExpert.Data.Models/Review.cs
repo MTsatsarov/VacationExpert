@@ -1,6 +1,7 @@
 ﻿namespace VacationExpert.Data.Models
 {
     using System;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using VacationExpert.Data.Common.Models;
@@ -10,6 +11,7 @@
         public Review()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Votes = new List<Vote>();
         }
 
         [Required]
@@ -27,5 +29,7 @@
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
+
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace VacationExpert.Data.Models
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Reviews = new HashSet<Review>();
             this.Properties = new HashSet<Property>();
+            this.Votes= new HashSet<Vote>();
         }
 
         // Audit info
@@ -38,5 +39,7 @@ namespace VacationExpert.Data.Models
         public virtual ICollection<Review> Reviews { get; set; }
 
         public virtual ICollection<Property> Properties { get; set; }
+
+        public virtual ICollection<Vote> Votes { get; set; }
     }
 }

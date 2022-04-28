@@ -3,7 +3,7 @@
 @using VacationExpert.Web.ViewModels.PropertyViewModel
 @model PropertyUpdateModel
 @{
-    CreatePropertyInputModel property = (CreatePropertyInputModel)(this.ViewData["Property"]);
+    PropertyUpdateModel property = (PropertyUpdateModel)(this.ViewData["Property"]);
     List<string> services = (List<string>)(this.ViewData["Services"]);
     var languages = Enum.GetNames<Language>().ToList();
     var countries = Enum.GetNames<Country>().ToList();
@@ -25,19 +25,35 @@
                 <input placeholder='Enter the name of your property' asp-for=Name value=@property.Name />
                 <p>The guest will be able to see the name when they look for a place to stay.</p>
                 <h4>Description:</h4>
-                <textarea name="Description" >@property.Description.ToString()</textarea>
+                <textarea name="Description">@property.Description.ToString()</textarea>
                 <div>
                     <label>Your star rating</label>
                     <select asp-for=Rating>
                         @for (var i = 0; i <= 5; i++)
                         {
-                            @if (i==0)
+                            @if (i == 0)
                             {
-                                <option value=0 selected>None</option>
+                                if (i == @property.Rating)
+                                {
+                                    <option value=0 selected>None</option>
+
+                                }
+                                else
+                                {
+                                    <option value=0>None</option>
+                                }
                             }
                             else
                             {
-                                <option>@i</option>
+                                if (i == @property.Rating)
+                                {
+                                    <option selected>@i</option>
+
+                                }
+                                else
+                                {
+                                    <option>@i</option>
+                                }
                             }
                         }
                     </select>
@@ -109,20 +125,7 @@
                 <article class="type-smoking" asp-for="Rooms">
                     <h3>Rooms</h3>
                     <label asp-for="Rooms[i].Type">Room type</label>
-                    <select asp-for="Rooms[i].Type">
-                      @*  @foreach (string room in roomType)
-                        {
-                            if (@property.Rooms.Any(x => x.Type.ToString() == @room))
-                            {
-                                <option selected>@room</option>
-                            }
-                            else
-                            {
-                                <option>@room</option>
-
-                            }
-                        }*@
-                    </select>
+                    <input asp-for="Rooms[i].Type" value=@property.Rooms[i].Type/> 
 
                     <label asp-for="Rooms[i].SmokingPolicy">Smoking policy</label>
                     <select asp-for="Rooms[i].SmokingPolicy">
@@ -148,33 +151,22 @@
                     <article class="bed-options-wrapper">
                         <h5>Bed options</h5>
                         <div>
-                      @*      <select asp-for="Rooms[i].Beds[j].Type">
-                                @foreach (string bedType in @bedsType)
-                                {
-                                    if (@property.Rooms[i].Beds[j].Type == @bedType.ToString())
-                                    {
-                                        <option selected>@bedType</option>
-                                    }
-                                    else
-                                    {
-                                        <option>@bedType</option>
-                                    }
-                                }
-                            </select>*@
-                    @*        <select asp-for="Rooms[i].Beds[j].Count">
+                               <input value=@property.Rooms[i].Beds[j].Type asp-for="Rooms[i].Beds[j].Type"/>
+                                
+                                 <select asp-for="Rooms[i].Beds[j].Count">
                                 @foreach (string bedCount in @bedsCount)
                                 {
-                                    if (@property.Rooms[i].Beds[j].Count.ToString() == @bedCount)
-                                    {
-                                        <option selected>@bedCount</option>
-                                    }
-                                    else
-                                    {
-                                        <option>@bedCount</option>
-
-                                    }
+                                if (@property.Rooms[i].Beds[j].Count.ToString() == @bedCount)
+                                {
+                                <option selected>@bedCount</option>
                                 }
-                            </select>*@
+                                else
+                                {
+                                <option>@bedCount</option>
+
+                                }
+                                }
+                                </select>
                         </div>
                         <button type='button' id='addBed'>Add another bed</button>
 
@@ -261,6 +253,7 @@
             <div id="photo-box">
                 <div>
                     <h6>Upload at least 1 photo</h6>
+                  
                     <input name="images" id="photo-uploader" type="file" multiple />
                 </div>
                 <article id="uploaded-photo-gallery">

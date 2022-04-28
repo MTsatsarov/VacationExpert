@@ -67,6 +67,9 @@
 
             model.Reviews = this.db.Reviews.Where(x => x.PropertyId == propertyId).Select(x => new ReviewInListViewModel
             {
+                Id = x.Id,
+                LikeCount = x.Votes.Where(x => x.Like == true).Count(),
+                DislikeCount = x.Votes.Where(x => x.Like == false).Count(),
                 Content = x.Content,
                 DateTime = x.CreatedOn.ToShortDateString(),
                 Rating = x.Rating,

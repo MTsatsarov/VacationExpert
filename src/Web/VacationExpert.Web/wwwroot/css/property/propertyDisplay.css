@@ -60,6 +60,7 @@
 }
 .single-review {
   overflow-y: scroll;
+  word-wrap: break-word;
   margin: 10px;
   text-align: start;
   flex-basis: 30%;
@@ -150,6 +151,7 @@
 .review-content {
   text-align: justify;
   padding: 10px;
+  min-height: 300px;
 }
 
 .review-nav-btn {
@@ -178,4 +180,18 @@
 }
 .login-to-review a:link {
   color: green;
+}
+.like-review, .dislike-review {
+  border: none;
+  border-radius: 50%;
+  width: 30px;
+  font-size: 19px;
+  height: 30px;
+  margin: 10px;
+}
+.like-review {
+  background-color: green;
+}
+.dislike-review {
+  background-color: red;
 }

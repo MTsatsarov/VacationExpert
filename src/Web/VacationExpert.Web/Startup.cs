@@ -22,6 +22,7 @@
     using VacationExpert.Services.Data.PropertyServices;
     using VacationExpert.Services.Data.ReviewServices;
     using VacationExpert.Services.Data.SearchService;
+    using VacationExpert.Services.Data.VoteService;
     using VacationExpert.Services.Mapping;
     using VacationExpert.Services.Messaging;
     using VacationExpert.Web.ViewModels;
@@ -81,6 +82,7 @@
             services.AddTransient<ISearchService, SearchService>();
             services.AddTransient<IReviewService, ReviewService>();
             services.AddTransient<IPropertyServices, PropertyServices>();
+            services.AddTransient<IVoteService, VoteService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

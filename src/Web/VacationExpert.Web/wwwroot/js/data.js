@@ -7,6 +7,11 @@ async function FetchSuggestions(term) {
 async function sendReview(review) {
     return await api.post('/api/review/addReview', review)
 }
+
+async function Vote(vote) {
+    return await api.post('/api/vote/Vote', vote)
+}
+
 async function getAnotherReviews(reviews) {
     return await api.post('/api/review/GetReviews', reviews)
 }
@@ -14,4 +19,5 @@ export {
     FetchSuggestions,
     sendReview,
     getAnotherReviews,
+    Vote,
 }

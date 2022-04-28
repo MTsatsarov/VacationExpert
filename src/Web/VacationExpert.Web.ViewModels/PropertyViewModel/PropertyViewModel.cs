@@ -18,6 +18,7 @@
         public string Name { get; set; }
 
         public int Rating { get; set; }
+        public string Owner { get; set; }
 
         public PropertyAddressViewModel Address { get; set; }
 
