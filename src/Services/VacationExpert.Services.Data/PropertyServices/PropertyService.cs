@@ -244,9 +244,9 @@
             return this.dbContext.Services.Select(x => x.Name).ToList();
         }
 
-        public PropertyUpdateModel GetUpdateModel(string id)
+        public UpdateViewModel GetUpdateModel(string id)
         {
-            var model = new PropertyUpdateModel();
+            var model = new UpdateViewModel();
             var property = this.dbContext.Properties.Where(x => x.Id == id).FirstOrDefault();
 
             model.Description = property.Description;
@@ -291,7 +291,7 @@
                     Selected = true,
                 }).ToList(),
             };
-            model.Images = property.Images.Select(x=>x.ThumbnailContent).ToList();
+            model.Images = this.imageService.GetAllImages(property.Id).ToList();
             return model;
         }
 
@@ -299,6 +299,19 @@
         {
             var property = this.dbContext.Properties.Where(x => x.Id == model.Id).FirstOrDefault();
             property.Name = model.Name;
+            property.Rating = model.Rating;
+            property.Description = model.Description;
+            property.Contact.Name = model.Contact.ContactName;
+            property.Contact.Phone = model.Contact.Phone;
+            property.Contact.AdditionalPhone = model.Contact.AdditionalPhone;
+            property.Address.StreetAddress = model.Address.StreetAddress;
+            property.Address.Country = Enum.Parse<Country>(model.Address.Country);
+            property.Address.City = Enum.Parse<City>(model.Address.City);
+            property.Address.ZipCode =model.Address.ZipCode;
+            property.Facility.Parking = Enum.Parse<Parking>(model.Facilities.Parking);
+            property.Facility.Breakfast = Enum.Parse<Breakfast>(model.Facilities.Breakfast);
+
+            await this.AddImages(model, property);
 
             this.dbContext.Update(property);
             await this.dbContext.SaveChangesAsync();

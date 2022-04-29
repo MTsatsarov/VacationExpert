@@ -8,6 +8,7 @@
     List<string> services = (List<string>)this.ViewData["Services"];
     var roomsCount = 1;
     var bedsCount = 1;
+    var count = new List<int>() { 1, 2, 3, 4, 5, 6, 7, 8 };
 }
 
 <section class="create">
@@ -96,7 +97,7 @@
                         <h5>Bed options</h5>
                         <div>
                             <input asp-for="Rooms[i].Beds[j].Type">
-                            <select asp-for="Rooms[i].Beds[j].Count" asp-items="@Html.GetEnumSelectList<BedCount>()"></select>
+                            <select asp-for="Rooms[i].Beds[j].Count" asp-items= "@(new SelectList(@count))"></select>
                         </div>
                         <button type='button' id='addBed'>Add another bed</button>
 

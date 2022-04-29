@@ -1,20 +1,20 @@
-﻿namespace VacationExpert.Services.Models
+﻿namespace VacationExpert.Web.ViewModels.PropertyViewModel
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
-    using Microsoft.AspNetCore.Http;
+    using VacationExpert.Services.Models;
 
-    public class PropertyUpdateModel
+    public class UpdateViewModel
     {
-        public PropertyUpdateModel()
+        public UpdateViewModel()
         {
             this.Rooms = new List<RoomInputModel>();
+            this.Images = new List<string>();
         }
 
         public string Id { get; set; }
-        [Required]
-        [StringLength(100, MinimumLength = 1)]
+
         public string Name { get; set; }
 
         public string Description { get; set; }
@@ -30,6 +30,6 @@
         public List<RoomInputModel> Rooms { get; set; }
 
         public FacilityInputModel Facilities { get; set; }
-        public IFormCollection Images { get; set; }
+        public List<string> Images { get; set; }
     }
 }

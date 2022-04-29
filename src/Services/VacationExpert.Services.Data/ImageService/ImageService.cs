@@ -85,6 +85,29 @@
             await reader.CloseAsync();
             return result;
         }
+       
+        public List<string> GetAllImages(string propertyId)
+        {
+            return this.dbContext.Images.Where(x => x.PropertyId == propertyId).Select(x => x.Id.ToString()).ToList();
+        }
+
+        public async Task Delete(string id, string userId)
+        {
+            var image = this.dbContext.Images.FirstOrDefault(x => x.Id.ToString() == id);
+            if (image == null)
+            {
+                throw new InvalidOperationException("Image not found");
+            }
+
+            if (image.Property.UserId != userId)
+            {
+                throw new InvalidOperationException("You are not allowed to delete images");
+            }
+
+            image.IsDeleted = true;
+            this.dbContext.Images.Update(image);
+            await this.dbContext.SaveChangesAsync();
+        }
 
         private static async Task<byte[]> SaveImage(Image image, int resizeWIdth)
         {
@@ -111,9 +134,5 @@
             return memoryStream.ToArray();
         }
 
-        public List<string> GetAllImages(string propertyId)
-        {
-            return this.dbContext.Images.Where(x => x.PropertyId == propertyId).Select(x => x.Id.ToString()).ToList();
-        }
     }
 }

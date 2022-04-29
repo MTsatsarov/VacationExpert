@@ -14,5 +14,6 @@
         Task<Stream> GetImageData(string id, string name);
 
         List<string> GetAllImages(string propertyId);
+         Task Delete(string id, string userId);
     }
 }

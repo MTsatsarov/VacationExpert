@@ -1,0 +1,19 @@
+.remove-image-button {
+        position: relative;
+        max-width: 50px;
+        left: 40px;
+        bottom: 85px;
+        max-height: 50px;
+        opacity: 1;
+        border: none;
+        background-color: transparent;
+      
+}
+.remove-image-button i {
+        font-size: 35px;
+        color: black;
+        background-color: transparent;
+}
+.image-gallery::-webkit-scrollbar {
+        display: none;
+      }

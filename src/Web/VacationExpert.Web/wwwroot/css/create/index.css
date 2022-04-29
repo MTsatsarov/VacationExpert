@@ -190,6 +190,25 @@ input[name="photo-uploader"] {
   width: 100%;
   min-height: 60px;
 }
+.image-gallery {
+  margin: 20px  auto;
+  max-height: 250px;
+  overflow-y: scroll;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  box-sizing: content-box;
+}
+.image-gallery img {
+  width: 300px;
+  height: 225px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 2px;
+  border: 1px solid black;
+  cursor: pointer;
+}
 #uploaded-photo-gallery div {
 width: 15%;
 }

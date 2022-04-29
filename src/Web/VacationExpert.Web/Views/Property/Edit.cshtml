@@ -3,15 +3,22 @@
 @using VacationExpert.Web.ViewModels.PropertyViewModel
 @model PropertyUpdateModel
 @{
-    PropertyUpdateModel property = (PropertyUpdateModel)(this.ViewData["Property"]);
+    UpdateViewModel property = (UpdateViewModel)(this.ViewData["Property"]);
     List<string> services = (List<string>)(this.ViewData["Services"]);
     var languages = Enum.GetNames<Language>().ToList();
     var countries = Enum.GetNames<Country>().ToList();
     var cities = Enum.GetNames<City>().ToList();
     var smokingPolicy = Enum.GetNames<SmokingPolicy>().ToList();
-    var bedsCount = Enum.GetNames<BedCount>().ToList();
+    var bedsCount = new List<int>() {1,2,3,4,5,6,7,8 };
 }
 <link rel="stylesheet" href="~/css/create/index.css" />
+<link rel="stylesheet" href="~/css/property/edit.css" />
+<link rel="stylesheet" href="~/lib/font-awesome/css/fontawesome.css" />
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/regular.min.css">
+<link rel="stylesheet" href="~/lib/Font-Awesome/css/solid.min.css">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta2/css/all.min.css" integrity="sha512-YWzhKL2whUzgiheMoBFwW8CKV4qpHQAEuvilg9FAn5VJUDwKZZxkJNuGM4XkWuk94WCrrwslk8yWNGmY1EduTA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
 <section class="create">
     <partial name="_CreateNav" />
@@ -125,7 +132,7 @@
                 <article class="type-smoking" asp-for="Rooms">
                     <h3>Rooms</h3>
                     <label asp-for="Rooms[i].Type">Room type</label>
-                    <input asp-for="Rooms[i].Type" value=@property.Rooms[i].Type/> 
+                    <input asp-for="Rooms[i].Type" value=@property.Rooms[i].Type />
 
                     <label asp-for="Rooms[i].SmokingPolicy">Smoking policy</label>
                     <select asp-for="Rooms[i].SmokingPolicy">
@@ -151,22 +158,22 @@
                     <article class="bed-options-wrapper">
                         <h5>Bed options</h5>
                         <div>
-                               <input value=@property.Rooms[i].Beds[j].Type asp-for="Rooms[i].Beds[j].Type"/>
-                                
-                                 <select asp-for="Rooms[i].Beds[j].Count">
-                                @foreach (string bedCount in @bedsCount)
-                                {
-                                if (@property.Rooms[i].Beds[j].Count.ToString() == @bedCount)
-                                {
-                                <option selected>@bedCount</option>
-                                }
-                                else
-                                {
-                                <option>@bedCount</option>
+                            <input value=@property.Rooms[i].Beds[j].Type asp-for="Rooms[i].Beds[j].Type" />
 
+                            <select asp-for="Rooms[i].Beds[j].Count">
+                                @foreach (int bedCount in @bedsCount)
+                                {
+                                    if (@property.Rooms[i].Beds[j].Count == @bedCount)
+                                    {
+                                        <option selected>@bedCount</option>
+                                    }
+                                    else
+                                    {
+                                        <option>@bedCount</option>
+
+                                    }
                                 }
-                                }
-                                </select>
+                            </select>
                         </div>
                         <button type='button' id='addBed'>Add another bed</button>
 
@@ -253,17 +260,33 @@
             <div id="photo-box">
                 <div>
                     <h6>Upload at least 1 photo</h6>
-                  
+
                     <input name="images" id="photo-uploader" type="file" multiple />
                 </div>
                 <article id="uploaded-photo-gallery">
                 </article>
             </div>
+            <div id="edit-image-container"  class="image-gallery">
+                @foreach (var image in @property.Images)
+                {
+                    <div >
+                        <button class='remove-image-button' data-id="@image"><i class="fa-solid fa-xmark"></i></button>
+                        <a href="/Image/GetFullscreen/@image">
+                            <img src="/Image/GetThumbnail/@image" />
+                        </a>
+                        </div>
+                }
+            </div>
         </section>
+
+
         <button>SUBMIT</button>
 
     </form>
     <partial name="_CreateNav" />
 </section>
 
+@section Scripts {
 <script type="module" defer src=~/js/create/create.js>  </script>
+<script type="module" defer src=~/js/property/edit.js>  </script>
+    }
